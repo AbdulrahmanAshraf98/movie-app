@@ -15,7 +15,7 @@
         padding: 0 15px;
         flex: 0 0 40%;
         max-width: 40%;
-        
+        margin-bottom: 2rem;
     }
   }
 
@@ -34,7 +34,7 @@
     .movies .row .col{
         flex: 0 0 20%;
         max-width: 20%;
-        margin-bottom: 2rem;
+        
     }
   }
   @media(min-width:1200px){
