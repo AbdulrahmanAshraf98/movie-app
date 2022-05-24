@@ -38,7 +38,7 @@ function Card({ data }) {
 										data.vote_average > 6
 											? data.vote_average < 7
 												? "green"
-												: "yellow"
+												: "#2080e0"
 											: "red",
 								}}>
 								<span>{data.vote_average}</span>

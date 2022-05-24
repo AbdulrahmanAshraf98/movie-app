@@ -18,6 +18,7 @@ footer .col{
     margin-bottom:1rem
 }
 footer .footer-logo {
+    
     margin-bottom: 15px;
 }
 
@@ -63,7 +64,12 @@ footer .footer-bottom .row p{
     margin-top: 1rem;
     text-align: center;
 }
-
+  @media(min-width:576px){
+    footer .footer-logo {
+        width: 45%;
+        margin-bottom: 15px;
+    }
+  }
   @media(min-width:768px){
     footer .footer-top .row{
         justify-content: space-between;
