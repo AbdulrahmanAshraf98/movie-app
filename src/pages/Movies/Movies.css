@@ -27,7 +27,8 @@
   }
   @media(min-width:1024px){
     .movies .row{
-        gap: 0;
+        gap: 1%;
+        justify-content: flex-start;
         
     }
     .movies .row .col{
