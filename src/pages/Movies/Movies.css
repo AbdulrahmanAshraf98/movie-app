@@ -4,7 +4,7 @@
 .movies .row .col{
     flex: 0 0 100%;
     max-width: 100%;
-    padding: 0 15px;
+
     margin-bottom: 1rem;
     padding: 0 15px;
 }
@@ -15,6 +15,7 @@
         justify-content: center;
     }
     .movies .row .col{
+        padding: 0 15px;
         flex: 0 0 40%;
         max-width: 40%;
         
