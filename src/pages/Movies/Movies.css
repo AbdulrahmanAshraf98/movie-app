@@ -1,0 +1,40 @@
+.movies {
+    padding: 2rem 0;
+}
+.movies .row .col{
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 15px;
+    margin-bottom: 1rem;
+    padding: 0 15px;
+}
+
+@media(min-width:768px){
+    .movies .row{
+        gap: 3%;
+        justify-content: center;
+    }
+    .movies .row .col{
+        flex: 0 0 40%;
+        max-width: 40%;
+        
+    }
+  }
+  @media(min-width:992px){
+  
+  }
+  @media(min-width:1024px){
+    .movies .row{
+        gap: 0;
+        
+    }
+    .movies .row .col{
+        flex: 0 0 20%;
+        max-width: 20%;
+        margin-bottom: 2rem;
+
+    }
+  }
+  @media(min-width:1400px){
+
+  }
