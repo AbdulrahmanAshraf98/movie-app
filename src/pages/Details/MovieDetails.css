@@ -133,8 +133,43 @@ section.movie{
 
 }
 @media(min-width:1200px){
+    .movie-details .title h2{
+        font-size: 3.2rem;
+    }
+    .movie-details .movie-poster{
+        width: 20%;
+    }
+    .movie .movie-details .container .row{
+        justify-content: flex-start;
+        gap: 5%;
+    }
+ 
+    .movie-info-details{
+        align-self: center;
+        padding:1rem 0;
+    }
+    .movie-details .info-about-movie li{
+        font-size: 1.1rem;
+        width: 50%;
+        font-weight: 400;
+    }
+    .movie-details .info-about-movie li.genres span:nth-child(even){
+        width:25%;
+        text-align: left;
+    }
+
+    .movie-details .overView h3{
+        font-size: 1.7rem;
+    }
+    .movie-details .overView p{
+        font-size: 1.1rem;
+    }
+   
+    .movie-details .movie-info-details .tag-line{
+        font-size: 1.2rem;
+    }
 
 }
 @media(min-width:1400px){
-
+   
 }
