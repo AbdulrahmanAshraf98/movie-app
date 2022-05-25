@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from "react";
-import Card from "../UI/Card/Card";
+import useFetch from "../../Hooks/useFetch";
+import MovieItem from "./MovieItem/MovieItem";
 
 function MoviesList() {
-	const [movies, SetMovies] = useState([]);
-	const fetchMovies = async () => {
-		const response = await fetch(
-			"https://api.themoviedb.org/3/discover/movie?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US&sort_by=popularity.desc",
-		);
-		const data = await response.json();
-		return data.results;
-	};
-	useEffect(() => {
-		const data = fetchMovies();
-		data.then((data) => SetMovies((prevState) => data));
-	}, []);
+	// const [movies, SetMovies] = useState([]);
+	const [responseData, ,] = useFetch(
+		"https://api.themoviedb.org/3/discover/movie?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US&sort_by=popularity.desc",
+	);
+	let movies = responseData.results;
+	// const fetchMovies = async () => {
+	// 	const response = await fetch(
+	// 		"https://api.themoviedb.org/3/discover/movie?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US&sort_by=popularity.desc",
+	// 	);
+	// 	const data = await response.json();
+	// 	return data.results;
+	// };
+	// useEffect(() => {
+	// 	SetMovies((prevState) => responseData.results);
+	// }, [responseData]);
 	return (
-		movies.length > 0 &&
+		movies &&
 		movies.map((movie) => {
-			return (
-				<div className="col" key={movie.id}>
-					<Card data={movie} />
-				</div>
-			);
+			return <MovieItem key={movie.id} movie={movie} />;
 		})
 	);
 }

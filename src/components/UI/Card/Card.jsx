@@ -14,13 +14,13 @@ function Card({ data }) {
 						}`}
 					/>
 					<div className="card-options">
-						<i class="fa-solid fa-magnifying-glass"></i>
-						<i class="fa-solid fa-magnifying-glass"></i>
-						<i class="fa-solid fa-magnifying-glass"></i>
+						<i className="fa-solid fa-magnifying-glass"></i>
+						<i className="fa-solid fa-magnifying-glass"></i>
+						<i className="fa-solid fa-magnifying-glass"></i>
 					</div>
 					<div className="play">
 						<Link to="/">
-							<i class="fa-solid fa-magnifying-glass"></i>
+							<i className="fa-solid fa-magnifying-glass"></i>
 						</Link>
 					</div>
 				</div>

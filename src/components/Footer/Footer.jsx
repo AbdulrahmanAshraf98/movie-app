@@ -19,7 +19,7 @@ function Footer() {
 		<footer>
 			<div className="footer-top">
 				<Container>
-					<div class="row">
+					<div className="row">
 						<div className="col">
 							<div className="footer-logo">
 								<img src={logo}></img>
@@ -28,9 +28,9 @@ function Footer() {
 								Lorem Ipsum is simply dummy text of the printing and typesetting
 								industry.
 							</p>
-							<ul class="social-links">
+							<ul className="social-links">
 								{icons.map((element, index) => (
-									<li>
+									<li key={index}>
 										<SocialIcons className={element} />
 									</li>
 								))}

@@ -26,17 +26,17 @@ function Navbar() {
 						<div className="row">
 							<div className="search-box">
 								<a>
-									<i class="fa-solid fa-magnifying-glass"></i>
+									<i className="fa-solid fa-magnifying-glass"></i>
 								</a>
 							</div>
-							<div class="account-box">
+							<div className="account-box">
 								<a>
-									<i class="fa-solid fa-user"></i>
+									<i className="fa-solid fa-user"></i>
 								</a>
 							</div>
 
-							<a class="navbar-Toggler" onClick={toggleNavItemshandler}>
-								<i class="fa-solid fa-bars"></i>
+							<a className="navbar-Toggler" onClick={toggleNavItemshandler}>
+								<i className="fa-solid fa-bars"></i>
 							</a>
 						</div>
 					</div>

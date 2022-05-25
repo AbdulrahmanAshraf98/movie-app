@@ -8,8 +8,8 @@ const NavbarItems = ({ className }) => {
 	return (
 		<div className={className}>
 			<ul>
-				{navbarItemsData.map((element) => (
-					<NavbarItem to={element.to} text={element.text} />
+				{navbarItemsData.map((element, index) => (
+					<NavbarItem key={index} to={element.to} text={element.text} />
 				))}
 			</ul>
 		</div>

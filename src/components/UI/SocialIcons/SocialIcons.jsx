@@ -1,7 +1,7 @@
 import React from "react";
 
 function SocialIcons({ className }) {
-	return <i class={className}></i>;
+	return <i className={className}></i>;
 }
 
 export default SocialIcons;
