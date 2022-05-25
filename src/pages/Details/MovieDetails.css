@@ -80,11 +80,10 @@ section.movie{
 }
 .movie-details .info-about-movie li.genres span{
     color: var(--primarydark-color);
-
-}
-.movie-details .info-about-movie li.genres span{
     max-width: 50%;
+    margin-bottom: 1rem;
 }
+
 .movie-details .info-about-movie li.genres span{
     display: inline-block;
 }
