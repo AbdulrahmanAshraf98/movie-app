@@ -138,6 +138,7 @@ section.movie{
     }
     .movie-details .movie-poster{
         width: 22%;
+        align-self:center;
     }
     .movie .movie-details .container .row{
         justify-content: flex-start;
@@ -152,9 +153,11 @@ section.movie{
         font-size: 1.1rem;
         width: 50%;
         font-weight: 400;
+        justify-content:flex-start;
+        gap: 5%;
     }
     .movie-details .info-about-movie li.genres span:nth-child(even){
-        width:25%;
+       
         text-align: left;
     }
 
