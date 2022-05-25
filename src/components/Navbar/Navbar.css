@@ -1,8 +1,11 @@
     nav{
       background: rgba(10, 14, 23, 0.4);
-      padding: 1rem 0;
+      padding: 1rem ;
       z-index: 9999;
 
+    }
+    nav .container{
+      padding: 0;
     }
     nav .container .row{
       justify-content: space-between;
