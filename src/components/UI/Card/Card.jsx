@@ -9,8 +9,8 @@ function Card({ data }) {
 					<img
 						src={`${
 							data.poster_path
-								? `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`
-								: "https://image.tmdb.org/t/p/w500/${data.backdrop_path}"
+								? `https://image.tmdb.org/t/p/w300${data.poster_path}`
+								: `https://image.tmdb.org/t/p/w300${data.backdrop_path}`
 						}`}
 					/>
 					<div className="card-options">

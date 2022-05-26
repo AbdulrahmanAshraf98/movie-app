@@ -26,7 +26,7 @@
 }
 .card-top-box img{
     width: 100%;
-    height: auto;
+    height: 300px;
     object-fit: cover;
     object-position: center;
     transform:scale(1);
