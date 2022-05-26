@@ -2,7 +2,7 @@
     height:100px;
 }
 .HeroSection  .item.mid{
-    height:450px;
+    height:1000px;
 }
 .HeroSection .poster {
     width: 100%;
@@ -49,8 +49,23 @@
 .HeroSection .info ul li:nth-child(even){
     text-align: end;
 }
+.HeroSection .overview{
+    font-size: 1rem;
+    line-height: 2;
+}
+.HeroSection .overview.small{
+    font-size: .7rem;
+    line-height: 2;
+    overflow: hidden;
+}
 
-    @media(min-width:576px){
+@media(min-width:576px){
+    .HeroSection  .item.sm{
+        height:100px;
+    }
+    .HeroSection  .item.mid{
+        height:450px;
+    }
         .HeroSection .row{
             justify-content:space-between;
 
@@ -67,28 +82,23 @@
             order: 0;
             align-self: center;
         }
-        .HeroSection .overview{
-            font-size: 1rem;
-            line-height: 2;
-        }
-        .HeroSection .overview.small{
-            font-size: .7rem;
-            line-height: 2;
-            overflow: hidden;
-        }
+    
       
   }
   @media(min-width:768px){
-  
+    .HeroSection  .item.sm{
+        height:100px;
+    }
+    .HeroSection  .item.mid{
+        height:450px;
+    }   
   }
   @media(min-width:992px){
     .HeroSection .row{
         justify-content: flex-start;
         gap: 10%;
     }
-    .HeroSection .info{    
-        width: 55%;
-    }
+    
     .HeroSection .item.sm{
         height:350px;
     }
@@ -97,6 +107,12 @@
     }
     .HeroSection .poster .img-box img{
         height:100%;
+    }
+    .HeroSection .info{    
+        width: 55%;
+    }
+    .HeroSection .info .hero-section-title{
+        font-size:2rem;
     }
     .HeroSection .overview.small{
         font-size: 1rem;

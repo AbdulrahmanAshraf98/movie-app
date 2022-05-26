@@ -45,7 +45,7 @@ function Banner({ item, setBackgroundHandler, isActive }) {
 							<li>{item.release_date}</li>
 						</ul>
 					)}
-					<p className={`overview ${overviewLength > 400 ? "small" : ""}`}>
+					<p className={`overview ${overviewLength > 300 ? "small" : ""}`}>
 						{item.overview}
 					</p>
 				</div>
