@@ -19,7 +19,7 @@ function Banner({ item, setBackgroundHandler, isActive }) {
 			navigate(`/series/${itemId}`);
 			return;
 		}
-		navigate(`/${mediaType}/${itemId}`);
+		navigate(`/${mediaType}s/${itemId}`);
 	};
 	return (
 		<div className={`item ${overviewLength < 400 ? "sm" : "mid"}`}>
