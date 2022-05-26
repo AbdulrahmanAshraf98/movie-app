@@ -10,7 +10,7 @@ function Card({ data }) {
 						src={`${
 							data.poster_path
 								? `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`
-								: "http://template.gentechtreedesign.com/html/streamlab/html/images/background/asset-5.jpeg"
+								: "https://image.tmdb.org/t/p/w500/${data.backdrop_path}"
 						}`}
 					/>
 					<div className="card-options">
@@ -27,7 +27,7 @@ function Card({ data }) {
 			</div>
 			<div className="card-footer">
 				<div className="card-desc">
-					<h3 className="card-title">{data.title}</h3>
+					<h3 className="card-title">{data.title ? data.title : data.name}</h3>
 
 					<div className="card-details">
 						<ul>
@@ -43,7 +43,9 @@ function Card({ data }) {
 								}}>
 								<span>{data.vote_average}</span>
 							</li>
-							<li>{data.release_date}</li>
+							<li>
+								{data.release_date ? data.release_date : data.first_air_date}
+							</li>
 						</ul>
 					</div>
 				</div>
