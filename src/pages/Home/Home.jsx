@@ -1,7 +1,7 @@
-import React from "react";
+import HeroSection from "../../components/HeroSection/HeroSection";
 
 function Home() {
-	return <div>Home</div>;
+	return <HeroSection></HeroSection>;
 }
 
 export default Home;

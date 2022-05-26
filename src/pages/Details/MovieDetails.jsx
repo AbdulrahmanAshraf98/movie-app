@@ -4,8 +4,6 @@ import useFetch from "../../Hooks/useFetch";
 import "./MovieDetails.css";
 function MovieDetails() {
 	const { id } = useParams();
-	// const [MovieDetailsData, setMovieDetailsData] = useState(null);
-
 	const [responseData, isLoading, error] = useFetch(
 		`https://api.themoviedb.org/3/movie/${id}?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US`,
 	);

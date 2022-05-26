@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo-1.png";
 import NavbarItems from "./NavbarItems/NavbarItems";
@@ -6,12 +6,26 @@ import "./Navbar.css";
 import Container from "../UI/Container/Container";
 function Navbar() {
 	const [mobileNavShow, setMobileNavShow] = useState(false);
+	const [stickyNavbar, setStickyNavbar] = useState(false);
+	const toggleVisibility = () => {
+		if (window.pageYOffset > 30) {
+			setStickyNavbar(true);
+		} else {
+			setStickyNavbar(false);
+		}
+	};
 	const toggleNavItemshandler = (e) => {
 		e.preventDefault();
 		setMobileNavShow(!mobileNavShow);
 	};
+	useEffect(() => {
+		window.addEventListener("scroll", toggleVisibility);
+		return () => {
+			window.removeEventListener("scroll", toggleVisibility);
+		};
+	}, [setStickyNavbar]);
 	return (
-		<nav>
+		<nav className={stickyNavbar ? "sticky" : ""}>
 			<Container>
 				<div className="row">
 					<div className="left-side">

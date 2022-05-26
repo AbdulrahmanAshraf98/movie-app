@@ -1,0 +1,112 @@
+.HeroSection  .item.sm{
+    height:100px;
+}
+.HeroSection  .item.mid{
+    height:450px;
+}
+.HeroSection .poster {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.HeroSection .info{
+    width: 100%;
+    margin-bottom: 1rem;   
+}
+.swiper-button-prev,.swiper-button-next{
+    display: none !important;
+}
+
+.HeroSection .poster .img-box{
+    overflow: hidden;
+    border-radius: 10px;
+    width: 100%;
+}
+.HeroSection .poster .img-box img{
+    width:100%;
+    height: auto;
+    object-fit:cover;
+} 
+
+.HeroSection .info .hero-section-title{
+    font-size: 1.5rem;
+    line-height: 38px;
+    border-left: 2px solid #1f80e0;
+    padding: 0 0 0 15px;
+    margin-bottom: 1rem;
+}
+.HeroSection .info ul{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom:1rem;
+}
+.HeroSection .info ul li{
+     width: 40%;
+     margin-bottom: 1rem;
+     padding-right: 1rem;
+}
+.HeroSection .info ul li:nth-child(even){
+    text-align: end;
+}
+
+    @media(min-width:576px){
+        .HeroSection .row{
+            justify-content:space-between;
+
+        }
+        .HeroSection .poster {
+            width: 30%;
+            margin-bottom: 1rem;
+            align-self: center;
+            order: 1;
+        }
+        .HeroSection .info{
+            width: 60%;
+            margin-bottom: 1rem;
+            order: 0;
+            align-self: center;
+        }
+        .HeroSection .overview{
+            font-size: 1rem;
+            line-height: 2;
+        }
+        .HeroSection .overview.small{
+            font-size: .7rem;
+            line-height: 2;
+            overflow: hidden;
+        }
+      
+  }
+  @media(min-width:768px){
+  
+  }
+  @media(min-width:992px){
+    .HeroSection .row{
+        justify-content: flex-start;
+        gap: 10%;
+    }
+    .HeroSection .info{    
+        width: 55%;
+    }
+    .HeroSection .item.sm{
+        height:350px;
+    }
+    .HeroSection .item.mid{
+        height:550px;
+    }
+    .HeroSection .poster .img-box img{
+        height:100%;
+    }
+    .HeroSection .overview.small{
+        font-size: 1rem;
+        line-height: 2;
+        overflow: hidden;
+    }
+  }
+  @media(min-width:1200px){
+ 
+  }
+  @media(min-width:1400px){
+ 
+  }  

@@ -1,9 +1,17 @@
-    nav{
-      background: rgba(10, 14, 23, 0.4);
-      padding: 1rem ;
+    nav {
+      padding: 1.5rem 1rem ;
       z-index: 9999;
-
+      transition: all .4s linear;
+      background: rgba(10, 14, 23, 0.4);
+      transform:translateY(-5px);
     }
+    nav.sticky{
+    position: sticky;
+    top: 0;
+    background: #141b29;
+    transform:translateY(0);
+
+     }
     nav .container{
       padding: 0;
     }
@@ -12,8 +20,6 @@
       align-items: center;
       position: relative;
     }
-
-  
     nav .container .row .left-side {
       max-width: 40%;
     }
@@ -87,10 +93,7 @@
   
   }
   @media(min-width:1024px){
-    nav{
-      position: sticky;
-      top: 0;
-    }
+ 
 
     nav .container .row .left-side {
       width: 15%;
