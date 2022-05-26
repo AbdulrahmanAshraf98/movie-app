@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Banner.css";
 function Banner({ item, setBackgroundHandler, isActive }) {
+	const navigate = useNavigate();
 	const overviewLength = item.overview.length;
 	useEffect(() => {
 		if (isActive) {
@@ -9,11 +11,21 @@ function Banner({ item, setBackgroundHandler, isActive }) {
 			);
 		}
 	});
+	const navigateHandler = (e) => {
+		e.preventDefault();
+		const itemId = item.id;
+		const mediaType = item.media_type;
+		if (mediaType === "tv") {
+			navigate(`/series/${itemId}`);
+			return;
+		}
+		navigate(`/${mediaType}/${itemId}`);
+	};
 	return (
 		<div className={`item ${overviewLength < 400 ? "sm" : "mid"}`}>
 			<div className="row">
 				<div className="col poster">
-					<div className="img-box">
+					<div className="img-box" onClick={navigateHandler}>
 						<img
 							src={
 								item.backdrop_path
