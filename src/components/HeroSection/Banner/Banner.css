@@ -139,6 +139,7 @@
     .HeroSection  .item.mid{
         height:450px;
     }   
+
   }
   @media(min-width:992px){
     .HeroSection .row{
@@ -155,7 +156,8 @@
     .HeroSection .poster .img-box img{
         height:100%;
     }
-    .HeroSection .info{    
+    .HeroSection .info{  
+        align-self: flex-start;
         width: 55%;
     }
     .HeroSection .info .hero-section-title{
@@ -168,7 +170,9 @@
     }
   }
   @media(min-width:1200px){
- 
+    .HeroSection .info{  
+        align-self: center;
+    }
   }
   @media(min-width:1400px){
  
