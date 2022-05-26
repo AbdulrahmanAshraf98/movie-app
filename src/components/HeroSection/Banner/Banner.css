@@ -18,21 +18,27 @@
         -webkit-transform: translateX(-100%);
         transform: translateX(-100%);
         opacity: 0;
+        
     }
 
     100% {
         -webkit-transform: translateX(0);
         transform: translateX(0);
         opacity: 1;
+        
     }
 }
 
 
 .slideToright{
     animation: slideToright  0.5s 0.1s  linear;
+    backface-visibility: hidden
+    
 }
 .slideToleft{
     animation: fadeInLeft 0.5s  0.1s linear;
+    backface-visibility: hidden
+    
 }
 .HeroSection  .item.sm{
     height:100px;
@@ -57,6 +63,7 @@
     border-radius: 10px;
     width: 100%;
     transform:translateX(0);
+    backface-visibility: hidden
     
 }
 .HeroSection .poster .img-box img{
@@ -71,6 +78,7 @@
     border-left: 2px solid #1f80e0;
     padding: 0 0 0 15px;
     margin-bottom: 1rem;
+    backface-visibility: hidden
 }
 .HeroSection .info ul{
     display: flex;
