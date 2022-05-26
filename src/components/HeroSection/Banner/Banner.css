@@ -62,9 +62,10 @@
     overflow: hidden;
     border-radius: 10px;
     width: 100%;
+    height: 100%;
     transform:translateX(0);
-    backface-visibility: hidden
-    
+    backface-visibility: hidden;
+   
 }
 .HeroSection .poster .img-box img{
     width:100%;
