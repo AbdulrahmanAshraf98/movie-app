@@ -31,13 +31,13 @@
 
 
 .slideToright{
-    animation: slideToright  0.5s 0.1s  linear;
-    backface-visibility: hidden
+    animation: slideToright  0.7s 0.1s  linear;
+    backface-visibility: hidden;
     
 }
 .slideToleft{
-    animation: fadeInLeft 0.5s  0.1s linear;
-    backface-visibility: hidden
+    animation: fadeInLeft 0.7s  0.1s linear;
+    backface-visibility: hidden;
     
 }
 .HeroSection  .item.sm{
