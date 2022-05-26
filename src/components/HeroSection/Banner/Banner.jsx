@@ -25,7 +25,9 @@ function Banner({ item, setBackgroundHandler, isActive }) {
 		<div className={`item ${overviewLength < 400 ? "sm" : "mid"}`}>
 			<div className="row">
 				<div className="col poster">
-					<div className="img-box" onClick={navigateHandler}>
+					<div
+						className={`img-box ${isActive ? "slideToright" : ""}`}
+						onClick={navigateHandler}>
 						<img
 							src={
 								item.backdrop_path
@@ -36,7 +38,7 @@ function Banner({ item, setBackgroundHandler, isActive }) {
 					</div>
 				</div>
 				<div className="col info">
-					<h3 className="hero-section-title">
+					<h3 className={`hero-section-title ${isActive ? "slideToleft" : ""}`}>
 						{item.title ? item.title : item.name}
 					</h3>
 
