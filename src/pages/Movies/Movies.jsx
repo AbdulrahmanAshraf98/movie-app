@@ -1,3 +1,4 @@
+import Genres from "../../components/Genres/Genres";
 import MoviesList from "../../components/MoviesList/MoviesList";
 import Container from "../../components/UI/Container/Container";
 import "./Movies.css";

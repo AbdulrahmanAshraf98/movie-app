@@ -13,7 +13,6 @@ function SeriesDetails() {
 	);
 	let SeriesDetailsData = null;
 	SeriesDetailsData = responseData;
-	console.log(responseData);
 	return (
 		SeriesDetailsData && (
 			<>

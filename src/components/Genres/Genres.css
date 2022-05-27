@@ -1,0 +1,11 @@
+.genres{
+    margin-bottom: 2rem;
+    width: 100%;
+}
+.genres .row{
+    width: 100%;
+}
+.genres .row .dropDown{
+    width:50%;
+
+}
