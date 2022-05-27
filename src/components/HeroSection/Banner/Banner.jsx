@@ -1,14 +1,12 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Banner.css";
-function Banner({ item, setBackgroundHandler, isActive }) {
+function Banner({ item, fn, isActive }) {
 	const navigate = useNavigate();
 	const overviewLength = item.overview.length;
 	useEffect(() => {
 		if (isActive) {
-			setBackgroundHandler(
-				`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`,
-			);
+			fn(`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`);
 		}
 	});
 	const navigateHandler = (e) => {

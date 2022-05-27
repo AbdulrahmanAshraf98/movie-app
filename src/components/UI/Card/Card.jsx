@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Card.css";
 function Card({ data }) {
 	return (
-		<div className={"card"}>
+		<div className="card">
 			<div className="card-top">
 				<div className="card-top-box">
 					<img

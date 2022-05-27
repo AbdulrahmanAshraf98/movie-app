@@ -54,7 +54,7 @@
     width: 100%;
     margin-bottom: 1rem;   
 }
-.swiper-button-prev,.swiper-button-next{
+.HeroSection  .swiper-button-prev,.HeroSection .swiper-button-next{
     display: none !important;
 }
 

@@ -20,3 +20,7 @@
    
 
 }
+.HeroSection .swiper-slide{
+    text-align: left; 
+    justify-content: flex-start;
+}

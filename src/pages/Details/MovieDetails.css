@@ -13,7 +13,7 @@ section.movie{
     background-size:cover ;
     background-repeat: no-repeat;
     background-image: linear-gradient(to right, rgb(8, 19, 41) 150px, rgba(8, 36, 36, 0.84) 100%);
-    padding: 2rem 0 0;
+    padding: 2rem 0;
 }
 .movie-details .container{
     padding: 0;

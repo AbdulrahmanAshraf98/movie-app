@@ -4,31 +4,41 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
+import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-// import required modules
-import { Autoplay, Pagination, Navigation } from "swiper";
-
-const Carousel = ({ data, setBackgroundHandler, children }) => {
+import "./Carousel.css";
+const Carousel = ({
+	data,
+	fn = null,
+	children,
+	slidesCount = 1,
+	spaceBetween = 20,
+	modules,
+	centeredSlides,
+	breakpoints = {},
+}) => {
 	const slideItem = data.map((item, index) => (
 		<SwiperSlide key={index} id={index}>
-			{({ isActive }) =>
-				React.cloneElement(children, { item, setBackgroundHandler, isActive })
-			}
+			{({ isActive }) => React.cloneElement(children, { item, fn, isActive })}
 		</SwiperSlide>
 	));
 
 	return (
 		<>
 			<Swiper
-				spaceBetween={30}
-				centeredSlides={true}
+				slidesPerView={slidesCount}
+				spaceBetween={spaceBetween}
+				centeredSlides={centeredSlides}
+				breakpoints={breakpoints}
 				autoplay={{
-					delay: 2500,
-					disableOnInteraction: false,
+					delay: 3000,
+					disableOnInteraction: true,
+				}}
+				pagination={{
+					clickable: true,
 				}}
 				navigation={true}
-				modules={[Autoplay, Navigation]}
+				modules={modules}
 				className="mySwiper">
 				{slideItem}
 			</Swiper>

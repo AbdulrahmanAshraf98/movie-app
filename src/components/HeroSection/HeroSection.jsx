@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 // Import Swiper React components
+import { Autoplay, Navigation } from "swiper";
 import useFetch from "../../Hooks/useFetch";
 
 import Carousel from "../UI/Carousel/Carousel";
@@ -24,7 +25,13 @@ function HeroSection() {
 			}}>
 			{trending && (
 				<Container>
-					<Carousel data={trending} setBackgroundHandler={setBackgroundHandler}>
+					<Carousel
+						data={trending}
+						slidesCount={1}
+						spaceBetween={0}
+						centeredSlides={true}
+						fn={setBackgroundHandler}
+						modules={[Autoplay, Navigation]}>
 						<Banner />
 					</Carousel>
 				</Container>
