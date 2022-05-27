@@ -37,6 +37,9 @@ code {
   margin:0;
   color:var(--white-color);
 }
+section{
+  padding:2rem 0;
+}
 a{
  
   text-decoration:none;

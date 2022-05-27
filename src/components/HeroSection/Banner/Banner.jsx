@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Img from "../../UI/Img/Img";
 import "./Banner.css";
 function Banner({ item, fn, isActive }) {
 	const navigate = useNavigate();
@@ -23,17 +24,15 @@ function Banner({ item, fn, isActive }) {
 		<div className={`item ${overviewLength < 400 ? "sm" : "mid"}`}>
 			<div className="row">
 				<div className="col poster">
-					<div
+					<Img
 						className={`img-box ${isActive ? "slideToright" : ""}`}
-						onClick={navigateHandler}>
-						<img
-							src={
-								item.backdrop_path
-									? `https://image.tmdb.org/t/p/w500/${item.poster_path}`
-									: `https://image.tmdb.org/t/p/w500/${item.backdrop_path}`
-							}
-						/>
-					</div>
+						onClick={navigateHandler}
+						src={
+							item.backdrop_path
+								? `https://image.tmdb.org/t/p/w500/${item.poster_path}`
+								: `https://image.tmdb.org/t/p/w500/${item.backdrop_path}`
+						}
+					/>
 				</div>
 				<div className="col info">
 					<h3 className={`hero-section-title ${isActive ? "slideToleft" : ""}`}>

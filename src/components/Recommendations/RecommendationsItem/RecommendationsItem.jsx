@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Img from "../../UI/Img/Img";
 
 function RecommendationsItem({ item, isActive }) {
 	const navigateTo = useNavigate();
@@ -13,11 +14,10 @@ function RecommendationsItem({ item, isActive }) {
 	};
 	return (
 		<div className="cast-item Recommendations-item" onClick={onClickHandler}>
-			<div className="actor-img img-box">
-				<img
-					src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${item.poster_path}`}
-				/>
-			</div>
+			<Img
+				className="actor-img img-box"
+				src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${item.poster_path}`}
+			/>
 			<div className="actor-details">
 				<div className="character-name">
 					<p>{item.original_title}</p>

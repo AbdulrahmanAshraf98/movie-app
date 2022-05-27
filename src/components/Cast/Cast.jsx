@@ -6,7 +6,7 @@ import Carousel from "../UI/Carousel/Carousel";
 import CastItem from "./CastItem/CastList";
 import "./Cast.css";
 import SectionTitle from "../UI/sectionTitle/SectionTitle";
-function Cast({ Id = null, mediaType = null }) {
+function Cast({ Id, mediaType, SortingByPopularity }) {
 	let response = useFetch(
 		`https://api.themoviedb.org/3/${mediaType}/${Id}/credits?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US`,
 	);

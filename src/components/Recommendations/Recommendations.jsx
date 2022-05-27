@@ -6,14 +6,15 @@ import Container from "../UI/Container/Container";
 import SectionTitle from "../UI/sectionTitle/SectionTitle";
 import RecommendationsItem from "./RecommendationsItem/RecommendationsItem";
 import "./Recommendations.css";
-function Recommendations() {
+function Recommendations({ Id, mediaType }) {
 	const response = useFetch(
-		"https://api.themoviedb.org/3/movie/294793/recommendations?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US&page=1",
+		`https://api.themoviedb.org/3/${mediaType}/${Id}/recommendations?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US&page=1`,
 	);
 	let recommendations = response[0].results;
 	return (
-		<section className="recommendations">
-			{recommendations && (
+		recommendations &&
+		recommendations.length > 0 && (
+			<section className="recommendations">
 				<Container>
 					<SectionTitle>
 						<h3>Recommendations</h3>
@@ -41,8 +42,8 @@ function Recommendations() {
 						<RecommendationsItem />
 					</Carousel>
 				</Container>
-			)}
-		</section>
+			</section>
+		)
 	);
 }
 

@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Img from "../Img/Img";
 import "./Card.css";
 function Card({ data }) {
 	return (
 		<div className="card">
 			<div className="card-top">
 				<div className="card-top-box">
-					<img
+					<Img
+						className="card-image"
 						src={`${
 							data.poster_path
 								? `https://image.tmdb.org/t/p/w300${data.poster_path}`
@@ -14,8 +16,6 @@ function Card({ data }) {
 						}`}
 					/>
 					<div className="card-options">
-						<i className="fa-solid fa-magnifying-glass"></i>
-						<i className="fa-solid fa-magnifying-glass"></i>
 						<i className="fa-solid fa-magnifying-glass"></i>
 					</div>
 					<div className="play">

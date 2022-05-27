@@ -1,0 +1,184 @@
+section.Details{ 
+    border-bottom: 1px solid var(--primaryColor);
+    background-size:cover ;
+    background-position: right -200px top;
+    background-repeat: no-repeat;
+    position:relative;
+    padding: 0;
+}
+
+.Details  .details-overview{
+    width:100%;
+    height:100%;
+    background-size:cover ;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to right, rgb(8, 19, 41) 150px, rgba(8, 36, 36, 0.84) 100%);
+    padding: 2rem 0;
+}
+.Details  .container{
+    padding: 0;
+}
+.Details  .details-info .container .row{
+    justify-content: center;
+}
+.Details  .details-overview-poster{
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+
+}
+.Details  .details-overview-poster .poster{
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 100%;
+    position: relative;
+}
+.Details  .details-overview-poster .poster img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.Details  .details-overview-poster .poster .overlay{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: var(--imageBorderRadius);
+    visibility: hidden;
+    opacity: 0;
+    transition: linear .2s;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Details  .details-overview-poster .poster:hover .overlay{
+    visibility: visible;
+    opacity: 1;  
+} 
+.Details  .details-info{
+    width: 100%;
+    padding: 1rem;  
+}
+.Details  .details-info .title,.details-info .title h2,.details-info .info-about li{
+    margin-bottom:1rem;
+}
+.Details  .details-info .info-about{
+    width: 97%;
+    font-size: .9rem;
+}
+.Details  .details-info .info-about li{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom:1rem;
+}
+.Details  .details-info .info-about li.genres span{
+    color: var(--primarydark-color);
+    max-width: 50%;
+    margin-bottom: 1rem;
+}
+
+.Details  .details-info .info-about li.genres span{
+    display: inline-block;
+}
+.Details  .details-info .info-about li.genres  span:nth-child(even){
+
+     text-align: end;
+}
+.Details  .details-info .tag-line{
+    margin-bottom:1rem;
+    line-height:2
+}
+
+.Details  .details-info .overView{
+    padding-bottom: 2rem;
+}
+.Details  .details-info .overView h3{
+    margin-bottom: 1rem;
+}
+.Details  .details-info .overView p{
+    line-height: 2
+}
+@media(min-width:576px){
+    .container{
+     padding:  0 1rem !important;
+    }
+    .Details  .container .row{
+        justify-content: space-between;
+         align-items: center;
+    }
+    .Details  .details-overview-poster {
+        width: 40%;
+        height: auto;
+        padding: 0;
+    }
+    .Details  .details-info{
+        width: 56%;
+        padding:0;
+    }
+  }
+@media(min-width:768px){
+    .Details  .container .row{
+        align-items: flex-start;
+        padding: 2rem 0;
+    }
+
+    .Details  .details-info{
+        align-self: center;
+        padding:1rem 0;
+    }
+    .Details   .details-info .title{
+        margin:0;
+    }
+}
+@media(min-width:992px){
+ 
+}
+@media(min-width:1200px){
+    
+    .Details   .details-info .title h2{
+        font-size: 3.2rem;
+    }
+    .Details   .details-overview-poster{
+        width: 22%;
+        align-self:center;
+    }
+    .Details .container .row{
+        justify-content: flex-start;
+        gap: 5%;
+    }
+ 
+    .Details  .details-info{
+        align-self: center;
+        padding:1rem 0;
+    }
+    .Details  .details-info .info-about li{
+        font-size: 1.1rem;
+        font-weight: 400;
+        justify-content:flex-start;
+        gap: 5%;
+    }
+    .Details  .details-info .info-about li.genres span:nth-child(even){
+        text-align: left;
+    }
+
+    .Details  .details-info .overView h3{
+        font-size: 1.7rem;
+    }
+    .Details   .details-info .overView p{
+        font-size: 1.1rem;
+    }
+   
+    .Details   .details-info .tag-line{
+        font-size: 1.2rem;
+    }
+
+}
+@media(min-width:1400px){
+   
+}

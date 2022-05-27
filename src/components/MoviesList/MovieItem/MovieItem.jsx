@@ -7,6 +7,10 @@ function MovieItem({ movie }) {
 	const onClickHandler = (e) => {
 		e.preventDefault();
 		navigate(`/Movies/${movie.id}`);
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
 	};
 	return (
 		<div className="col" onClick={onClickHandler}>
