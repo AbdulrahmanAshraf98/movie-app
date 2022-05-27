@@ -12,12 +12,15 @@ function SeriesListItem({ series }) {
 			behavior: "smooth",
 		});
 	};
+
 	return (
-		<div className="col" onClick={onClickHandler}>
-			<div className="Series-item">
-				<Card data={series} />
+		<>
+			<div className="col" onClick={onClickHandler}>
+				<div className="Series-item">
+					<Card data={series} />
+				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 

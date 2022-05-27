@@ -2,10 +2,14 @@ import React from "react";
 import useFetch from "../../Hooks/useFetch";
 import DropDown from "../UI/SelectBox/DropDown/DropDown";
 import "./Genres.css";
-function Genres({ onClick }) {
-	const [responseData, isLoading] = useFetch(
-		"https://api.themoviedb.org/3/genre/movie/list?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US",
-	);
+function Genres({ onClick, mediaType }) {
+	let url =
+		"https://api.themoviedb.org/3/genre/movie/list?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US";
+	if (mediaType === "tv") {
+		url =
+			"https://api.themoviedb.org/3/genre/tv/list?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US";
+	}
+	const [responseData, isLoading] = useFetch(url);
 	let genres = responseData.genres;
 	return (
 		genres && (
