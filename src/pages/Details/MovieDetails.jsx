@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Cast from "../../components/Cast/Cast";
 import DetailsOverview from "../../components/DetailsOverview/DetailsOverview";
@@ -13,10 +14,11 @@ function MovieDetails() {
 	);
 	let MovieDetailsData = null;
 	MovieDetailsData = responseData;
+	useEffect(() => {}, [MovieDetailsData, isLoading, error]);
 	return (
 		<>
-			{isLoading && !MovieDetailsData && <p>Loading</p>}
-			{MovieDetailsData && (
+			{isLoading && <p>Loading</p>}
+			{MovieDetailsData && !isLoading && (
 				<>
 					<DetailsOverview item={MovieDetailsData} />
 					<Cast Id={id} mediaType={"movie"} />

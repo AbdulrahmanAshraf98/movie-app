@@ -2,11 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Img from "../../UI/Img/Img";
 
-function RecommendationsItem({ item, isActive }) {
+function RecommendationsItem({ item, mediaType, isActive }) {
 	const navigateTo = useNavigate();
+	const redirectPath =
+		mediaType === "tv" ? `/Tv/${item.id}` : `/Movies/Movie/${item.id}`;
 	const onClickHandler = (e) => {
 		e.preventDefault();
-		navigateTo(`/Movies/${item.id}`);
+		navigateTo(`${redirectPath}`);
+
 		window.scrollTo({
 			top: 0,
 			behavior: "smooth",

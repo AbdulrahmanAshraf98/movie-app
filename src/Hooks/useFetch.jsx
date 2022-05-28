@@ -11,9 +11,11 @@ const useFetch = (url) => {
 			}
 			const responseData = await response.json();
 			setData(responseData);
-			setIsLoading((prevState) => !prevState);
+			setIsLoading((prevState) => {
+				return false;
+			});
 		} catch (e) {
-			setIsLoading((prevState) => !prevState);
+			setIsLoading((prevState) => false);
 			setError(e.message);
 		}
 	}, [url]);

@@ -33,4 +33,4 @@ function DetailsOverview({ item }) {
 	);
 }
 
-export default DetailsOverview;
+export default React.memo(DetailsOverview);

@@ -11,6 +11,7 @@ function Recommendations({ Id, mediaType }) {
 		`https://api.themoviedb.org/3/${mediaType}/${Id}/recommendations?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US&page=1`,
 	);
 	let recommendations = response[0].results;
+
 	return (
 		recommendations &&
 		recommendations.length > 0 && (
@@ -39,7 +40,7 @@ function Recommendations({ Id, mediaType }) {
 						spaceBetween={30}
 						centeredSlides={false}
 						modules={[Navigation, Autoplay]}>
-						<RecommendationsItem />
+						<RecommendationsItem mediaType={mediaType} />
 					</Carousel>
 				</Container>
 			</section>
@@ -47,4 +48,4 @@ function Recommendations({ Id, mediaType }) {
 	);
 }
 
-export default Recommendations;
+export default React.memo(Recommendations);

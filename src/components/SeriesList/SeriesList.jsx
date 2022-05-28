@@ -17,16 +17,15 @@ function SeriesList() {
 	let series = responseData.results;
 	return (
 		<>
-			{isLoading && !series && <p>loading</p>}
-			{series && (
+			{isLoading && <p>loading</p>}
+			{series && !isLoading && (
 				<>
 					<Genres onClick={changeGenresHandler} mediaType="tv" />
+					{series.map((element) => {
+						return <SeriesListItem key={element.id} series={element} />;
+					})}
 				</>
 			)}
-			{series &&
-				series.map((element) => {
-					return <SeriesListItem key={element.id} series={element} />;
-				})}
 			{series && series.length === 0 && <p>noDataFound</p>}
 		</>
 	);

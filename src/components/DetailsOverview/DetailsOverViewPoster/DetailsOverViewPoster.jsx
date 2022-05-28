@@ -2,6 +2,7 @@ import React from "react";
 import Img from "../../UI/Img/Img";
 
 function DetailsOverViewPoster({ src }) {
+	// console.log("a");
 	return (
 		<div className="col details-overview-poster">
 			<>

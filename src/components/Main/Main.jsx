@@ -12,9 +12,10 @@ function Main() {
 			<Routes>
 				<Route index element={<Home />} />
 				<Route path="Movies" element={<Movies />} />
-				<Route path="Movies/:id" element={<MovieDetails />} />
+				<Route path="Movies/Movie/" element={<Movies />} />
+				<Route path="Movies/Movie/:id" element={<MovieDetails />} />
 				<Route path="Series" element={<Series />} />
-				<Route path="Series/:id" element={<SeriesDetails />} />
+				<Route path="Tv/:id" element={<SeriesDetails />} />
 			</Routes>
 		</main>
 	);
