@@ -48,3 +48,6 @@
     color: var(--dark-color);
     background-color: var(--white-color)
 }
+.dropDown  .Reset-btn{
+    cursor: pointer;
+}
