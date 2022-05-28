@@ -4,8 +4,8 @@ import Genres from "../Genres/Genres";
 import MovieItem from "./MovieItem/MovieItem";
 
 function MoviesList() {
-	const DefualtValueGenres = JSON.parse(localStorage.getItem("genres"))
-		? JSON.parse(localStorage.getItem("genres")).id
+	const DefualtValueGenres = JSON.parse(localStorage.getItem("moviegenres"))
+		? JSON.parse(localStorage.getItem("moviegenres")).id
 		: "";
 	const [genres, setGenres] = useState(DefualtValueGenres);
 	const [sortingBy, setSortingBy] = useState("popularity.desc");

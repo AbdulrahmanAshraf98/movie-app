@@ -1,10 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./DropDown.css";
 
-function DropDown({ values, defaultValue, onClick }) {
+function DropDown({ values, defaultValue, localStorageItemName, onClick }) {
 	const [isActive, setIsActive] = useState(false);
-	const selectBoxValueDefualtValue = JSON.parse(localStorage.getItem("genres"))
-		? JSON.parse(localStorage.getItem("genres")).name
+	const selectBoxValueDefualtValue = JSON.parse(
+		localStorage.getItem(localStorageItemName),
+	)
+		? JSON.parse(localStorage.getItem(localStorageItemName)).name
 		: defaultValue;
 	const [selectBoxValue, setSelectBoxValue] = useState(
 		selectBoxValueDefualtValue,
@@ -16,10 +18,9 @@ function DropDown({ values, defaultValue, onClick }) {
 	const selectedValue = useCallback((e) => {
 		setSelectBoxValue((prevState) => e.target.textContent);
 		onClick(e.target.id);
-
 		setIsActive((prevState) => !prevState);
 		localStorage.setItem(
-			"genres",
+			localStorageItemName,
 			JSON.stringify({
 				name: e.target.textContent,
 				id: e.target.id,
@@ -31,7 +32,7 @@ function DropDown({ values, defaultValue, onClick }) {
 		onClick("");
 
 		setIsActive((prevState) => !prevState);
-		localStorage.removeItem("genres");
+		localStorage.removeItem(localStorageItemName);
 	});
 	useEffect(() => {}, [selectBoxValue]);
 

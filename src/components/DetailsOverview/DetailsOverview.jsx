@@ -3,7 +3,7 @@ import Container from "../UI/Container/Container";
 import DetailsInfo from "./DetailsInfo/DetailsInfo";
 import DetailsOverViewPoster from "./DetailsOverViewPoster/DetailsOverViewPoster";
 import "./DetailsOverview.css";
-function DetailsOverview({ item }) {
+function DetailsOverview({ item, openModalHandler }) {
 	const detailsOverviewPoster = item.poster_path
 		? item.poster_path
 		: item.backdrop_path;
@@ -16,7 +16,10 @@ function DetailsOverview({ item }) {
 			<div className="details-overview">
 				<Container>
 					<div className="row">
-						<DetailsOverViewPoster src={detailsOverviewPoster} />
+						<DetailsOverViewPoster
+							src={detailsOverviewPoster}
+							openModalHandler={openModalHandler}
+						/>
 						<DetailsInfo
 							title={item.title ? item.title : item.name}
 							status={item.status}

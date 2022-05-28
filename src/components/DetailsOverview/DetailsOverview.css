@@ -60,6 +60,10 @@ section.Details{
     visibility: visible;
     opacity: 1;  
 } 
+.Details  .details-overview-poster .poster:hover .playTrailer{
+    cursor: pointer;
+    font-size: 2rem;
+}
 .Details  .details-info{
     width: 100%;
     padding: 1rem;  

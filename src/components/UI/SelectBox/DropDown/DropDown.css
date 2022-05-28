@@ -8,12 +8,12 @@
     border:1px solid var(--primary-color);
     width:100%;
     box-sizing: border-box;
-
     padding: 15px 20px;
     font-weight: bold;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
 .dropDown .dropDown-content{
