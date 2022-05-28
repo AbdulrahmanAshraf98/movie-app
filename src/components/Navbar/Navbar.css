@@ -20,9 +20,11 @@
       align-items: center;
       position: relative;
     }
-    nav .container .row .left-side {
-      max-width: 40%;
+    nav .container .row .left-side{
+      max-width: 100%;
+      margin-bottom: 1rem;
     }
+ 
     nav .container .row .left-side .logo img{
       width: 100%;
       object-fit: cover;
@@ -59,15 +61,16 @@
     .nav-items ul li a.active{
       color: var(--primary-color);
     }
-
-
     nav .container .row .right-side{
-      max-width: 50%;
+      width: 100%;
+      max-width: 100%;
     }
     nav .container .row .right-side .row{
-      justify-content: flex-end;
-      gap:1rem;
+      justify-content: space-around;
+      width: 100%;
+      
     }
+  
     nav .container .row .right-side .row .account-box a, nav .container .row .right-side .row .navbar-Toggler{
       height: 45px;
       width: 45px;
@@ -80,6 +83,23 @@
     }
     nav .container .row .right-side .row .navbar-Toggler{
       border-radius: 0;
+    }
+    @media(min-width:330px){
+      nav .container .row .right-side{
+        max-width: 50%;
+        margin: 0;
+      }
+      nav .container .row .right-side .row{
+        justify-content: flex-end;
+        align-items: center;
+        gap:1rem;
+      }
+      nav .container .row .left-side {
+        max-width: 40%;
+        display: flex;
+        align-self: center;
+        margin: 0;
+      }
     }
   @media(min-width:768px){
     nav .container .row .left-side {
@@ -135,19 +155,4 @@
  
   }
   
-  /* spcial media */
-  @media(min-width:150px) and (max-width:304px){
-    nav .container .row .left-side{
-      max-width: 100%;
-      margin-bottom: 1rem;
-    }
-    nav .container .row .right-side{
-      width: 100%;
-      max-width: 100%;
-    }
-    nav .container .row .right-side .row{
-      justify-content: space-around;
-      width: 100%;
-      
-    }
-  }
+ 
