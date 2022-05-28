@@ -10,8 +10,6 @@ function VideoModal({ id, openModalHandler }) {
 		`https://api.themoviedb.org/3/movie/${id}/videos?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US`,
 	);
 	let responseData = response.results;
-
-	console.log(responseData);
 	return (
 		<Modal className="video-modal-overlay" openModalHandler={openModalHandler}>
 			{responseData && !loading && responseData.length > 0 && (
