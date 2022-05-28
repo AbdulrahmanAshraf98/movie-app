@@ -24,4 +24,4 @@ function SeriesListItem({ series }) {
 	);
 }
 
-export default SeriesListItem;
+export default React.memo(SeriesListItem);

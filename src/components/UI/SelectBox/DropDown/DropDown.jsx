@@ -1,8 +1,14 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./DropDown.css";
+
 function DropDown({ values, defaultValue, onClick }) {
 	const [isActive, setIsActive] = useState(false);
-	const [selectBoxValue, setSelectBoxValue] = useState(defaultValue);
+	const selectBoxValueDefualtValue = JSON.parse(localStorage.getItem("genres"))
+		? JSON.parse(localStorage.getItem("genres")).name
+		: defaultValue;
+	const [selectBoxValue, setSelectBoxValue] = useState(
+		selectBoxValueDefualtValue,
+	);
 
 	const DropDownToggle = (e) => {
 		setIsActive((prevState) => !prevState);
@@ -10,7 +16,24 @@ function DropDown({ values, defaultValue, onClick }) {
 	const selectedValue = useCallback((e) => {
 		setSelectBoxValue((prevState) => e.target.textContent);
 		onClick(e.target.id);
+
+		setIsActive((prevState) => !prevState);
+		localStorage.setItem(
+			"genres",
+			JSON.stringify({
+				name: e.target.textContent,
+				id: e.target.id,
+			}),
+		);
 	});
+	const resultHandler = useCallback((e) => {
+		setSelectBoxValue((prevState) => "All");
+		onClick("");
+
+		setIsActive((prevState) => !prevState);
+		localStorage.removeItem("genres");
+	});
+	useEffect(() => {}, [selectBoxValue]);
 
 	let dropdownValues = values.map((value) => (
 		<div
@@ -25,6 +48,11 @@ function DropDown({ values, defaultValue, onClick }) {
 		<div className="dropDown">
 			<div className="dropDown-Btn" onClick={DropDownToggle}>
 				{selectBoxValue}
+				{selectBoxValue !== "All" && (
+					<a className="Reset-btn" onClick={resultHandler}>
+						<i className="fa-solid fa-xmark"></i>
+					</a>
+				)}
 			</div>
 			{isActive && <div className="dropDown-content">{dropdownValues}</div>}
 		</div>

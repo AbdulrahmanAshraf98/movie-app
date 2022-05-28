@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Img from "../Img/Img";
+import ImagNotFound from "../../../assets/broken-1.png";
 import "./Card.css";
 function Card({ data }) {
 	return (
@@ -12,7 +13,9 @@ function Card({ data }) {
 						src={`${
 							data.poster_path
 								? `https://image.tmdb.org/t/p/w300${data.poster_path}`
-								: `https://image.tmdb.org/t/p/w300${data.backdrop_path}`
+								: data.backdrop_path
+								? `https://image.tmdb.org/t/p/w300${data.backdrop_path}`
+								: ImagNotFound
 						}`}
 					/>
 					<div className="card-options">

@@ -112,6 +112,13 @@ section.Details{
         justify-content: space-between;
          align-items: center;
     }
+ 
+  }
+@media(min-width:768px){
+    .Details  .container .row{
+        align-items: flex-start;
+        padding: 2rem 0;
+    }
     .Details  .details-overview-poster {
         width: 40%;
         height: auto;
@@ -119,19 +126,11 @@ section.Details{
     }
     .Details  .details-info{
         width: 56%;
-        padding:0;
-    }
-  }
-@media(min-width:768px){
-    .Details  .container .row{
-        align-items: flex-start;
-        padding: 2rem 0;
-    }
-
-    .Details  .details-info{
         align-self: center;
         padding:1rem 0;
     }
+
+
     .Details   .details-info .title{
         margin:0;
     }

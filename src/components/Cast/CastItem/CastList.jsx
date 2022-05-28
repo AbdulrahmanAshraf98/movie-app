@@ -1,5 +1,6 @@
 import React from "react";
 import "./CastItem.css";
+import ImagNotFound from "../../../assets/broken-1.png";
 function CastItem({ item, isActive }) {
 	return (
 		<div className="cast-item">
@@ -8,7 +9,7 @@ function CastItem({ item, isActive }) {
 					src={`${
 						item.profile_path
 							? `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${item.profile_path}`
-							: "https://eu.ui-avatars.com/api/?name=John+Doe&size=300"
+							: ImagNotFound
 					}`}
 				/>
 			</div>
