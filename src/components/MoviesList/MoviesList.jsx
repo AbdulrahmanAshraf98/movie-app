@@ -7,7 +7,7 @@ function MoviesList() {
 	const DefualtValueGenres = JSON.parse(localStorage.getItem("moviegenres"))
 		? JSON.parse(localStorage.getItem("moviegenres")).id
 		: "";
-	const DefualtValuesortingBy = JSON.parse(localStorage.getItem("moviegenres"))
+	const DefualtValuesortingBy = JSON.parse(localStorage.getItem("moviesSortBy"))
 		? JSON.parse(localStorage.getItem("moviesSortBy")).id
 		: "popularity.desc";
 	const [genres, setGenres] = useState(DefualtValueGenres);
