@@ -2,7 +2,7 @@ import React from "react";
 import useFetch from "../../Hooks/useFetch";
 import DropDown from "../UI/SelectBox/DropDown/DropDown";
 import "./Genres.css";
-function Genres({ onClick, mediaType = "movie" }) {
+function Genres({ onClick, mediaType = "movie", className }) {
 	let url =
 		"https://api.themoviedb.org/3/genre/movie/list?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US";
 	if (mediaType === "tv") {
@@ -13,15 +13,13 @@ function Genres({ onClick, mediaType = "movie" }) {
 	let genres = responseData.genres;
 	return (
 		genres && (
-			<div className="genres">
-				<div className="row">
-					<DropDown
-						values={genres}
-						defaultValue="All"
-						onClick={onClick}
-						localStorageItemName={`${mediaType}genres`}
-					/>
-				</div>
+			<div className={className}>
+				<DropDown
+					values={genres}
+					defaultValue="All"
+					onClick={onClick}
+					localStorageItemName={`${mediaType}genres`}
+				/>
 			</div>
 		)
 	);

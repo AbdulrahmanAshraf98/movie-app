@@ -1,6 +1,7 @@
 .movies {
     padding: 2rem 0;
 }
+
 .movies .row .col{
     flex: 0 0 100%;
     max-width: 100%;
@@ -9,11 +10,10 @@
 @media(min-width:576px){
     .movies .row{
         gap: 3%;
-        justify-content: center;
+        justify-content: space-between;
     }
     .movies .row .col{
-        padding: 0 15px;
-        flex: 0 0 40%;
+        flex: 0 0 45%;
         max-width: 50%;
         margin-bottom: 2rem;
     }

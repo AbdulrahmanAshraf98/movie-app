@@ -28,9 +28,8 @@ function DropDown({ values, defaultValue, localStorageItemName, onClick }) {
 		);
 	});
 	const resultHandler = useCallback((e) => {
-		setSelectBoxValue((prevState) => "All");
+		setSelectBoxValue((prevState) => defaultValue);
 		onClick("");
-
 		setIsActive((prevState) => !prevState);
 		localStorage.removeItem(localStorageItemName);
 	});

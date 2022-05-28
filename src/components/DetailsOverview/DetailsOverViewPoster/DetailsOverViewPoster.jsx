@@ -2,7 +2,6 @@ import React from "react";
 import Img from "../../UI/Img/Img";
 
 function DetailsOverViewPoster({ src, openModalHandler }) {
-	// console.log("a");
 	return (
 		<div className="col details-overview-poster">
 			<>

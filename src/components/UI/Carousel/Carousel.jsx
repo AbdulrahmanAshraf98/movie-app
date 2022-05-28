@@ -45,4 +45,4 @@ const Carousel = ({
 		</>
 	);
 };
-export default Carousel;
+export default React.memo(Carousel);
