@@ -27,7 +27,7 @@ function Banner({ item, fn, isActive }) {
 					<div className="col poster">
 						{isActive && (
 							<Img
-								className={`img-box ${isActive ? "slideToright" : ""}`}
+								className={`img-box ${isActive ? "fadeInRight" : ""}`}
 								onClick={navigateHandler}
 								src={
 									item.backdrop_path
@@ -41,7 +41,7 @@ function Banner({ item, fn, isActive }) {
 						{isActive && (
 							<h3
 								className={`hero-section-title ${
-									isActive ? "slideToleft" : ""
+									isActive ? "fadeInLeft" : ""
 								}`}>
 								{item.title ? item.title : item.name}
 							</h3>

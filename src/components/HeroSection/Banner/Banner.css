@@ -1,4 +1,4 @@
-@keyframes slideToright{
+@keyframes fadeInRightAnimation{
     0% {
         -webkit-transform: translateX(100%);
         transform: translateX(100%);
@@ -30,14 +30,16 @@
 }
 
 
-.slideToright{
-    animation: slideToright  0.7s   linear;
+.fadeInRight{
+    animation: fadeInRightAnimation  0.5s 0.5s   linear;
     backface-visibility: hidden;
+    animation-fill-mode: both;
     
 }
-.slideToleft{
-    animation: fadeInLeft 1s  linear;
+.fadeInLeft{
+    animation: fadeInLeft 1s   0.5s  linear;
     backface-visibility: hidden;
+    animation-fill-mode: both;
     
 }
 
