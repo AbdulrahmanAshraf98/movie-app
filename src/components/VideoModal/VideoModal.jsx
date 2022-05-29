@@ -8,10 +8,10 @@ import VideoElement from "./VideoElement/VideoElement";
 import "./VideoModal.css";
 import youtubeVideoNotFound from "../../assets/youtube-video-unavailable.jpg";
 import ModalContext from "../../Store/Context/ModalContext/ModalContext";
-function VideoModal({ id, openModalHandler }) {
+function VideoModal({ id, openModalHandler, type = "movie" }) {
 	const modalContext = useContext(ModalContext);
 	const [response, loading, error] = useFetch(
-		`https://api.themoviedb.org/3/movie/${id}/videos?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US`,
+		`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US`,
 	);
 	let responseData = response.results;
 	const closeModalHandler = () => {

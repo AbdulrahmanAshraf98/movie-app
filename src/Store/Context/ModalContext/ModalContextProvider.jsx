@@ -4,7 +4,7 @@ import ModalContext from "./ModalContext";
 
 function ModalContextProvider({ children }) {
 	const [videoModuleIsOpen, setVideoModuleIsOpen] = useState(false);
-	const [SearchModuleIsOpen, setSearchModuleIsOpen] = useState(true);
+	const [SearchModuleIsOpen, setSearchModuleIsOpen] = useState(false);
 	const [videoModuleId, setVideoModuleId] = useState(null);
 	const [SearchModelQuery, setSearchModelQuery] = useState("");
 	const [searchParams, setSearchParams] = useSearchParams();
