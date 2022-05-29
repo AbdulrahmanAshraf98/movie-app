@@ -80,9 +80,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
     }
     nav .container .row .right-side .row .navbar-Toggler{
       border-radius: 0;
+    }
+    .search-box{
+      cursor: pointer;
     }
     @media(min-width:330px){
       nav .container .row .right-side{
