@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import useFetch from "../../Hooks/useFetch";
+import Filter from "../Filter/Filter";
 import Genres from "../Genres/Genres";
 import SeriesListItem from "./SeriesListItem/SeriesListItem";
 
@@ -20,7 +21,11 @@ function SeriesList() {
 			{isLoading && <p>loading</p>}
 			{series && !isLoading && (
 				<>
-					<Genres onClick={changeGenresHandler} mediaType="tv" />
+					<Filter
+						// changeGenresHandler={changeGenresHandler}
+						// changeSortingHandler={changeSortingHandler}
+						mediaType="tv"
+					/>
 					{series.map((element) => {
 						return <SeriesListItem key={element.id} series={element} />;
 					})}

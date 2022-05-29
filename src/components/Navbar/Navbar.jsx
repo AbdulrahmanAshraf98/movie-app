@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo-1.png";
 import NavbarItems from "./NavbarItems/NavbarItems";
 import "./Navbar.css";
 import Container from "../UI/Container/Container";
+import ModalContext from "../../Store/Context/ModalContext/ModalContext";
 function Navbar() {
+	const context = useContext(ModalContext);
 	const [mobileNavShow, setMobileNavShow] = useState(false);
 	const [stickyNavbar, setStickyNavbar] = useState(false);
 	const toggleVisibility = () => {
@@ -39,7 +41,12 @@ function Navbar() {
 					<div className="right-side">
 						<div className="row">
 							<div className="search-box">
-								<a>
+								<a
+									onClick={(e) => {
+										e.preventDefault();
+										context.SearchModuleOpenOpenHandler();
+										console.log(context.SearchModuleIsOpen);
+									}}>
 									<i className="fa-solid fa-magnifying-glass"></i>
 								</a>
 							</div>

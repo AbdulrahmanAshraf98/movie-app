@@ -109,7 +109,7 @@ section.Details{
     line-height: 2
 }
 @media(min-width:576px){
-    .container{
+    .Details .container{
      padding:  0 1rem !important;
     }
     .Details  .container .row{

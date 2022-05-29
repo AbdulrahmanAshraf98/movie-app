@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navigation } from "swiper";
 import useFetch from "../../Hooks/useFetch";
 import Carousel from "../UI/Carousel/Carousel";
@@ -7,11 +7,17 @@ import Modal from "../UI/Modal/Modal";
 import VideoElement from "./VideoElement/VideoElement";
 import "./VideoModal.css";
 import youtubeVideoNotFound from "../../assets/youtube-video-unavailable.jpg";
-function VideoModal({ id, openModalHandler, closeModalHandler }) {
+import ModalContext from "../../Store/Context/ModalContext/ModalContext";
+function VideoModal({ id, openModalHandler }) {
+	const modalContext = useContext(ModalContext);
 	const [response, loading, error] = useFetch(
 		`https://api.themoviedb.org/3/movie/${id}/videos?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US`,
 	);
 	let responseData = response.results;
+	const closeModalHandler = () => {
+		modalContext.resetSearchParamsHandler();
+		modalContext.videoModuleCloseHandler();
+	};
 	return (
 		<Modal
 			className="video-modal-overlay"

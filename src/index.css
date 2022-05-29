@@ -19,8 +19,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--dark-color);position: relative;
-
+  background: var(--dark-color);
+  position: relative;
+  overflow-x: hidden;
 }
 
 code {
