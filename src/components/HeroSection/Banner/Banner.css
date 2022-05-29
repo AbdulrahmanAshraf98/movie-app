@@ -40,12 +40,7 @@
     backface-visibility: hidden;
     
 }
-.HeroSection  .item.sm{
-    height:100px;
-}
-.HeroSection  .item.mid{
-    height:1000px;
-}
+
 .HeroSection .poster {
     width: 100%;
     margin-bottom: 1rem;
@@ -107,12 +102,7 @@
 }
 
 @media(min-width:576px){
-    .HeroSection  .item.sm{
-        height:100px;
-    }
-    .HeroSection  .item.mid{
-        height:450px;
-    }
+
         .HeroSection .row{
             justify-content:space-between;
 
@@ -133,12 +123,7 @@
       
   }
   @media(min-width:768px){
-    .HeroSection  .item.sm{
-        height:100px;
-    }
-    .HeroSection  .item.mid{
-        height:450px;
-    }   
+ 
 
   }
   @media(min-width:992px){
@@ -147,12 +132,7 @@
         gap: 10%;
     }
     
-    .HeroSection .item.sm{
-        height:350px;
-    }
-    .HeroSection .item.mid{
-        height:550px;
-    }
+
     .HeroSection .poster .img-box img{
         height:100%;
     }

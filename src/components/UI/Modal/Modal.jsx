@@ -4,12 +4,15 @@ import Backdrop from "./BackDrop/Backdrop";
 
 import Overlay from "./OverLay/Overlay";
 
-function Modal({ children, className, openModalHandler }) {
+function Modal({ children, className, openModalHandler, closeModalHandler }) {
 	return (
 		<Fragment>
 			{ReactDOM.createPortal(<Backdrop />, document.getElementById("overlays"))}
 			{ReactDOM.createPortal(
-				<Overlay className={className} openModalHandler={openModalHandler}>
+				<Overlay
+					className={className}
+					openModalHandler={openModalHandler}
+					closeModalHandler={closeModalHandler}>
 					{children}
 				</Overlay>,
 				document.getElementById("overlays"),

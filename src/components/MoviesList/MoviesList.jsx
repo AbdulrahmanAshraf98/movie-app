@@ -2,13 +2,17 @@ import React, { useCallback, useEffect, useState } from "react";
 import useFetch from "../../Hooks/useFetch";
 import Filter from "../Filter/Filter";
 import MovieItem from "./MovieItem/MovieItem";
-
+import {
+	getLocalStorage,
+	localStorageIsFound,
+} from "../../utilities/Localstorage";
+import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
 function MoviesList() {
-	const DefualtValueGenres = JSON.parse(localStorage.getItem("moviegenres"))
-		? JSON.parse(localStorage.getItem("moviegenres")).id
+	const DefualtValueGenres = localStorageIsFound("moviegenres")
+		? getLocalStorage("moviegenres", "object").id
 		: "";
-	const DefualtValuesortingBy = JSON.parse(localStorage.getItem("moviesSortBy"))
-		? JSON.parse(localStorage.getItem("moviesSortBy")).id
+	const DefualtValuesortingBy = localStorageIsFound("moviesSortBy")
+		? getLocalStorage("moviesSortBy", "object").name
 		: "popularity.desc";
 	const [genres, setGenres] = useState(DefualtValueGenres);
 	const [sortingBy, setSortingBy] = useState(DefualtValuesortingBy);
@@ -20,8 +24,7 @@ function MoviesList() {
 		setGenres(id);
 	}, []);
 	const changeSortingHandler = useCallback((id) => {
-		console.log(id);
-		if (+id === 1) {
+		if (id === "1") {
 			setSortingBy("popularity.asc");
 		} else {
 			setSortingBy("popularity.desc");
@@ -36,8 +39,8 @@ function MoviesList() {
 
 	return (
 		<>
-			{isLoading && !movies && <p>loading</p>}
-			{/* {movies && !isLoading && } */}
+			{isLoading && !movies && <LoadingSpinner />}
+			{/* {movies && !isLoading && }  */}
 			{movies && !isLoading && (
 				<>
 					<Filter

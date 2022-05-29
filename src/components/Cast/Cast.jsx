@@ -17,7 +17,7 @@ function Cast({ Id, mediaType, SortingByPopularity }) {
 	}
 	return (
 		<>
-			{topCast && (
+			{topCast && topCast.length > 0 && (
 				<section className="CastList">
 					<Container>
 						<SectionTitle>
