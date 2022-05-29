@@ -16,6 +16,7 @@ const Carousel = ({
 	modules,
 	centeredSlides,
 	breakpoints = {},
+	delay = 3000,
 }) => {
 	const slideItem = data.map((item, index) => (
 		<SwiperSlide key={index} id={index}>
@@ -31,7 +32,7 @@ const Carousel = ({
 				centeredSlides={centeredSlides}
 				breakpoints={breakpoints}
 				autoplay={{
-					delay: 3000,
+					delay: delay,
 					disableOnInteraction: true,
 				}}
 				pagination={{
