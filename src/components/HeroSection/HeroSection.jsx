@@ -32,7 +32,7 @@ function HeroSection({ openModalHandler }) {
 						centeredSlides={true}
 						fn={setBackgroundHandler}
 						modules={[Autoplay, Navigation]}
-						delay={5000}>
+						delay={7000}>
 						<Banner />
 					</Carousel>
 				</Container>
