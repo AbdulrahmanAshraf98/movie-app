@@ -5,17 +5,17 @@ import ModalContext from "../../Store/Context/ModalContext/ModalContext";
 
 function Home() {
 	const modalContext = useContext(ModalContext);
+	let mediaType = modalContext.getSearchParamsHandler("mediaType");
 	let videoId = modalContext.getSearchParamsHandler("videoId");
-
 	useEffect(() => {
-		if (videoId) {
+		if (videoId && mediaType) {
 			modalContext.videoModuleOpenHandler();
 		}
-	}, [videoId]);
+	}, [videoId, mediaType]);
 	return (
 		<>
 			{videoId && modalContext.videoModuleIsOpen && (
-				<VideoModal id={+videoId} />
+				<VideoModal id={+videoId} type={mediaType} />
 			)}
 			<HeroSection></HeroSection>
 		</>

@@ -23,7 +23,10 @@ function Banner({ item, fn, isActive }) {
 	};
 	const openModalHandler = (e) => {
 		e.preventDefault();
-		modalContext.setSearchParams({ videoId: item.id });
+		modalContext.setSearchParams({
+			mediaType: item.media_type,
+			videoId: item.id,
+		});
 	};
 	return (
 		isActive && (
