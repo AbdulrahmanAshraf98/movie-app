@@ -64,7 +64,7 @@
       color: var(--primary-color);
     }
     nav .container .row .right-side{
-      width: 40%;
+      width: 50%;
       max-width: 100%;
     }
     nav .container .row .right-side .row{
@@ -90,7 +90,7 @@
     .search-box{
       cursor: pointer;
     }
-    @media(min-width:320px){
+    @media(min-width:330px){
       nav .container .row .right-side{
         max-width: 50%;
         margin: 0;
