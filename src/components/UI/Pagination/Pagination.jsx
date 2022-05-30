@@ -4,16 +4,17 @@ import generateButtons from "./generateButtons";
 import "./Pagination.css";
 
 let totalItem = 10;
-// let buttons = [];
+let buttons = generateButtons(0, 10);
 
 function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
-    const [buttons, setButtons] = useState(generateButtons(0, 10));
+	// const [buttons, setButtons] = useState(generateButtons(0, 10));
+
 	const nextButton = () => {
-		SetPageNumber((prev) => prev + 1);
+		SetPageNumber((prev) => currentPage + 1);
 		if (currentPage === totalItem) {
 			totalItem = totalItem + 10;
-			setButtons(generateButtons(currentPage, totalItem));
-			// buttons = generateButtons(currentPage, totalItem);
+			// setButtons((prev) => generateButtons(currentPage, totalItem));
+			buttons = generateButtons(currentPage, totalItem);
 		}
 	};
 
@@ -24,14 +25,16 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 		SetPageNumber((prev) => currentPage - 1);
 		if (currentPage === totalItem - itemsPerPage + 1 && currentPage !== 1) {
 			totalItem = totalItem - itemsPerPage;
-			setButtons(generateButtons(totalItem - itemsPerPage, totalItem));
-			// buttons = generateButtons(totalItem - itemsPerPage, totalItem);
+			// setButtons((prev) =>
+			// 	generateButtons(totalItem - itemsPerPage, totalItem),
+			// );
+			buttons = generateButtons(totalItem - itemsPerPage, totalItem);
 		}
 	};
 
 	useEffect(() => {
 		scrollTop();
-	}, [nextButton, prevButton, SetPageNumber]);
+	}, [nextButton, prevButton, SetPageNumber, currentPage]);
 	useEffect(() => {}, [nextButton, prevButton, SetPageNumber]);
 	return (
 		<>
