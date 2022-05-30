@@ -31,7 +31,7 @@ function HeroSection({ openModalHandler }) {
 						spaceBetween={0}
 						centeredSlides={true}
 						fn={setBackgroundHandler}
-						modules={[Navigation]}>
+						modules={[Autoplay, Navigation]}>
 						<Banner />
 					</Carousel>
 				</Container>
