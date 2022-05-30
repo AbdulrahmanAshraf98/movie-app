@@ -5,6 +5,7 @@ import NavbarItems from "./NavbarItems/NavbarItems";
 import "./Navbar.css";
 import Container from "../UI/Container/Container";
 import ModalContext from "../../Store/Context/ModalContext/ModalContext";
+import Img from "../UI/Img/Img";
 function Navbar() {
 	let location = useLocation();
 	const context = useContext(ModalContext);
@@ -33,7 +34,7 @@ function Navbar() {
 				<div className="row">
 					<div className="left-side">
 						<NavLink to="/" className="logo">
-							<img src={logo} />
+							<Img className="logo-img" src={logo} />
 						</NavLink>
 					</div>
 					<NavbarItems

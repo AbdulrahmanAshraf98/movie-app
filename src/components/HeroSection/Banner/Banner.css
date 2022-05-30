@@ -42,9 +42,14 @@
     animation-fill-mode: both;
     
 }
+
+.HeroSection .swiper-slide {
+    width: 100%;
+
+}
 .HeroSection .item{
     width: 100%;
-}
+} 
 .HeroSection .poster {
     width: 100%;
     margin-bottom: 1rem;
@@ -64,11 +69,11 @@
     height: 100%;
     transform:translateX(0);
     backface-visibility: hidden;
-   
+    height: 500px;
 }
 .HeroSection .poster .img-box img{
     width:100%;
-    height: auto;
+    height:100%;
     object-fit:cover;
 } 
 .HeroSection    .poster .img-box .overlay{
@@ -146,7 +151,9 @@
 -webkit-box-shadow: 1px 4px 15px 6px rgba(0,0,0,0.47);
 -moz-box-shadow: 1px 4px 15px 6px rgba(0,0,0,0.47);
 }
-
+@media(min-width:320px){
+ 
+}
 @media(min-width:576px){
 
     .HeroSection .row{
@@ -158,6 +165,10 @@
             margin-bottom: 1rem;
             align-self: center;
             order: 1;
+        }
+        .HeroSection .poster .img-box{
+
+            height: auto;
         }
         .HeroSection .info{
             width: 60%;
