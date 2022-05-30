@@ -4,13 +4,16 @@ import generateButtons from "./generateButtons";
 import "./Pagination.css";
 
 let totalItem = 10;
-let buttons = generateButtons(0, 10);
+// let buttons = [];
+
 function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
+    const [buttons, setButtons] = useState(generateButtons(0, 10));
 	const nextButton = () => {
 		SetPageNumber((prev) => prev + 1);
 		if (currentPage === totalItem) {
 			totalItem = totalItem + 10;
-			buttons = generateButtons(currentPage, totalItem);
+			setButtons(generateButtons(currentPage, totalItem));
+			// buttons = generateButtons(currentPage, totalItem);
 		}
 	};
 
@@ -21,7 +24,8 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 		SetPageNumber((prev) => currentPage - 1);
 		if (currentPage === totalItem - itemsPerPage + 1 && currentPage !== 1) {
 			totalItem = totalItem - itemsPerPage;
-			buttons = generateButtons(totalItem - itemsPerPage, totalItem);
+			setButtons(generateButtons(totalItem - itemsPerPage, totalItem));
+			// buttons = generateButtons(totalItem - itemsPerPage, totalItem);
 		}
 	};
 
