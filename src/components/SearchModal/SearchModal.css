@@ -2,7 +2,8 @@
     position: absolute;
     align-items: flex-start;
     width:100vw;
-    height:100%;
+    height: auto;
+
     justify-content:flex-start;
 }
 .searchModal .closeSearchModal{
@@ -16,6 +17,7 @@
 }
 .searchModal .container .searchForm{
     padding-top: 7rem;
+    margin-bottom: 2rem;
 }
 .searchModal .container .searchInput{
     width: 100%;

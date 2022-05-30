@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import ModalContext from "../../../Store/Context/ModalContext/ModalContext";
 import Img from "../../UI/Img/Img";
 import "./Banner.css";
 function Banner({ item, fn, isActive }) {
+	const modalContext = useContext(ModalContext);
 	const navigate = useNavigate();
-	const overviewLength = item.overview.length;
 	useEffect(() => {
 		if (isActive) {
 			fn(`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`);
@@ -20,6 +21,10 @@ function Banner({ item, fn, isActive }) {
 		}
 		navigate(`/${mediaType}s/${itemId}`);
 	};
+	const openModalHandler = (e) => {
+		e.preventDefault();
+		modalContext.setSearchParams({ videoId: item.id });
+	};
 	return (
 		isActive && (
 			<div className={`item `}>
@@ -33,8 +38,13 @@ function Banner({ item, fn, isActive }) {
 									item.backdrop_path
 										? `https://image.tmdb.org/t/p/w500/${item.poster_path}`
 										: `https://image.tmdb.org/t/p/w500/${item.backdrop_path}`
-								}
-							/>
+								}>
+								<div className="overlay">
+									<a className="playTrailer" onClick={openModalHandler}>
+										<i className="fa-solid fa-play"></i>
+									</a>
+								</div>
+							</Img>
 						)}
 					</div>
 					<div className="col info">
@@ -64,9 +74,15 @@ function Banner({ item, fn, isActive }) {
 								<li>{item.release_date}</li>
 							</ul>
 						)}
-						<p className={`overview ${overviewLength > 300 ? "small" : ""}`}>
-							{item.overview}
-						</p>
+						<Link
+							className="forMoreDetails"
+							to={
+								item.media_type === "tv"
+									? `/tv/${item.id}`
+									: `/movies/movie/${item.id}`
+							}>
+							For More Details
+						</Link>
 					</div>
 				</div>
 			</div>

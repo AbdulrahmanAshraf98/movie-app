@@ -7,6 +7,7 @@ import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
 import VideoModal from "../../components/VideoModal/VideoModal";
 import useFetch from "../../Hooks/useFetch";
 import ModalContext from "../../Store/Context/ModalContext/ModalContext";
+import { scrollTop } from "../../utilities/ScrollTop";
 import "./MovieDetails.css";
 function MovieDetails() {
 	const modalContext = useContext(ModalContext);
@@ -22,18 +23,32 @@ function MovieDetails() {
 		e.preventDefault();
 		modalContext.setSearchParams({ videoId: id });
 	};
+
 	useEffect(() => {
 		if (videoId) {
 			modalContext.videoModuleOpenHandler();
 		}
-	}, [id, videoId, searchParams, MovieDetailsData, isLoading, error]);
+		modalContext.getSearchParamsHandler();
+	}, [
+		id,
+		videoId,
+		useParams,
+		searchParams,
+		MovieDetailsData,
+		isLoading,
+		error,
+	]);
+
+	useEffect(() => {
+		scrollTop();
+	});
 	return (
 		<>
-			{videoId && modalContext.videoModuleIsOpen && (
+			{videoId && searchParams && modalContext.videoModuleIsOpen && (
 				<VideoModal id={+videoId} openModalHandler={openModalHandler} />
 			)}
 			{isLoading && <LoadingSpinner />}
-			{MovieDetailsData && !isLoading && !modalContext.videoModuleIsOpen && (
+			{MovieDetailsData && !isLoading && (
 				<>
 					<DetailsOverview
 						item={MovieDetailsData}

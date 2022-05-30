@@ -7,7 +7,7 @@ import Carousel from "../UI/Carousel/Carousel";
 import Container from "../UI/Container/Container";
 import "./Herosection.css";
 import Banner from "./Banner/Banner";
-function HeroSection() {
+function HeroSection({ openModalHandler }) {
 	const response =
 		useFetch(`https://api.themoviedb.org/3/trending/all/week?api_key=d948c5c0ea05d8b074392d5c6641f56c&&page=3
 	`);
@@ -31,7 +31,7 @@ function HeroSection() {
 						spaceBetween={0}
 						centeredSlides={true}
 						fn={setBackgroundHandler}
-						modules={[Autoplay, Navigation]}>
+						modules={[Navigation]}>
 						<Banner />
 					</Carousel>
 				</Container>

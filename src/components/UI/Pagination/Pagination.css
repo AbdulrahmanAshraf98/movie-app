@@ -1,0 +1,24 @@
+.pagination-buttons-Container{
+    margin-top: 1rem;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap: 3%;
+    flex-wrap: wrap;
+}
+.pagination-button{
+    color: var(--white-color);
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 0px 10px;
+    height: 45px;
+    width: 45px;
+    cursor: pointer ;
+    margin-bottom: 1rem;
+
+}
+.pagination-button.active{
+    background-color: var(--black-color);
+    border: 2px solid var(--black-color);
+    }

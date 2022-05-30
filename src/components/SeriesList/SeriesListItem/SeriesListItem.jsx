@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Card from "../../UI/Card/Card";
 import Img from "../../UI/Img/Img";
-import ImagNotFound from "../../../assets/broken-1.png";
 import "./SeriesListItem.css";
 function SeriesListItem({ series }) {
 	return (
@@ -20,7 +19,7 @@ function SeriesListItem({ series }) {
 											? `https://image.tmdb.org/t/p/w300${series.poster_path}`
 											: series.backdrop_path
 											? `https://image.tmdb.org/t/p/w300${series.backdrop_path}`
-											: ImagNotFound
+											: `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg`
 									}`}
 								/>
 

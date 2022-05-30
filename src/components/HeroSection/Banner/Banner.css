@@ -42,7 +42,9 @@
     animation-fill-mode: both;
     
 }
-
+.HeroSection .item{
+    width: 100%;
+}
 .HeroSection .poster {
     width: 100%;
     margin-bottom: 1rem;
@@ -69,6 +71,31 @@
     height: auto;
     object-fit:cover;
 } 
+.HeroSection    .poster .img-box .overlay{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: var(--imageBorderRadius);
+    visibility: hidden;
+    opacity: 0;
+    transition: linear .2s;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.HeroSection    .poster .img-box:hover .overlay{
+    visibility: visible;
+    opacity: 1;  
+} 
+.HeroSection    .poster .img-box:hover .playTrailer{
+    cursor: pointer;
+    font-size: 2rem;
+}
 
 .HeroSection .info .hero-section-title{
     font-size: 1.5rem;
@@ -103,12 +130,29 @@
     overflow: hidden;
 }
 
+.HeroSection  .forMoreDetails
+{
+    display: inline-block;
+    width: 100%;
+    padding: 1rem 0;
+    border:none;
+    outline: none;
+    background:var(--black-color);
+    text-align: center;
+    transition: box-shadow .4s linear;
+}
+.HeroSection  .forMoreDetails:hover{
+    box-shadow: 1px 4px 15px 6px rgba(0,0,0,0.47);
+-webkit-box-shadow: 1px 4px 15px 6px rgba(0,0,0,0.47);
+-moz-box-shadow: 1px 4px 15px 6px rgba(0,0,0,0.47);
+}
+
 @media(min-width:576px){
 
-        .HeroSection .row{
-            justify-content:space-between;
+    .HeroSection .row{
+        justify-content:space-between;
 
-        }
+    }
         .HeroSection .poster {
             width: 30%;
             margin-bottom: 1rem;
@@ -122,10 +166,12 @@
             align-self: center;
         }
     
-      
+        .HeroSection  .forMoreDetails{
+            width: 50%;
+        }
   }
   @media(min-width:768px){
- 
+   
 
   }
   @media(min-width:992px){
@@ -139,7 +185,6 @@
         height:100%;
     }
     .HeroSection .info{  
-        align-self: flex-start;
         width: 55%;
     }
     .HeroSection .info .hero-section-title{
@@ -150,6 +195,7 @@
         line-height: 2;
         overflow: hidden;
     }
+  
   }
   @media(min-width:1200px){
     .HeroSection .info{  
