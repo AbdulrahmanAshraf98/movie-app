@@ -12,7 +12,6 @@ import {
 	localStorageIsFound,
 } from "../../utilities/Localstorage";
 import "./Movies.css";
-
 function Movies() {
 	const context = useContext(ModalContext);
 	let DefualtValueGenres = localStorageIsFound("moviegenres")

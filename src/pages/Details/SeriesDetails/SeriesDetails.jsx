@@ -28,6 +28,7 @@ function SeriesDetails() {
 			modalContext.videoModuleOpenHandler();
 		}
 	}, [id, videoId, searchParams, SeriesDetailsData, isLoading, error]);
+
 	return (
 		SeriesDetailsData && (
 			<>
