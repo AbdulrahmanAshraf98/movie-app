@@ -62,6 +62,7 @@ function Movies() {
 							{isLoading && !movies && <LoadingSpinner />}
 							{error && !isLoading && !movies && <p>{error}</p>}
 							{movies && !isLoading && <MoviesList movies={movies} />}
+							{movies && movies.length === 0 && <p>noDataFound</p>}
 							{movies && !isLoading && (
 								<Pagination
 									currentPage={page}
@@ -70,7 +71,6 @@ function Movies() {
 									totalPages={totalpage}
 								/>
 							)}
-							{movies && movies.length === 0 && <p>noDataFound</p>}
 						</div>
 					</Container>
 				</section>

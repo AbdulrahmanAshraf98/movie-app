@@ -60,6 +60,7 @@ function Series() {
 							/>
 							{isLoading && <LoadingSpinner />}
 							{series && !isLoading && <SeriesList series={series} />}
+							{series && series.length === 0 && <p>noDataFound</p>}
 							{series && !isLoading && (
 								<Pagination
 									currentPage={page}
@@ -68,7 +69,6 @@ function Series() {
 									totalPages={1}
 								/>
 							)}
-							{series && series.length === 0 && <p>noDataFound</p>}
 						</div>
 					</Container>
 				</section>

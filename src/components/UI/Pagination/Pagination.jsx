@@ -28,6 +28,7 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 	useEffect(() => {
 		scrollTop();
 	}, [nextButton, prevButton, SetPageNumber]);
+	useEffect(() => {}, [nextButton, prevButton, SetPageNumber]);
 	return (
 		<>
 			<div className="pagination-buttons-Container">
