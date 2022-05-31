@@ -129,14 +129,18 @@
     }
   @media(min-width:768px){
     nav .container .row .left-side {
-      max-width: 30%;
+      max-width: 40%;
     }
     .nav-items {
       top:120%;
      }
+     nav .container .row .left-side .logo-img{
+      width: 150px;
+
+    }
   }
   @media(min-width:992px){
-  
+    
   }
   @media(min-width:1024px){
  

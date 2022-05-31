@@ -15,6 +15,9 @@ section.Details{
     background-image: linear-gradient(to right, rgb(8, 19, 41) 150px, rgba(8, 36, 36, 0.84) 100%);
     padding: 2rem 0;
 }
+.warper.red .Details  .details-overview{
+    background-image: linear-gradient(to right, rgb(22 22 22) 150px, rgba(8, 36, 36, 0.84) 100%);
+}
 .Details  .container{
     padding: 0;
 }
@@ -56,6 +59,7 @@ section.Details{
     align-items: center;
     justify-content: center;
 }
+
 .Details  .details-overview-poster .poster:hover .overlay{
     visibility: visible;
     opacity: 1;  

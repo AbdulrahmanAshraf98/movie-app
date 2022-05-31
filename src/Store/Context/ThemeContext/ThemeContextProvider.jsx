@@ -4,7 +4,6 @@ import ThemeContext from "./ThemeContext";
 function ThemeContextProvider({ children }) {
 	const [Theme, setTheme] = useState("blue");
 	const changeThemeHandler = (Theme) => {
-		console.log(Theme);
 		setTheme(Theme);
 	};
 	const themeContext = {
