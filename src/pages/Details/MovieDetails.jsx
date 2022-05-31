@@ -54,8 +54,10 @@ function MovieDetails() {
 	]);
 
 	useEffect(() => {
-		scrollTop();
-	});
+		if (id) {
+			scrollTop();
+		}
+	}, [id]);
 	return (
 		<>
 			{videoId && searchParams && modalContext.videoModuleIsOpen && (

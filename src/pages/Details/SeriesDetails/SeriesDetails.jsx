@@ -8,6 +8,7 @@ import LoadingSpinner from "../../../components/UI/LoadingSpinner/LoadingSpinner
 import VideoModal from "../../../components/VideoModal/VideoModal";
 import useFetch from "../../../Hooks/useFetch";
 import ModalContext from "../../../Store/Context/ModalContext/ModalContext";
+import { scrollTop } from "../../../utilities/ScrollTop";
 
 function SeriesDetails() {
 	const modalContext = useContext(ModalContext);
@@ -42,6 +43,11 @@ function SeriesDetails() {
 			modalContext.videoModuleOpenHandler();
 		}
 	}, [id, videoId, searchParams, SeriesDetailsData, isLoading, error]);
+	useEffect(() => {
+		if (id) {
+			scrollTop();
+		}
+	}, [id]);
 
 	return (
 		<>
