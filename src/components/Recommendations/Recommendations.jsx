@@ -7,22 +7,17 @@ import SectionTitle from "../UI/sectionTitle/SectionTitle";
 import RecommendationsItem from "./RecommendationsItem/RecommendationsItem";
 import "./Recommendations.css";
 import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
-function Recommendations({ Id, mediaType }) {
-	const [response, isLoading, error] = useFetch(
-		`https://api.themoviedb.org/3/${mediaType}/${Id}/recommendations?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US&page=1`,
-	);
-	let recommendations = response.results;
+function Recommendations({ mediaType, recommendationsData }) {
 	return (
 		<>
-			{isLoading && <LoadingSpinner />}
-			{recommendations && !isLoading && recommendations.length > 0 && (
+			{recommendationsData && recommendationsData.length > 0 && (
 				<section className="recommendations">
 					<Container>
 						<SectionTitle>
 							<h3>Recommendations</h3>
 						</SectionTitle>
 						<Carousel
-							data={recommendations}
+							data={recommendationsData}
 							slidesCount={1}
 							breakpoints={{
 								520: {

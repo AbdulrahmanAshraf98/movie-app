@@ -7,18 +7,14 @@ import CastItem from "./CastItem/CastList";
 import "./Cast.css";
 import SectionTitle from "../UI/sectionTitle/SectionTitle";
 import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
-function Cast({ Id, mediaType, SortingByPopularity }) {
-	let [response, isLoading, error] = useFetch(
-		`https://api.themoviedb.org/3/${mediaType}/${Id}/credits?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US`,
-	);
-	let topCast = response.cast;
+function Cast({ castData }) {
+	let topCast = castData;
 	if (topCast) {
 		topCast = topCast.filter((element) => element.popularity >= 2).sort();
 	}
 	return (
 		<>
-			{isLoading && <LoadingSpinner />}
-			{topCast && !isLoading && topCast.length > 0 && (
+			{topCast && topCast.length > 0 && (
 				<section className="CastList">
 					<Container>
 						<SectionTitle>

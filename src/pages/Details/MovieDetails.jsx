@@ -17,8 +17,22 @@ function MovieDetails() {
 	const [responseData, isLoading, error] = useFetch(
 		`https://api.themoviedb.org/3/movie/${id}?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US`,
 	);
+	
+	const [
+		recommendationsResponse,
+		recommendationsIsLoading,
+		recommendationsError,
+	] = useFetch(
+		`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US&page=1`,
+	);
+	const [costResponse, costIsLoading, costError] = useFetch(
+		`https://api.themoviedb.org/3/movie/${id}/credits?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US`,
+	);
 	let MovieDetailsData = null;
 	MovieDetailsData = responseData;
+	let recommendations = recommendationsResponse.results;
+	let topCast = costResponse.cast;
+
 	const openModalHandler = (e) => {
 		e.preventDefault();
 		modalContext.setSearchParams({ videoId: id });
@@ -47,17 +61,23 @@ function MovieDetails() {
 			{videoId && searchParams && modalContext.videoModuleIsOpen && (
 				<VideoModal id={+videoId} openModalHandler={openModalHandler} />
 			)}
-			{isLoading && <LoadingSpinner />}
-			{MovieDetailsData && !isLoading && (
-				<>
-					<DetailsOverview
-						item={MovieDetailsData}
-						openModalHandler={openModalHandler}
-					/>
-					<Cast Id={id} mediaType={"movie"} />
-					<Recommendations Id={id} mediaType={"movie"} />
-				</>
-			)}
+			{isLoading && recommendationsIsLoading && <LoadingSpinner />}
+			{MovieDetailsData &&
+				!isLoading &&
+				!recommendationsIsLoading &&
+				!costIsLoading && (
+					<>
+						<DetailsOverview
+							item={MovieDetailsData}
+							openModalHandler={openModalHandler}
+						/>
+						<Cast castData={topCast} />
+						<Recommendations
+							mediaType={"movie"}
+							recommendationsData={recommendations}
+						/>
+					</>
+				)}
 		</>
 	);
 }
