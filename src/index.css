@@ -29,6 +29,7 @@ code {
     monospace;
 }
 #root{
+  height: 160vh;
   min-height:160vh;
   display:flex;
   flex-direction: column;
