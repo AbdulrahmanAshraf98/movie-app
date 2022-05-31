@@ -29,7 +29,7 @@ code {
     monospace;
 }
 #root{
-  min-height:100vh;
+  min-height:160vh;
   display:flex;
   flex-direction: column;
 }
