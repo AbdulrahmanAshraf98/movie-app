@@ -2,18 +2,18 @@
     position: absolute;
     align-items: flex-start;
     width:100vw;
-    height: auto;
+    height: 100%;
 
     justify-content:flex-start;
 }
 .searchModal .closeSearchModal{
-    top: 13%;
+    top: 4%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
 .searchModal .container {
     width:100vw;
-    height:100vw;
+    height:100vh;
 }
 .searchModal .container.Hauto {
     height:auto;
@@ -21,9 +21,11 @@
 .searchModal .container .searchForm{
     padding-top: 7rem;
     margin-bottom: 2rem;
+    text-align: center;
 }
 .searchModal .container .searchInput{
-    width: 100%;
+    width: 85vw;
+    
     padding: 1rem;
     box-sizing: border-box;
     background: var(--black-color);
@@ -42,13 +44,12 @@
 }
 @media(min-width:320px){
     .searchModal .closeSearchModal{
-        top: 10%;
 
     }
 }
 @media(min-width:570px){
     .searchModal .closeSearchModal{
-        top: 7%;
+      
 
     }
 }
@@ -70,7 +71,7 @@
         width: 22%;
     }
     .searchModal .closeSearchModal{
-        top: 3%;
+        top: 7%;
 
     }
   }
