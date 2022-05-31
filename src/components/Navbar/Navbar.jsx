@@ -6,9 +6,11 @@ import "./Navbar.css";
 import Container from "../UI/Container/Container";
 import ModalContext from "../../Store/Context/ModalContext/ModalContext";
 import Img from "../UI/Img/Img";
+import ThemeContext from "../../Store/Context/ThemeContext/ThemeContext";
 function Navbar() {
 	let location = useLocation();
 	const context = useContext(ModalContext);
+	const themeContext = useContext(ThemeContext);
 	const [mobileNavShow, setMobileNavShow] = useState(false);
 	const [stickyNavbar, setStickyNavbar] = useState(false);
 	const toggleVisibility = () => {
@@ -57,11 +59,14 @@ function Navbar() {
 							) : (
 								""
 							)}
-
-							<div className="account-box">
-								<a>
-									<i className="fa-solid fa-user"></i>
-								</a>
+							<div className="ChangeTheme">
+								<select
+									onChange={(e) => {
+										themeContext.changeThemeHandler(e.target.value);
+									}}>
+									<option>blue</option>
+									<option>red</option>
+								</select>
 							</div>
 
 							<a className="navbar-Toggler" onClick={toggleNavItemshandler}>

@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import HeroSection from "../../components/HeroSection/HeroSection";
 import VideoModal from "../../components/VideoModal/VideoModal";
 import ModalContext from "../../Store/Context/ModalContext/ModalContext";
+import { scrollTop } from "../../utilities/ScrollTop";
 
 function Home() {
 	const modalContext = useContext(ModalContext);
@@ -12,6 +13,9 @@ function Home() {
 			modalContext.videoModuleOpenHandler();
 		}
 	}, [videoId, mediaType]);
+	useEffect(() => {
+		scrollTop();
+	}, []);
 	return (
 		<>
 			{videoId && modalContext.videoModuleIsOpen && (

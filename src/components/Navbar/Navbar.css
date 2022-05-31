@@ -1,16 +1,15 @@
     nav {
+      position: relative;
+      top: -2%;
       padding: 1.5rem 1rem ;
       z-index: 9999;
       transition: all .4s linear;
-      background: rgba(10, 14, 23, 0.4);
-      transform:translateY(-5px);
+      background: var(--dark-color);      
     }
     nav.sticky{
     position: sticky;
     top: 0;
-    background: #141b29;
-    transform:translateY(0);
-
+    background: var(--black-color);
      }
     nav .container{
       padding: 0;
@@ -21,11 +20,13 @@
       position: relative;
     }
     nav .container .row .left-side{
-      width: 43%;
+      width: 100%;
       max-width: 100%;
+      margin-bottom: 0.5rem;
     }
     nav .container .row .left-side .logo-img{
       width: 119px;
+      margin: 0 auto ;
     }
     nav .container .row .left-side .logo .logo-img img{
       width: 100%;
@@ -35,7 +36,8 @@
 
     .nav-items {
      position:absolute;
-     top: 135%;
+     top: 153%;
+
      left: 0;
      background: var(--black-color);
      box-shadow: 0px 5px 15px 0px rgb(0 33 85 / 10%);
@@ -64,7 +66,7 @@
       color: var(--primary-color);
     }
     nav .container .row .right-side{
-      width: 50%;
+      width: 100%;
       max-width: 100%;
     }
     nav .container .row .right-side .row{
@@ -73,7 +75,7 @@
       
     }
   
-    nav .container .row .right-side .row .account-box a, nav .container .row .right-side .row .navbar-Toggler{
+    nav .container .row .right-side .row .ChangeTheme select, nav .container .row .right-side .row .navbar-Toggler{
       height: 45px;
       width: 45px;
       text-align: center;
@@ -84,15 +86,29 @@
       align-items: center;
       cursor: pointer;
     }
-    nav .container .row .right-side .row .navbar-Toggler{
+    nav .container .row .right-side .row .navbar-Toggler,nav .container .row .right-side .row .ChangeTheme select{
       border-radius: 0;
+    }
+    nav .container .row .right-side .row .ChangeTheme select{
+    background: var(--dark-color);
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 2px 1px var(--primary-color);
+
+    width: 65px;
+    height: 31px;
+    padding: 0rem 4px;
+    display: flex;
+    justify-content: center;
+    text-align: justify;
     }
     .search-box{
       cursor: pointer;
     }
     @media(min-width:330px){
       nav .container .row .right-side{
-        max-width: 50%;
+        max-width: 70%;
+        width: 60%;
         margin: 0;
       }
       nav .container .row .right-side .row{
@@ -102,12 +118,13 @@
       }
       nav .container .row .left-side {
         max-width: 40%;
+        width: 40%;
         display: flex;
         align-self: center;
         margin: 0;
       }
       nav .container .row .left-side .logo-img{
-          width: 160px;
+         width: 110px;
       }
     }
   @media(min-width:768px){

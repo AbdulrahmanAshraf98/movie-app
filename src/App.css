@@ -1,0 +1,17 @@
+.warper{
+    background: var(--dark-color);
+    transition:all 0.4s ease-in-out;
+}
+
+.warper.red{
+    --primary-color: #e50916;
+    --primarydark-color: #b81d24;
+    --black-color: #221f1f;
+    --dark-color: #161616;
+    
+    --secondary-color: #cecfd1;
+    --grey-color: #f5f5f1;
+    --background:var(--dark-color);
+
+    --white-color: #ffffff;
+}

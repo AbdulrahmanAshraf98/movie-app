@@ -3,7 +3,7 @@ import { Autoplay, Navigation } from "swiper";
 import useFetch from "../../Hooks/useFetch";
 import Container from "../UI/Container/Container";
 import Carousel from "../UI/Carousel/Carousel";
-import CastItem from "./CastItem/CastList";
+import CastItem from "./CastItem/CastItem";
 import "./Cast.css";
 import SectionTitle from "../UI/sectionTitle/SectionTitle";
 import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
@@ -14,7 +14,7 @@ function Cast({ castData }) {
 	}
 	return (
 		<>
-			{topCast && topCast.length > 0 && (
+			{topCast && topCast.length > 1 && (
 				<section className="CastList">
 					<Container>
 						<SectionTitle>
@@ -45,6 +45,16 @@ function Cast({ castData }) {
 					</Container>
 				</section>
 			)}
+			{/* {topCast && topCast.length === 1 && (
+				<section className="CastList">
+					<Container>
+						<SectionTitle>
+							<h3>Top Billed Cast</h3>
+						</SectionTitle>
+						<CastItem item={topCast[0]}></CastItem>
+					</Container>
+				</section>
+			)} */}
 		</>
 	);
 }

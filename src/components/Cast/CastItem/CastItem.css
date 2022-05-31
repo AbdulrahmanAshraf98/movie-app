@@ -1,11 +1,15 @@
+.CastList .swiper{
+    padding: 1rem 5px;
+}
 .cast-item{
     border: 1px solid rgba(var(--lightGrey), 1);
     padding-bottom: 1rem;
-    background: #141b29;
-    box-shadow: 0 2px 8px rgb(57 157 242 / 18%);
+    background: var(--black-color);
+    box-shadow: 0px 0px 3px var(--primarydark-color);
     border-radius: 8px;
     overflow: hidden;
 }
+
 .cast-item .img-box{
     min-width: 138px;
     width: 100%;
