@@ -10,6 +10,9 @@
     justify-content: center;
     align-items: center;
 }
+.overlay .container.autoHeight{
+    height:auto;
+}
 .closeModal{
     position: absolute;
     top: 2vh;

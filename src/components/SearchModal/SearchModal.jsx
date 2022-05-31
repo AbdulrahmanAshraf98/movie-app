@@ -34,7 +34,9 @@ function SearchModal({ type }) {
 			className="searchModal"
 			closeBtnClassName="closeSearchModal"
 			closeModalHandler={closeModalHandler}>
-			<Container className={`${searchTearm.trim.length !== 0 ? "Hauto" : ""}`}>
+			<Container
+			// className={`${searchTearm.trim().length !== 0 ? "Hauto" : ""}`}>
+			>
 				<div className="searchForm">
 					<form>
 						<input
