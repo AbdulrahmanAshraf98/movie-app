@@ -43,7 +43,7 @@ function SeriesListItem({ series }) {
 								</div>
 								<div className="play">
 									<Link to={`/Tv/${series.id}`}>
-										<i className="fa-solid fa-magnifying-glass"></i>
+										<i class="fa-solid fa-down-left-and-up-right-to-center"></i>
 									</Link>
 								</div>
 							</div>
