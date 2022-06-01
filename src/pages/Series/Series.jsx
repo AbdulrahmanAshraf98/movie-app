@@ -44,7 +44,7 @@ function Series() {
 	useEffect(() => {}, []);
 	useEffect(() => {
 		setUrl(
-			`https://api.themoviedb.org/3/discover/tv?api_key=d948c5c0ea05d8b074392d5c6641f56c&sort_by=${sortingBy}&page=${seriesPage}&with_genres=${genres}&with_watch_monetization_types=flatrate&with_status=0&with_type=0&include_video=true`,
+			`https://api.themoviedb.org/3/discover/tv?api_key=d948c5c0ea05d8b074392d5c6641f56c&sort_by=${sortingBy}&page=${seriesPage}&with_genres=${genres}&with_keywords=anime &with_watch_monetization_types=flatrate&with_status=0&with_type=0&include_video=true`,
 		);
 	}, [url, seriesPage, responseData, genres, sortingBy, isLoading, error]);
 	return (
@@ -54,21 +54,24 @@ function Series() {
 				<section className="Series">
 					<Container>
 						<div className="row">
-							<Filter
-								changeGenresHandler={changeGenresHandler}
-								changeSortingHandler={changeSortingHandler}
-								mediaType="tv"
-							/>
 							{isLoading && <LoadingSpinner />}
-							{series && !isLoading && <SeriesList series={series} />}
-							{series && series.length === 0 && <p>noDataFound</p>}
+
 							{series && !isLoading && (
-								<Pagination
-									currentPage={seriesPage}
-									itemsPerPage={10}
-									SetPageNumber={changePageForSeriesNumberHandler}
-									totalPages={1}
-								/>
+								<>
+									<Filter
+										changeGenresHandler={changeGenresHandler}
+										changeSortingHandler={changeSortingHandler}
+										mediaType="tv"
+									/>
+									<SeriesList series={series} />
+									{series && series.length === 0 && <p>noDataFound</p>}
+									<Pagination
+										currentPage={seriesPage}
+										itemsPerPage={10}
+										SetPageNumber={changePageForSeriesNumberHandler}
+										totalPages={1}
+									/>
+								</>
 							)}
 						</div>
 					</Container>

@@ -2,7 +2,6 @@ import React from "react";
 import "./CastItem.css";
 import ImagNotFound from "../../../assets/broken-1.png";
 function CastItem({ item, isActive }) {
-	console.log(item);
 	return (
 		<div className="cast-item">
 			<div className="actor-img img-box">

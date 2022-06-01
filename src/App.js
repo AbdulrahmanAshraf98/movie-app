@@ -3,10 +3,10 @@ import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
 import Navbar from "./components/Navbar/Navbar";
-
+import Favorite from "./pages/Favorite/Favorite";
+import FavoriteContextProvider from "./Store/Context/FavoriteContext/FavoriteContextProvider";
 import ModalContextProvider from "./Store/Context/ModalContext/ModalContextProvider";
 import ThemeContext from "./Store/Context/ThemeContext/ThemeContext";
-import ThemeContextProvider from "./Store/Context/ThemeContext/ThemeContextProvider";
 
 function App() {
 	const themeContext = useContext(ThemeContext);
@@ -15,8 +15,10 @@ function App() {
 		<ModalContextProvider>
 			<div
 				className={`warper ${themeContext.Theme === "red" ? "red" : "blue"}`}>
-				<Navbar></Navbar>
-				<Main />
+				<FavoriteContextProvider>
+					<Navbar></Navbar>
+					<Main />
+				</FavoriteContextProvider>
 				<Footer></Footer>
 			</div>
 		</ModalContextProvider>

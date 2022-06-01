@@ -45,16 +45,6 @@ function Cast({ castData }) {
 					</Container>
 				</section>
 			)}
-			{/* {topCast && topCast.length === 1 && (
-				<section className="CastList">
-					<Container>
-						<SectionTitle>
-							<h3>Top Billed Cast</h3>
-						</SectionTitle>
-						<CastItem item={topCast[0]}></CastItem>
-					</Container>
-				</section>
-			)} */}
 		</>
 	);
 }

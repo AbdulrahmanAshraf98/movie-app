@@ -5,6 +5,7 @@
     padding: 2rem 0;
     position:relative;
     overflow:hidden;
+    min-height: 83vh;
 }
 .HeroSection::before{
     content: '';

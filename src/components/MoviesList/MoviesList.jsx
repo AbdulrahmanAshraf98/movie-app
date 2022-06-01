@@ -1,12 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
-import useFetch from "../../Hooks/useFetch";
-import Filter from "../Filter/Filter";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import FavoriteContext from "../../Store/Context/FavoriteContext/FavoriteContext";
 import MovieItem from "./MovieItem/MovieItem";
-import {
-	getLocalStorage,
-	localStorageIsFound,
-} from "../../utilities/Localstorage";
-import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
+
 function MoviesList({ movies }) {
 	return movies.map((movie) => {
 		return (

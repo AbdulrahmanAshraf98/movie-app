@@ -1,7 +1,12 @@
-import React from "react";
 import Img from "../../UI/Img/Img";
 
-function DetailsOverViewPoster({ src, openModalHandler }) {
+function DetailsOverViewPoster({
+	src,
+	openModalHandler,
+	favoriteAdd,
+	favoriteRemoveItem,
+	foundItemHandler,
+}) {
 	return (
 		src && (
 			<div className="col details-overview-poster">
@@ -13,6 +18,16 @@ function DetailsOverViewPoster({ src, openModalHandler }) {
 							<a className="playTrailer" onClick={openModalHandler}>
 								<i className="fa-solid fa-play"></i>
 							</a>
+						</div>
+						<div
+							className={`card-options ${foundItemHandler ? "d-none" : "add"}`}
+							onClick={favoriteAdd}>
+							<i className="fa-solid fa-heart"></i>
+						</div>
+						<div
+							className={`card-options ${foundItemHandler ? "" : "d-none"}`}
+							onClick={favoriteRemoveItem}>
+							<i className="fa-solid fa-heart"></i>
 						</div>
 					</Img>
 				</>

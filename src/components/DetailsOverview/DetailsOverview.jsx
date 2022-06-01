@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "../UI/Container/Container";
 import DetailsInfo from "./DetailsInfo/DetailsInfo";
 import DetailsOverViewPoster from "./DetailsOverViewPoster/DetailsOverViewPoster";
 import "./DetailsOverview.css";
+import {
+	localStorageIsFound,
+	setLocalStorage,
+	getLocalStorage,
+} from "../../utilities/Localstorage";
+import FavoriteContext from "../../Store/Context/FavoriteContext/FavoriteContext";
 function DetailsOverview({ item, openModalHandler }) {
+	const favoriteContext = useContext(FavoriteContext);
 	const detailsOverviewPoster = item.poster_path
 		? item.poster_path
 		: item.backdrop_path;
+
+	const favoriteAdd = () => {
+		favoriteContext.addToFavoriteHandler(item);
+	};
+	const favoriteRemoveItem = () => {
+		favoriteContext.removeFromFavoriteHandler(item.id);
+	};
+
+	const foundFavItem = favoriteContext.foundItem(item.id);
 	return (
 		<section
 			className="Details"
@@ -19,6 +35,9 @@ function DetailsOverview({ item, openModalHandler }) {
 						<DetailsOverViewPoster
 							src={detailsOverviewPoster}
 							openModalHandler={openModalHandler}
+							favoriteAdd={favoriteAdd}
+							favoriteRemoveItem={favoriteRemoveItem}
+							foundItemHandler={foundFavItem}
 						/>
 						<DetailsInfo
 							title={item.title ? item.title : item.name}

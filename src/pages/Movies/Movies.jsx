@@ -11,6 +11,7 @@ import {
 	getLocalStorage,
 	localStorageIsFound,
 } from "../../utilities/Localstorage";
+import { scrollTop } from "../../utilities/ScrollTop";
 import "./Movies.css";
 function Movies() {
 	const context = useContext(ModalContext);
@@ -47,6 +48,9 @@ function Movies() {
 			`https://api.themoviedb.org/3/discover/movie?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US&sort_by=${sortingBy}&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate&with_genres=${genres}`,
 		);
 	}, [url, page, genres, sortingBy, isLoading, error]);
+	useEffect(() => {
+		scrollTop();
+	}, [isLoading]);
 	return (
 		<>
 			{context.SearchModuleIsOpen && <SearchModal type={"movie"} />}
@@ -54,21 +58,23 @@ function Movies() {
 				<section className="movies">
 					<Container>
 						<div className="row">
-							<Filter
-								changeGenresHandler={changeGenresHandler}
-								changeSortingHandler={changeSortingHandler}
-							/>
 							{isLoading && !movies && <LoadingSpinner />}
 							{error && !isLoading && !movies && <p>{error}</p>}
-							{movies && !isLoading && <MoviesList movies={movies} />}
-							{movies && movies.length === 0 && <p>noDataFound</p>}
 							{movies && !isLoading && (
-								<Pagination
-									currentPage={page}
-									itemsPerPage={10}
-									SetPageNumber={changePageNumberHandler}
-									totalPages={totalpage}
-								/>
+								<>
+									<Filter
+										changeGenresHandler={changeGenresHandler}
+										changeSortingHandler={changeSortingHandler}
+									/>
+									<MoviesList movies={movies} />
+									{movies && movies.length === 0 && <p>noDataFound</p>}
+									<Pagination
+										currentPage={page}
+										itemsPerPage={10}
+										SetPageNumber={changePageNumberHandler}
+										totalPages={totalpage}
+									/>
+								</>
 							)}
 						</div>
 					</Container>

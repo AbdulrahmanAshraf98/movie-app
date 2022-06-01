@@ -3,6 +3,7 @@ const navbarItemsData = [
 	{ text: "Home", to: "/" },
 	{ text: "Movies", to: "/Movies" },
 	{ text: "Series", to: "/Series" },
+	{ text: "Favorite", to: "/Favorite" },
 ];
 const NavbarItems = ({ className }) => {
 	return (

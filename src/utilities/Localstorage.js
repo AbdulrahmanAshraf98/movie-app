@@ -6,7 +6,7 @@ export const localStorageIsFound = (localStorageItemName) => {
 };
 export const setLocalStorage = (localStorageItemName, value, type) => {
 	let newValue = value;
-	if (type === "object") {
+	if (type === "object" || type === "Array") {
 		newValue = JSON.stringify(value);
 	}
 	localStorage.setItem(localStorageItemName, newValue);
