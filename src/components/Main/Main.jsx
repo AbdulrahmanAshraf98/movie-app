@@ -21,12 +21,17 @@ function Main() {
 				<Route path="Series" element={<Series />} />
 				<Route path="Tv/:id" element={<SeriesDetails />} />
 				{authContext.isLogin && (
-					<Route path="Favorite" element={<Favorite />} />
+					<>
+						<Route path="Favorite" element={<Favorite />} />
+						<Route path="Auth" element={<Navigate to="/" replace />} />
+					</>
 				)}
 				{!authContext.isLogin && (
-					<Route path="Auth" element={<Authentication />} />
+					<>
+						<Route path="Favorite" element={<Navigate to="/" replace />} />
+					</>
 				)}
-				<Route path="*" element={<Navigate to="/" replace />} />
+				{/* <Route path="*" element={<Navigate to="/" replace />} /> */}
 			</Routes>
 		</main>
 	);
