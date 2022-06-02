@@ -9,13 +9,21 @@ import {
 	getLocalStorage,
 } from "../../utilities/Localstorage";
 import FavoriteContext from "../../Store/Context/FavoriteContext/FavoriteContext";
+import AuthContext from "../../Store/Context/Auth/AuthContext";
+import { useNavigate } from "react-router-dom";
 function DetailsOverview({ item, openModalHandler }) {
+	const navigate = useNavigate();
+	const authContext = useContext(AuthContext);
 	const favoriteContext = useContext(FavoriteContext);
 	const detailsOverviewPoster = item.poster_path
 		? item.poster_path
 		: item.backdrop_path;
 
 	const favoriteAdd = () => {
+		if (!authContext.isLogin) {
+			navigate("/Auth");
+			return;
+		}
 		favoriteContext.addToFavoriteHandler(item);
 	};
 	const favoriteRemoveItem = () => {

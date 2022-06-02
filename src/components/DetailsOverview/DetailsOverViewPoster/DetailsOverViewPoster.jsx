@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import AuthContext from "../../../Store/Context/Auth/AuthContext";
 import Img from "../../UI/Img/Img";
 
 function DetailsOverViewPoster({
@@ -7,6 +9,7 @@ function DetailsOverViewPoster({
 	favoriteRemoveItem,
 	foundItemHandler,
 }) {
+	const authContext = useContext(AuthContext);
 	return (
 		src && (
 			<div className="col details-overview-poster">
@@ -25,7 +28,9 @@ function DetailsOverViewPoster({
 							<i className="fa-solid fa-heart"></i>
 						</div>
 						<div
-							className={`card-options ${foundItemHandler ? "" : "d-none"}`}
+							className={`card-options ${
+								foundItemHandler && authContext.isLogin ? "" : "d-none"
+							}`}
 							onClick={favoriteRemoveItem}>
 							<i className="fa-solid fa-heart"></i>
 						</div>

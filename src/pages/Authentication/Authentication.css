@@ -1,0 +1,122 @@
+.Authentication{
+    
+}
+.Auth{
+    padding: 1rem 0;   
+    background: var(--black-color);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.Auth .section-title{
+    margin-bottom:1rem;
+    position: relative;
+    font-size: 1.5rem;
+
+}
+.Auth .section-title::before{
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background: var(--primarydark-color);
+    position: absolute;
+    left: 0;
+    bottom: -90%;
+    margin-bottom: 1rem;
+    
+}
+.Auth form{
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 1rem;
+}
+.Auth form label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    }
+.Auth form input{
+    width: 100%;
+    background: var(--dark-color);
+    border: 1px solid var(--black-color);
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    box-sizing: border-box;
+
+
+}
+
+.Auth form button{
+    background: var(--primary-color);
+    outline:none;
+    border: none;
+    margin-bottom: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.switchAuth{
+    color: var(--primary-color);
+    background: transparent !important;
+}
+.Invalid-feedback{
+    margin-bottom: 1rem;
+}
+.Invalid-feedback p{
+    color:red;
+    
+}
+@media (min-width:320px) {
+    .Auth form button{
+        width: 50%;
+        
+    }
+}
+@media (min-width:520px) {
+    .Auth{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .Auth .button-group{
+        display: flex;
+        justify-content: space-between;
+    }
+    .Auth form button{
+        width:30%;
+        
+    }
+}
+@media (min-width:750px) {
+    .Auth{
+        width: 70%;
+        margin: 0 auto;
+    }
+    .Auth .button-group{
+        display: flex;
+        justify-content: space-between;
+    }
+    .Auth form button{
+        width:20%;
+        
+    }
+}
+@media (min-width:992px) {
+    .Auth{
+        width: 50%;
+        margin: 0 auto;
+    }
+    .Auth .button-group{
+        display: flex;
+        justify-content: space-between;
+    }
+    .Auth form button{
+        width:20%;
+        
+    }
+}

@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import Img from "../../UI/Img/Img";
 import "./MovieItem.css";
 import FavoriteContext from "../../../Store/Context/FavoriteContext/FavoriteContext";
+import AuthContext from "../../../Store/Context/Auth/AuthContext";
 function MovieItem({ movie }) {
+	const authContext = useContext(AuthContext);
 	const favoriteContext = useContext(FavoriteContext);
 	const favoriteAdd = () => {
 		favoriteContext.addToFavoriteHandler(movie);
@@ -31,19 +33,26 @@ function MovieItem({ movie }) {
 									? `https://image.tmdb.org/t/p/w300${movie.backdrop_path}`
 									: `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg`
 							}`}>
-							<div
-								className={`card-options ${foundFavItem ? "d-none" : "add"}`}
-								onClick={favoriteAdd}>
-								<i className="fa-solid fa-heart"></i>
-							</div>
-							<div
-								className={`card-options ${foundFavItem ? "" : "d-none"}`}
-								onClick={favoriteRemoveItem}>
-								<i className="fa-solid fa-heart"></i>
-							</div>
+							{authContext.isLogin && (
+								<>
+									<div
+										className={`card-options ${
+											foundFavItem ? "d-none" : "add"
+										}`}
+										onClick={favoriteAdd}>
+										<i className="fa-solid fa-heart"></i>
+									</div>
+									<div
+										className={`card-options ${foundFavItem ? "" : "d-none"}`}
+										onClick={favoriteRemoveItem}>
+										<i className="fa-solid fa-heart"></i>
+									</div>
+								</>
+							)}
+
 							<div className="play">
 								<Link to={`/Movies/Movie/${movie.id}`}>
-									<i class="fa-solid fa-down-left-and-up-right-to-center"></i>
+									<i className="fa-solid fa-down-left-and-up-right-to-center"></i>
 								</Link>
 							</div>
 						</Img>

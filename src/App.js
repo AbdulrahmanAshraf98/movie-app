@@ -4,6 +4,7 @@ import Footer from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
 import Navbar from "./components/Navbar/Navbar";
 import Favorite from "./pages/Favorite/Favorite";
+import AuthContextProvider from "./Store/Context/Auth/AuthContextProvider";
 import FavoriteContextProvider from "./Store/Context/FavoriteContext/FavoriteContextProvider";
 import ModalContextProvider from "./Store/Context/ModalContext/ModalContextProvider";
 import ThemeContext from "./Store/Context/ThemeContext/ThemeContext";
@@ -12,16 +13,18 @@ function App() {
 	const themeContext = useContext(ThemeContext);
 	useEffect(() => {}, []);
 	return (
-		<ModalContextProvider>
-			<div
-				className={`warper ${themeContext.Theme === "red" ? "red" : "blue"}`}>
-				<FavoriteContextProvider>
+		<AuthContextProvider>
+			<ModalContextProvider>
+				<div
+					className={`warper ${themeContext.Theme === "red" ? "red" : "blue"}`}>
 					<Navbar></Navbar>
-					<Main />
-				</FavoriteContextProvider>
-				<Footer></Footer>
-			</div>
-		</ModalContextProvider>
+					<FavoriteContextProvider>
+						<Main />
+					</FavoriteContextProvider>
+					<Footer></Footer>
+				</div>
+			</ModalContextProvider>
+		</AuthContextProvider>
 	);
 }
 
