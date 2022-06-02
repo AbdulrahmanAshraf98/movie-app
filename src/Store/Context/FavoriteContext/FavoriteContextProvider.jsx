@@ -11,8 +11,6 @@ let initialState = [];
 if (localStorageIsFound("favorite")) {
 	initialState = getLocalStorage("favorite", "object");
 }
-console.log(initialState);
-
 function FavoriteContextProvider({ children }) {
 	const [favoriteItems, dispatchFavoriteItems] = useReducer(
 		favoriteReducer,

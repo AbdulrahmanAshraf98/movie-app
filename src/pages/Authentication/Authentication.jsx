@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Container from "../../components/UI/Container/Container";
 import Input from "../../components/UI/Input/Input";
 import SectionTitle from "../../components/UI/sectionTitle/SectionTitle";
@@ -12,6 +13,7 @@ import "./Authentication.css";
 
 function Authentication() {
 	const authContext = useContext(AuthContext);
+	const navigate = useNavigate();
 	const emailRef = useRef();
 	const passwordRef = useRef();
 	const [SwitchAuth, SetSwitchAuth] = useState("login");
@@ -62,7 +64,7 @@ function Authentication() {
 
 			authContext.SetUIDHandler(`${response.user.uid}`);
 			authContext.SetIsLoginHandler();
-
+			navigate("/");
 			console.log(response.user.uid, authContext.UID, authContext.isLogin);
 		} else {
 			const response = await registerWithEmailAndPassword(
@@ -86,12 +88,12 @@ function Authentication() {
 					return;
 				}
 			}
-
 			setError({
 				emailError: "",
 				password: "",
 				general: "",
 			});
+			SetSwitchAuth("login");
 		}
 	};
 	// useEffect(() => {}, [SwitchAuth, error]);
