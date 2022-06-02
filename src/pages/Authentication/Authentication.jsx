@@ -37,6 +37,17 @@ function Authentication() {
 			enteredEmail: emailRef.current.value,
 			enteredPassword: passwordRef.current.value,
 		};
+        if (
+					enteredValue.enteredEmail.trim().length === 0 &&
+					enteredValue.enteredEmail.trim().length === 0
+				) {
+					setError({
+						emailError: "You Must Entered Email",
+						password: "You Must Entered Password",
+						general: "",
+					});
+					return;
+				}
 		if (SwitchAuth == "login") {
 			const response = await signInWithEmail(
 				enteredValue.enteredEmail,
