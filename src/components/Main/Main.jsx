@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Authentication from "../../pages/Authentication/Authentication";
 import MovieDetails from "../../pages/Details/MovieDetails";
 import SeriesDetails from "../../pages/Details/SeriesDetails/SeriesDetails";
@@ -23,8 +23,10 @@ function Main() {
 				{authContext.isLogin && (
 					<Route path="Favorite" element={<Favorite />} />
 				)}
-
-				<Route path="/Auth" element={<Authentication />} />
+				{!authContext.isLogin && (
+					<Route path="Auth" element={<Authentication />} />
+				)}
+				<Route path="*" element={<Navigate to="/" replace />} />
 			</Routes>
 		</main>
 	);

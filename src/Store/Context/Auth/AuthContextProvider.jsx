@@ -13,6 +13,7 @@ function AuthContextProvider({ children }) {
 
 	const logoutHandler = () => {
 		setIsLogin(false);
+        setUID("");
 	};
 	const authContext = {
 		UID,
