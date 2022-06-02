@@ -3,6 +3,12 @@
     cursor: pointer;
 }
 .recommendations .swiper{
-    padding: 1rem;
+    padding: 1rem 0;
 
+}
+@media(min-height:1024px){
+    .recommendations .swiper{
+        padding: 1rem;
+    
+    }
 }
