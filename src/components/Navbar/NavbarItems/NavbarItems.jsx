@@ -1,11 +1,12 @@
 import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../../../Store/Context/Auth/AuthContext";
+import { SignOutUser } from "../../../utilities/firebase/firebase";
 import NavbarItem from "../NavbarItem/NavbarItem";
 const navbarItemsData = [
 	{ text: "Home", to: "/" },
 	{ text: "Movies", to: "/Movies" },
 	{ text: "Series", to: "/Series" },
-	{ text: "LogIn", to: "/Auth" },
 ];
 const NavbarItems = ({ className }) => {
 	const authContext = useContext(AuthContext);
@@ -16,8 +17,24 @@ const NavbarItems = ({ className }) => {
 					<NavbarItem key={index} to={element.to} text={element.text} />
 				))}
 				{authContext.isLogin && (
-					<NavbarItem key={4} to={"Favorite"} text={"Favorite"} />
+					<>
+						<NavbarItem key={4} to={"/Favorite"} text={"Favorite"} />
+						<Link
+							to={"/"}
+							onClick={(e) => {
+								e.preventDefault();
+								SignOutUser();
+								authContext.logoutHandler();
+							}}>
+							logout
+						</Link>
+					</>
 				)}
+				{!authContext.isLogin && (
+					<NavbarItem key={4} to={"/Auth"} text={"LogIn"} />
+				)}
+
+				{}
 			</ul>
 		</div>
 	);

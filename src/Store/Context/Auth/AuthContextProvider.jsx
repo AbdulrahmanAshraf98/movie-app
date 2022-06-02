@@ -19,6 +19,7 @@ function AuthContextProvider({ children }) {
 		isLogin,
 		SetUIDHandler: SetUIDHandler,
 		SetIsLoginHandler: SetIsLoginHandler,
+		logoutHandler: logoutHandler,
 	};
 	return (
 		<AuthContext.Provider value={authContext}>{children}</AuthContext.Provider>

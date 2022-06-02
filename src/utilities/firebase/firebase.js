@@ -4,6 +4,7 @@ import {
 	createUserWithEmailAndPassword,
 	getAuth,
 	signInWithEmailAndPassword,
+	signOut,
 } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -53,14 +54,5 @@ export const signInWithEmail = async (email, password) => {
 		result.error = error.code;
 	}
 	return result;
-
-	// .then((userCredential) => {
-	//   // Signed in
-	//   const user = userCredential.user;
-	//   // ...
-	// })
-	// .catch((error) => {
-	//   const errorCode = error.code;
-	//   const errorMessage = error.message;
-	// });
 };
+export const SignOutUser = () => signOut(auth);
