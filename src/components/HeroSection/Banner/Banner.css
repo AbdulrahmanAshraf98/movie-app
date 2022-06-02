@@ -31,13 +31,13 @@
 
 
 .fadeInRight{
-    animation: fadeInRightAnimation  0.5s 0.5s   linear;
+    animation: fadeInRightAnimation   1s   linear;
     backface-visibility: hidden;
     animation-fill-mode: both;
     
 }
 .fadeInLeft{
-    animation: fadeInLeft 1s   0.5s  linear;
+    animation: fadeInLeft    1s  linear;
     backface-visibility: hidden;
     animation-fill-mode: both;
     
