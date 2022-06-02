@@ -20,10 +20,10 @@ function Main() {
 				<Route path="Movies/Movie/:id" element={<MovieDetails />} />
 				<Route path="Series" element={<Series />} />
 				<Route path="Tv/:id" element={<SeriesDetails />} />
+				<Route path="Auth" element={<Authentication />} />
 				{authContext.isLogin && (
 					<>
 						<Route path="Favorite" element={<Favorite />} />
-						<Route path="Auth" element={<Navigate to="/" replace />} />
 					</>
 				)}
 				{!authContext.isLogin && (
