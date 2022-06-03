@@ -12,7 +12,7 @@
     padding: 1rem;
 }
 .Auth .section-title{
-    margin-bottom:1rem;
+    margin-bottom:2rem;
     position: relative;
     font-size: 1.5rem;
     width: 100%;
@@ -24,10 +24,11 @@
     height: 2px;
     background: var(--primarydark-color);
     position: absolute;
-    left: 0;
+    left: 50%;
     bottom: -93%;
     margin-bottom: 1rem;
     z-index: 1;
+    transform: translate(-50%, -50%);
     
 }
 .Auth .section-title::after{
@@ -37,7 +38,9 @@
     height: 3px;
     position: absolute;
     bottom: -93%;
+    width: 100%;
     left: 0;
+    transform: translate(0, 0);
     background-color: var(--dark-color);
     margin-bottom: 1rem;
 }
@@ -95,6 +98,10 @@
     .Auth{
         width: 80%;
         margin: 0 auto;
+    }
+    .Auth .section-title:before{
+        transform: none;
+        left: 0;
     }
     .Auth .button-group{
         display: flex;

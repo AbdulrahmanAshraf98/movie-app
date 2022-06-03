@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import logo from "../../assets/logo-1.png";
+import logoRed from "../../assets/Logo-2.png";
 import NavbarItems from "./NavbarItems/NavbarItems";
 import "./Navbar.css";
 import Container from "../UI/Container/Container";
@@ -36,7 +37,10 @@ function Navbar() {
 				<div className="row">
 					<div className="left-side">
 						<NavLink to="/" className="logo">
-							<Img className="logo-img" src={logo} />
+							<Img
+								className="logo-img"
+								src={themeContext.Theme == "blue" ? logo : logoRed}
+							/>
 						</NavLink>
 					</div>
 					<NavbarItems

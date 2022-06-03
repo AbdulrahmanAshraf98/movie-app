@@ -6,7 +6,7 @@ import SocialIcons from "../UI/SocialIcons/SocialIcons";
 import "./Footer.css";
 const footerItemsData = [
 	{ text: "Home", to: "/" },
-	{ text: "Movies", to: "/Movie" },
+	{ text: "Movies", to: "/Movies" },
 	{ text: "Series", to: "/Series" },
 ];
 const icons = [
@@ -22,7 +22,9 @@ function Footer() {
 					<div className="row">
 						<div className="col">
 							<div className="footer-logo">
-								<img src={logo}></img>
+								<Link to="/">
+									<img src={logo}></img>
+								</Link>
 							</div>
 							<p>
 								Lorem Ipsum is simply dummy text of the printing and typesetting
