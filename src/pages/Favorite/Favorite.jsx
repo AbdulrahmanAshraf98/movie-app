@@ -1,33 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import FavoutieList from "../../components/FavouriteList/FavoutieList";
-import MoviesList from "../../components/MoviesList/MoviesList";
 import Container from "../../components/UI/Container/Container";
-import List from "../../components/UI/List/List";
 import FavoriteContext from "../../Store/Context/FavoriteContext/FavoriteContext";
-import {
-	getLocalStorage,
-	localStorageIsFound,
-	setLocalStorage,
-} from "../../utilities/Localstorage";
 
 function Favorite() {
 	const favoriteContext = useContext(FavoriteContext);
-	let FavoriteItems = getLocalStorage("favorite", "object") || [];
-	// let defualtvalue =   ;
-	// console.log(newx);
-	// const [FavoriteItems, setFavoriteItems] = useState(defualtvalue);
+	let FavoriteItems = favoriteContext.getFavoriteItems();
 	const favoriteRemoveItem = (id) => {
 		favoriteContext.removeFromFavoriteHandler(id);
-		// setFavoriteItems((prev) => favoriteContext.favoriteItems);
 	};
-
-	// FavoriteItems = getLocalStorage("favorite", "object");
 	useEffect(() => {
-		if (FavoriteItems && FavoriteItems.length === 0) {
-			console.log(1);
-			FavoriteItems = favoriteContext.favoriteItems;
-		}
-	}, [favoriteContext.favoriteItems, favoriteRemoveItem]);
+		FavoriteItems = favoriteContext.getFavoriteItems();
+	}, [FavoriteItems]);
 	return (
 		FavoriteItems && (
 			<section className="Favourite">
