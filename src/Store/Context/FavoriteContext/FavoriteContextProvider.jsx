@@ -39,6 +39,7 @@ function FavoriteContextProvider({ children }) {
 		if (!docSnap.exists()) {
 			return;
 		}
+
 		await updateDoc(docRef, {
 			items: NewArray,
 		});
