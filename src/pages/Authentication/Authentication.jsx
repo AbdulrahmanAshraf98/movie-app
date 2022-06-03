@@ -76,7 +76,6 @@ function Authentication() {
 			authContext.SetUIDHandler(`${response.user.uid}`);
 			authContext.SetIsLoginHandler();
 			navigate("/");
-			console.log(response.user.uid, authContext.UID, authContext.isLogin);
 		} else {
 			const response = await registerWithEmailAndPassword(
 				enteredValue.enteredEmail,
