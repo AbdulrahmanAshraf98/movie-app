@@ -4,7 +4,7 @@
     height: 100vh;
     top: 0;
     left: 0;
-    background:black;
+    background: var(--dark-color);
     z-index: 55555555555555;
     display: flex;
     justify-content: center;
