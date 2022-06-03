@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo-1.png";
+import logoRed from "../../assets/Logo-2.png";
+import ThemeContext from "../../Store/Context/ThemeContext/ThemeContext";
 import Container from "../UI/Container/Container";
+import Img from "../UI/Img/Img";
 import SocialIcons from "../UI/SocialIcons/SocialIcons";
 import "./Footer.css";
 const footerItemsData = [
@@ -15,6 +18,7 @@ const icons = [
 	"fa-brands fa-instagram",
 ];
 function Footer() {
+	const themeContext = useContext(ThemeContext);
 	return (
 		<footer>
 			<div className="footer-top">
@@ -23,7 +27,10 @@ function Footer() {
 						<div className="col">
 							<div className="footer-logo">
 								<Link to="/">
-									<img src={logo}></img>
+									<Img
+										className="logo-img"
+										src={themeContext.Theme == "blue" ? logo : logoRed}
+									/>
 								</Link>
 							</div>
 							<p>
