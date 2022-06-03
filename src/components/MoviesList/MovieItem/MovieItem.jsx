@@ -14,7 +14,6 @@ function MovieItem({ movie }) {
 	};
 	const favoriteRemoveItem = () => {
 		favoriteContext.removeFromFavoriteHandler(movie.id);
-		console.log("1");
 	};
 
 	const foundFavItem = favoriteContext.foundItem(movie.id);

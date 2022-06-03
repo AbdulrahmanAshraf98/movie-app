@@ -8,6 +8,7 @@ let initialState = [];
 
 function FavoriteContextProvider({ children }) {
 	const authContext = useContext(AuthContext);
+	const UserId = authContext.UID;
 	const [favoriteItems, setfavoriteItems] = useState([]);
 	const [buttonTraguer, setButtonTraguer] = useState(false);
 
@@ -16,7 +17,7 @@ function FavoriteContextProvider({ children }) {
 		const docSnap = await getDoc(docRef);
 		if (!docSnap.exists()) {
 			await setDoc(
-				doc(db, "Favourite", authContext.UID),
+				doc(db, "Favourite", UserId),
 				{
 					items: [item],
 				},
@@ -31,10 +32,9 @@ function FavoriteContextProvider({ children }) {
 		return;
 	};
 	const removeFromFavoriteHandler = async (id) => {
-		// dispatchFavoriteItems({ type: "REMOVE-ITEM", payload: id });
 		const NewArray = favoriteItems.filter((element) => element.id !== id);
-
-		const docRef = doc(db, "Favourite", authContext.UID);
+		setfavoriteItems(NewArray);
+		const docRef = doc(db, "Favourite", UserId);
 		const docSnap = await getDoc(docRef);
 		if (!docSnap.exists()) {
 			return;
@@ -42,7 +42,6 @@ function FavoriteContextProvider({ children }) {
 		await updateDoc(docRef, {
 			items: NewArray,
 		});
-		setButtonTraguer(true);
 		return;
 	};
 	const foundItem = (id) => {
@@ -52,12 +51,11 @@ function FavoriteContextProvider({ children }) {
 		if (foundItem) {
 			return true;
 		}
-
 		return false;
 	};
 	const getFavoriteData = async () => {
-		if (authContext.UID) {
-			const docRef = doc(db, "Favourite", authContext.UID);
+		if (UserId) {
+			const docRef = doc(db, "Favourite", UserId);
 			const docSnap = await getDoc(docRef);
 			if (docSnap.exists()) {
 				const data = docSnap.data();
