@@ -13,7 +13,7 @@ function FavoriteContextProvider({ children }) {
 	const [buttonTraguer, setButtonTraguer] = useState(false);
 
 	const addToFavoriteHandler = async (item) => {
-		const docRef = doc(db, "Favourite", authContext.UID);
+		const docRef = doc(db, "Favourite", UserId);
 		const docSnap = await getDoc(docRef);
 		if (!docSnap.exists()) {
 			await setDoc(
