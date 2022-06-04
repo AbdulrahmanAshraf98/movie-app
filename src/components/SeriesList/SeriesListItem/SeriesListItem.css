@@ -1,3 +1,7 @@
 .Series-item{cursor:pointer;
     height: 100%;
 }
+.Series-item .card{
+    box-shadow: 0px 0px 5px var(--primarydark-color);
+
+}

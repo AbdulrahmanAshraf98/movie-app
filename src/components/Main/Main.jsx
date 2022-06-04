@@ -20,18 +20,19 @@ function Main() {
 				<Route path="Movies/Movie/:id" element={<MovieDetails />} />
 				<Route path="Series" element={<Series />} />
 				<Route path="Tv/:id" element={<SeriesDetails />} />
-
+				{authContext.isLogin === false && (
+					<Route path="Auth" element={<Navigate to="/" replace />} />
+				)}
 				{authContext.isLogin && (
-					<>
-						<Route path="Favorite" element={<Favorite />} />
-					</>
+					<Route path="Favorite" element={<Favorite />} />
 				)}
 				{!authContext.isLogin && (
 					<>
-						<Route path="Auth" element={<Authentication />} />
 						<Route path="Favorite" element={<Navigate to="/" replace />} />
+						<Route path="Auth" element={<Authentication />} />
 					</>
 				)}
+
 				{/* <Route path="*" element={<Navigate to="/" replace />} /> */}
 			</Routes>
 		</main>

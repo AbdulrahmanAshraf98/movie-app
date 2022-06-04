@@ -10,6 +10,7 @@ import ModalContext from "../../Store/Context/ModalContext/ModalContext";
 import {
 	getLocalStorage,
 	localStorageIsFound,
+	setLocalStorage,
 } from "../../utilities/Localstorage";
 import { scrollTop } from "../../utilities/ScrollTop";
 import "./Movies.css";
@@ -21,7 +22,11 @@ function Movies() {
 	let DefualtValuesortingBy = localStorageIsFound("moviesSortBy")
 		? getLocalStorage("moviesSortBy", "object").name
 		: "popularity.desc";
-	const [page, setPage] = useState(1);
+	let DefualtPageValue = localStorageIsFound("MoviesCurrentPage")
+		? +getLocalStorage("MoviesCurrentPage", "")
+		: 1;
+	console.log(DefualtPageValue);
+	const [page, setPage] = useState(DefualtPageValue);
 	const [genres, setGenres] = useState(DefualtValueGenres);
 	const [sortingBy, setSortingBy] = useState(DefualtValuesortingBy);
 	const [url, setUrl] = useState(
@@ -42,6 +47,7 @@ function Movies() {
 	}, []);
 	const changePageNumberHandler = (pageNumber) => {
 		setPage(pageNumber);
+		setLocalStorage("MoviesCurrentPage", pageNumber, "");
 	};
 	useEffect(() => {
 		setUrl(

@@ -3,15 +3,12 @@ import Container from "../UI/Container/Container";
 import DetailsInfo from "./DetailsInfo/DetailsInfo";
 import DetailsOverViewPoster from "./DetailsOverViewPoster/DetailsOverViewPoster";
 import "./DetailsOverview.css";
-import {
-	localStorageIsFound,
-	setLocalStorage,
-	getLocalStorage,
-} from "../../utilities/Localstorage";
+import { setLocalStorage } from "../../utilities/Localstorage";
 import FavoriteContext from "../../Store/Context/FavoriteContext/FavoriteContext";
 import AuthContext from "../../Store/Context/Auth/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 function DetailsOverview({ item, openModalHandler }) {
+	let location = useLocation();
 	const navigate = useNavigate();
 	const authContext = useContext(AuthContext);
 	const favoriteContext = useContext(FavoriteContext);
@@ -21,6 +18,7 @@ function DetailsOverview({ item, openModalHandler }) {
 
 	const favoriteAdd = () => {
 		if (!authContext.isLogin) {
+			setLocalStorage("prevPath", location.pathname, "");
 			navigate("/Auth");
 			return;
 		}

@@ -1,14 +1,17 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Container from "../../components/UI/Container/Container";
 import Input from "../../components/UI/Input/Input";
 import SectionTitle from "../../components/UI/sectionTitle/SectionTitle";
 import AuthContext from "../../Store/Context/Auth/AuthContext";
 import {
-	auth,
 	registerWithEmailAndPassword,
 	signInWithEmail,
 } from "../../utilities/firebase/firebase";
+import {
+	getLocalStorage,
+	localStorageIsFound,
+} from "../../utilities/Localstorage";
 import "./Authentication.css";
 
 function Authentication() {
@@ -22,7 +25,6 @@ function Authentication() {
 		password: "",
 		general: "",
 	});
-	let login = null;
 	const SwitchAuthHandler = (e) => {
 		e.preventDefault();
 		if (SwitchAuth === "login") {
@@ -37,18 +39,18 @@ function Authentication() {
 			enteredEmail: emailRef.current.value,
 			enteredPassword: passwordRef.current.value,
 		};
-        if (
-					enteredValue.enteredEmail.trim().length === 0 &&
-					enteredValue.enteredEmail.trim().length === 0
-				) {
-					setError({
-						emailError: "You Must Entered Email",
-						password: "You Must Entered Password",
-						general: "",
-					});
-					return;
-				}
-		if (SwitchAuth == "login") {
+		if (
+			enteredValue.enteredEmail.trim().length === 0 &&
+			enteredValue.enteredEmail.trim().length === 0
+		) {
+			setError({
+				emailError: "You Must Entered Email",
+				password: "You Must Entered Password",
+				general: "",
+			});
+			return;
+		}
+		if (SwitchAuth === "login") {
 			const response = await signInWithEmail(
 				enteredValue.enteredEmail,
 				enteredValue.enteredPassword,
@@ -75,7 +77,10 @@ function Authentication() {
 
 			authContext.SetUIDHandler(`${response.user.uid}`);
 			authContext.SetIsLoginHandler();
-			navigate("/");
+			const Pathname = localStorageIsFound("prevPath")
+				? getLocalStorage("prevPath", "")
+				: "/";
+			navigate(Pathname, { replace: true });
 		} else {
 			const response = await registerWithEmailAndPassword(
 				enteredValue.enteredEmail,

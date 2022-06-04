@@ -7,44 +7,47 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 	const [buttons, setButtons] = useState(generateButtons(0, 10));
 	const [totalItem, setTotalItem] = useState(10);
 	if (currentPage === 1 && totalItem > 10) {
-		console.log(1);
-		totalItem = 10;
+		setTotalItem(10);
 		setButtons(generateButtons(0, totalItem));
+	} else if (currentPage === Math.floor(currentPage / 10) * totalItem) {
+		const firstIndex = Math.floor(currentPage - 10);
+		const lastIndex = currentPage;
+		setTotalItem(currentPage);
+		setButtons(generateButtons(firstIndex, lastIndex));
+	} else if (currentPage > totalItem) {
+		const firstIndex = Math.floor(currentPage / 10) * 10;
+		const lastIndex = Math.floor(currentPage / 10) * 10 + 10;
+		setTotalItem(lastIndex);
+		setButtons(generateButtons(firstIndex, lastIndex));
 	}
 
-	const nextButton = () => {
-		console.log(currentPage);
-		console.log(totalItem);
-
-		if (currentPage === totalItem) {
-			setTotalItem((prevstate) => totalItem + 10);
-			setButtons(generateButtons(currentPage, currentPage + 10));
+	const nextButton = useCallback(() => {
+		SetPageNumber(currentPage + 1);
+		if (currentPage - 1 === totalItem) {
+			setTotalItem((prevstate) => {
+				return totalItem + 10;
+			});
 		}
-		SetPageNumber((prev) => currentPage + 1);
-	};
+	}, [currentPage]);
 
-	const prevButton = () => {
+	const prevCondition = currentPage < totalItem;
+	const prevButton = useCallback(() => {
+		console.log(currentPage);
 		if (currentPage === 1) {
 			return;
 		}
-		SetPageNumber((prev) => currentPage - 1);
-
+		SetPageNumber(currentPage - 1);
 		if (currentPage - 1 === totalItem - itemsPerPage && currentPage !== 1) {
-			setTotalItem((prevstate) => totalItem - itemsPerPage);
+			setTotalItem(totalItem - itemsPerPage);
+			console.log(generateButtons(currentPage - 11, totalItem - 10));
 			setButtons(generateButtons(currentPage - 11, totalItem - 10));
 		}
-	};
+	}, [prevCondition]);
 
 	useEffect(() => {
 		scrollTop();
 	}, [nextButton, prevButton]);
-	useEffect(() => {}, [
-		buttons,
-		totalItem,
-		nextButton,
-		prevButton,
-		currentPage,
-	]);
+
 	return (
 		<>
 			<div className="pagination-buttons-Container">

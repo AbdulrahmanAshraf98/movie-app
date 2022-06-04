@@ -17,6 +17,7 @@ function Filter({
 			<SortBy
 				onClick={changeSortingHandler}
 				className={`${styled.col} sortby`}
+				mediaType={mediaType}
 			/>
 		</div>
 	);

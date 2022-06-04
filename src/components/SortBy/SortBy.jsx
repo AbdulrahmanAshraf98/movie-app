@@ -1,7 +1,7 @@
 import React from "react";
 import DropDown from "../UI/SelectBox/DropDown/DropDown";
 import "./SortBy.css";
-function SortBy({ onClick, className }) {
+function SortBy({ onClick, className, mediaType }) {
 	return (
 		<div className={className}>
 			<DropDown
@@ -10,7 +10,7 @@ function SortBy({ onClick, className }) {
 					{ name: "popularity.asc", id: 1 },
 				]}
 				defaultValue={"popularity.desc"}
-				localStorageItemName={"moviesSortBy"}
+				localStorageItemName={`${mediaType}SortBy`}
 				onClick={onClick}
 			/>
 		</div>
