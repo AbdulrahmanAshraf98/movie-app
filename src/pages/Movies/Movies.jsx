@@ -22,11 +22,8 @@ function Movies() {
 	let DefualtValuesortingBy = localStorageIsFound("moviesSortBy")
 		? getLocalStorage("moviesSortBy", "object").name
 		: "popularity.desc";
-	let DefualtPageValue = localStorageIsFound("MoviesCurrentPage")
-		? +getLocalStorage("MoviesCurrentPage", "")
-		: 1;
-	console.log(DefualtPageValue);
-	const [page, setPage] = useState(DefualtPageValue);
+
+	const [page, setPage] = useState(1);
 	const [genres, setGenres] = useState(DefualtValueGenres);
 	const [sortingBy, setSortingBy] = useState(DefualtValuesortingBy);
 	const [url, setUrl] = useState(
@@ -47,7 +44,6 @@ function Movies() {
 	}, []);
 	const changePageNumberHandler = (pageNumber) => {
 		setPage(pageNumber);
-		setLocalStorage("MoviesCurrentPage", pageNumber, "");
 	};
 	useEffect(() => {
 		setUrl(

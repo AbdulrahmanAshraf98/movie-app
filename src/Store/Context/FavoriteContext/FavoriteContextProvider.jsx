@@ -9,7 +9,7 @@ let initialState = [];
 function FavoriteContextProvider({ children }) {
 	const authContext = useContext(AuthContext);
 	const UserId = authContext.UID;
-	const [favoriteItems, setfavoriteItems] = useState([]);
+	const [favoriteItems, setFavoriteItems] = useState([]);
 	const [buttonTraguer, setButtonTraguer] = useState(false);
 
 	const addToFavoriteHandler = async (item) => {
@@ -33,7 +33,7 @@ function FavoriteContextProvider({ children }) {
 	};
 	const removeFromFavoriteHandler = async (id) => {
 		const NewArray = favoriteItems.filter((element) => element.id !== id);
-		setfavoriteItems(NewArray);
+		setFavoriteItems(NewArray);
 		const docRef = doc(db, "Favourite", UserId);
 		const docSnap = await getDoc(docRef);
 		if (!docSnap.exists()) {
@@ -60,7 +60,7 @@ function FavoriteContextProvider({ children }) {
 			const docSnap = await getDoc(docRef);
 			if (docSnap.exists()) {
 				const data = docSnap.data();
-				setfavoriteItems(data.items);
+				setFavoriteItems(data.items);
 			}
 			return;
 		}

@@ -34,7 +34,7 @@ function FavouriteItem({ item, favoriteRemoveItem }) {
 							</div>
 							<div className="play">
 								<Link to={`/Movies/Movie/${item.id}`}>
-									<i className="fa-solid fa-magnifying-glass"></i>
+									<i className="fa-solid fa-down-left-and-up-right-to-center"></i>
 								</Link>
 							</div>
 						</Img>

@@ -21,31 +21,28 @@ function Series() {
 	const DefualtValuesortingBy = localStorageIsFound("tvSortBy")
 		? getLocalStorage("tvSortBy", "object").name
 		: "popularity.desc";
-	let DefualtPageValue = localStorageIsFound("TVCurrentPage")
-		? +getLocalStorage("TVCurrentPage", "")
-		: 1;
+	
 	const [genres, setGenres] = useState(DefualtValueGenres);
 	const [sortingBy, setSortingBy] = useState(DefualtValuesortingBy);
-	const [seriesPage, setSeriesPage] = useState(DefualtPageValue);
-		const [url, setUrl] = useState(
-			`https://api.themoviedb.org/3/discover/tv?api_key=d948c5c0ea05d8b074392d5c6641f56c&sort_by=${sortingBy}&page=${seriesPage}&with_genres=${genres}&with_watch_monetization_types=flatrate&with_status=0&with_type=0&include_video=true`,
-		);
-		const [responseData, isLoading, error] = useFetch(url);
-		let series = responseData.results;
-		const changeGenresHandler = useCallback((id) => {
-			setGenres(id);
-		}, []);
-		const changeSortingHandler = useCallback((id) => {
-			if (id === "1") {
-				setSortingBy("popularity.asc");
-			} else {
-				setSortingBy("popularity.desc");
-			}
-		}, []);
-		const changePageForSeriesNumberHandler = (pageNumber) => {
-			setSeriesPage(pageNumber);
-			setLocalStorage("TVCurrentPage", pageNumber, "");
-		};
+	const [seriesPage, setSeriesPage] = useState(1);
+	const [url, setUrl] = useState(
+		`https://api.themoviedb.org/3/discover/tv?api_key=d948c5c0ea05d8b074392d5c6641f56c&sort_by=${sortingBy}&page=${seriesPage}&with_genres=${genres}&with_watch_monetization_types=flatrate&with_status=0&with_type=0&include_video=true`,
+	);
+	const [responseData, isLoading, error] = useFetch(url);
+	let series = responseData.results;
+	const changeGenresHandler = useCallback((id) => {
+		setGenres(id);
+	}, []);
+	const changeSortingHandler = useCallback((id) => {
+		if (id === "1") {
+			setSortingBy("popularity.asc");
+		} else {
+			setSortingBy("popularity.desc");
+		}
+	}, []);
+	const changePageForSeriesNumberHandler = (pageNumber) => {
+		setSeriesPage(pageNumber);
+	};
 	useEffect(() => {}, []);
 	useEffect(() => {
 		setUrl(
