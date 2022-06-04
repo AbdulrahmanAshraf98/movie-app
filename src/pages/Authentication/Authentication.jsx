@@ -137,7 +137,13 @@ function Authentication() {
 							</div>
 						)}
 						<div className="button-group">
-							<button className="submit">submit</button>
+							<button className="submit">{SwitchAuth}</button>
+							{/* {SwitchAuth === "login" && (
+								<button className="switchAuth" onClick={SwitchAuthHandler}>
+									stay login
+								</button>
+							)} */}
+
 							<button className="switchAuth" onClick={SwitchAuthHandler}>
 								{SwitchAuth === "login" ? "Sign Up" : "Log In"}
 							</button>
