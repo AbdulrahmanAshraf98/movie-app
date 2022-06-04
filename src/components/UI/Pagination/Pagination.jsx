@@ -3,21 +3,24 @@ import { scrollTop } from "../../../utilities/ScrollTop";
 import generateButtons from "./generateButtons";
 import "./Pagination.css";
 
-let totalItem = 10;
-let buttons = generateButtons(0, 10);
-
 function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
+	const [buttons, setButtons] = useState(generateButtons(0, 10));
+	const [totalItem, setTotalItem] = useState(10);
 	if (currentPage === 1 && totalItem > 10) {
+		console.log(1);
 		totalItem = 10;
-		buttons = generateButtons(0, totalItem);
+		setButtons(generateButtons(0, totalItem));
 	}
 
 	const nextButton = () => {
-		SetPageNumber((prev) => currentPage + 1);
+		console.log(currentPage);
+		console.log(totalItem);
+
 		if (currentPage === totalItem) {
-			totalItem = totalItem + 10;
-			buttons = generateButtons(currentPage, totalItem);
+			setTotalItem((prevstate) => totalItem + 10);
+			setButtons(generateButtons(currentPage, currentPage + 10));
 		}
+		SetPageNumber((prev) => currentPage + 1);
 	};
 
 	const prevButton = () => {
@@ -25,9 +28,10 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 			return;
 		}
 		SetPageNumber((prev) => currentPage - 1);
-		if (currentPage === totalItem - itemsPerPage + 1 && currentPage !== 1) {
-			totalItem = totalItem - itemsPerPage;
-			buttons = generateButtons(totalItem - itemsPerPage, totalItem);
+
+		if (currentPage - 1 === totalItem - itemsPerPage && currentPage !== 1) {
+			setTotalItem((prevstate) => totalItem - itemsPerPage);
+			setButtons(generateButtons(currentPage - 11, totalItem - 10));
 		}
 	};
 
@@ -66,7 +70,6 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 				<button
 					className={`pagination-button `}
 					onClick={() => {
-						// SetPageNumber(item);
 						nextButton();
 					}}>
 					next
