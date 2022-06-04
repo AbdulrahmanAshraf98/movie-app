@@ -4,11 +4,11 @@ import logo2 from "../../assets/Logo-2.png";
 import ThemeContext from "../../Store/Context/ThemeContext/ThemeContext";
 import Img from "../UI/Img/Img";
 import "./preloader.css";
-function Preloader() {
+function Preloader({ className }) {
 	const themeContext = useContext(ThemeContext);
 
 	return (
-		<div className="preloader">
+		<div className={`preloader ${className}`}>
 			<Img src={themeContext.Theme === "blue" ? logo : logo2} />
 		</div>
 	);

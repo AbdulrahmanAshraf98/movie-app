@@ -63,7 +63,7 @@ ul {
 }
 
 .d-none{
-  display: none;
+  display: none !important;
 }
 .show{
   display:block;
