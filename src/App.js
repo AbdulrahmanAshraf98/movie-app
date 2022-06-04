@@ -20,8 +20,8 @@ function App() {
 		setTimeout(() => {
 			console.log("a");
 			setLoading(false);
-		}, 50000);
-	}, []);
+		}, 500);
+	}, [loading]);
 	return (
 		<AuthContextProvider>
 			<ModalContextProvider>
