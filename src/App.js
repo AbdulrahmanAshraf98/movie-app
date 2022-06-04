@@ -25,7 +25,7 @@ function App() {
 	return (
 		<AuthContextProvider>
 			<ModalContextProvider>
-				<Preloader className={`${loading === false ? "d-none" : ""}`} />}
+				<Preloader className={`${loading === false ? "d-none" : ""}`} />
 				<div
 					className={`warper ${themeContext.Theme === "red" ? "red" : "blue"}`}>
 					<Navbar></Navbar>
