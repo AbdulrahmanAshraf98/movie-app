@@ -33,9 +33,7 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 	}, [currentPage, totalItem]);
 
 	useEffect(() => {
-		// scrollTop();
-		// console.log("a");
-		console.log(currentPage, totalItem);
+		scrollTop();
 	}, [nextButton, prevButton, setButtons]);
 
 	return (
