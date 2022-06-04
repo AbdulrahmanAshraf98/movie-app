@@ -19,7 +19,7 @@ function App() {
 	useEffect(() => {
 		setTimeout(() => {
 			setLoading(false);
-		}, 300);
+		}, 3000000);
 	}, []);
 	return (
 		<AuthContextProvider>
@@ -27,11 +27,11 @@ function App() {
 				{loading && <Preloader />}
 				<div
 					className={`warper ${themeContext.Theme === "red" ? "red" : "blue"}`}>
-					<Navbar></Navbar>
+					{!loading && <Navbar></Navbar>}
 					<FavoriteContextProvider>
 						<Main />
 					</FavoriteContextProvider>
-					<Footer></Footer>
+					{!loading && <Footer></Footer>}
 				</div>
 			</ModalContextProvider>
 		</AuthContextProvider>
