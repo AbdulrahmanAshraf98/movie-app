@@ -20,7 +20,7 @@ function App() {
 		setTimeout(() => {
 			setLoading(false);
 			console.log("a");
-		}, 300);
+		}, 500);
 	}, []);
 	return (
 		<AuthContextProvider>
