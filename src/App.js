@@ -19,6 +19,7 @@ function App() {
 	useEffect(() => {
 		setTimeout(() => {
 			setLoading(false);
+			console.log("a");
 		}, 300);
 	}, []);
 	return (
@@ -27,11 +28,11 @@ function App() {
 				{loading && <Preloader />}
 				<div
 					className={`warper ${themeContext.Theme === "red" ? "red" : "blue"}`}>
-					{loading === false && <Navbar></Navbar>}
+					<Navbar></Navbar>
 					<FavoriteContextProvider>
 						<Main />
 					</FavoriteContextProvider>
-					{loading === false && <Footer></Footer>}
+					<Footer></Footer>
 				</div>
 			</ModalContextProvider>
 		</AuthContextProvider>
