@@ -10,12 +10,15 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 		setTotalItem(10);
 		setButtons(generateButtons(0, totalItem));
 	}
-	if (currentPage === Math.floor(currentPage / 10) * totalItem) {
+	if (
+		currentPage === Math.floor(currentPage / 10) * totalItem &&
+		totalItem !== 10
+	) {
 		const firstIndex = Math.floor(currentPage - 10);
 		const lastIndex = currentPage;
 		setTotalItem(currentPage);
 		setButtons(generateButtons(firstIndex, lastIndex));
- }
+	}
  if (currentPage > totalItem) {
 		const firstIndex = Math.floor(currentPage / 10) * 10;
 		const lastIndex = Math.floor(currentPage / 10) * 10 + 10;
@@ -26,6 +29,7 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 	const nextButton = useCallback(() => {
 		SetPageNumber(currentPage + 1);
 		if (currentPage - 1 === totalItem) {
+			console.log(currentPage);
 			setTotalItem((prevstate) => {
 				return totalItem + 10;
 			});
@@ -49,7 +53,7 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 	useEffect(() => {
 		scrollTop();
 		console.log("a");
-	}, [currentPage, nextButton, prevButton]);
+	}, [nextButton, prevButton]);
 
 	return (
 		<>
