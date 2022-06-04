@@ -27,11 +27,11 @@ function App() {
 				{loading && <Preloader />}
 				<div
 					className={`warper ${themeContext.Theme === "red" ? "red" : "blue"}`}>
-					{!loading && <Navbar></Navbar>}
+					{loading === false && <Navbar></Navbar>}
 					<FavoriteContextProvider>
 						<Main />
 					</FavoriteContextProvider>
-					{!loading && <Footer></Footer>}
+					{loading === false && <Footer></Footer>}
 				</div>
 			</ModalContextProvider>
 		</AuthContextProvider>
