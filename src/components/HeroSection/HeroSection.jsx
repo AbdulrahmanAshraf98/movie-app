@@ -21,7 +21,6 @@ function HeroSection({ openModalHandler }) {
 
 	return (
 		<>
-			{isLoading && <LoadingSpinner />}
 			{trending && !isLoading && (
 				<div
 					className="HeroSection"
