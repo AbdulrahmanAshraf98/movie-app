@@ -11,6 +11,8 @@ import AuthContext from "../../Store/Context/Auth/AuthContext";
 
 function Main() {
 	const authContext = useContext(AuthContext);
+	const isLogin = authContext.isLogin;
+	console.log(isLogin);
 	return (
 		<main>
 			<Routes>
@@ -20,20 +22,11 @@ function Main() {
 				<Route path="Movies/Movie/:id" element={<MovieDetails />} />
 				<Route path="Series" element={<Series />} />
 				<Route path="Tv/:id" element={<SeriesDetails />} />
-				{authContext.isLogin === false && (
-					<Route path="Auth" element={<Navigate to="/" replace />} />
+				{isLogin === false && (
+					<Route path="Auth" element={<Authentication />} />
 				)}
-				{authContext.isLogin && (
-					<Route path="Favorite" element={<Favorite />} />
-				)}
-				{!authContext.isLogin && (
-					<>
-						<Route path="Favorite" element={<Navigate to="/" replace />} />
-						<Route path="Auth" element={<Authentication />} />
-					</>
-				)}
-
-				{/* <Route path="*" element={<Navigate to="/" replace />} /> */}
+				{isLogin === true && <Route path="Favorite" element={<Favorite />} />}
+				<Route path="*" element={<Navigate to="/" replace />} />
 			</Routes>
 		</main>
 	);
