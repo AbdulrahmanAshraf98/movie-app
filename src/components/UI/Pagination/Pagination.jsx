@@ -23,16 +23,19 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 		if (currentPage === 1) {
 			return;
 		}
-		SetPageNumber(currentPage - 1);
+
 		if (currentPage - 1 === totalItem - itemsPerPage && currentPage !== 1) {
 			setTotalItem(totalItem - itemsPerPage);
-			setButtons(generateButtons(currentPage - 10, totalItem - 10));
+			console.log(generateButtons(currentPage - 10, totalItem - 10));
+			setButtons(generateButtons(currentPage - 11, currentPage - 1));
 		}
-	}, [prevConation]);
+		SetPageNumber(currentPage - 1);
+	}, [currentPage, totalItem]);
 
 	useEffect(() => {
-		scrollTop();
-		console.log("a");
+		// scrollTop();
+		// console.log("a");
+		console.log(currentPage, totalItem);
 	}, [nextButton, prevButton, setButtons]);
 
 	return (
