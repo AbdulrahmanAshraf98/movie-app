@@ -26,7 +26,7 @@ function Series() {
 	const [sortingBy, setSortingBy] = useState(DefualtValuesortingBy);
 	const [seriesPage, setSeriesPage] = useState(1);
 	const [url, setUrl] = useState(
-		`https://api.themoviedb.org/3/discover/tv?api_key=d948c5c0ea05d8b074392d5c6641f56c&sort_by=${sortingBy}&page=${seriesPage}&with_genres=${genres}&with_watch_monetization_types=flatrate&with_status=0&with_type=0&include_video=true`,
+		`https://api.themoviedb.org/3/discover/tv?${process.env.REACT_APP_TMDB_API_KEY}&sort_by=${sortingBy}&page=${seriesPage}&with_genres=${genres}&with_watch_monetization_types=flatrate&with_status=0&with_type=0&include_video=true`,
 	);
 	const [responseData, isLoading, error] = useFetch(url);
 	let series = responseData.results;
@@ -46,7 +46,7 @@ function Series() {
 	useEffect(() => {}, []);
 	useEffect(() => {
 		setUrl(
-			`https://api.themoviedb.org/3/discover/tv?api_key=d948c5c0ea05d8b074392d5c6641f56c&sort_by=${sortingBy}&page=${seriesPage}&with_genres=${genres}&with_keywords=anime &with_watch_monetization_types=flatrate&with_status=0&with_type=0&include_video=true`,
+			`https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_TMDB_API_KEY}&sort_by=${sortingBy}&page=${seriesPage}&with_genres=${genres}&with_keywords=anime &with_watch_monetization_types=flatrate&with_status=0&with_type=0&include_video=true`,
 		);
 	}, [url, seriesPage, responseData, genres, sortingBy, isLoading, error]);
 	return (

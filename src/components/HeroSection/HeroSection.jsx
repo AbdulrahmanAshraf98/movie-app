@@ -9,7 +9,7 @@ import "./Herosection.css";
 import Banner from "./Banner/Banner";
 function HeroSection({ openModalHandler }) {
 	const response =
-		useFetch(`https://api.themoviedb.org/3/trending/all/week?api_key=d948c5c0ea05d8b074392d5c6641f56c&&page=3
+		useFetch(`https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_TMDB_API_KEY}&&page=1
 	`);
 	const trending = response[0].results;
 	const [background, setBackground] = useState("");

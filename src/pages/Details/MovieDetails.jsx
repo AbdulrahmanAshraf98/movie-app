@@ -23,10 +23,10 @@ function MovieDetails() {
 		recommendationsIsLoading,
 		recommendationsError,
 	] = useFetch(
-		`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US&page=1`,
+		`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`,
 	);
 	const [costResponse, costIsLoading, costError] = useFetch(
-		`https://api.themoviedb.org/3/movie/${id}/credits?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US`,
+		`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`,
 	);
 	let MovieDetailsData = null;
 	MovieDetailsData = responseData;

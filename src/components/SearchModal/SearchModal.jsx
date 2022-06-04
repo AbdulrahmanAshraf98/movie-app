@@ -10,7 +10,7 @@ function SearchModal({ type }) {
 	const context = useContext(ModalContext);
 	const [searchTearm, setSearchTearm] = useState("");
 	let url = searchTearm
-		? `https://api.themoviedb.org/3/search/${type}?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US&query=${searchTearm}&page=1&include_adult=true`
+		? `https://api.themoviedb.org/3/search/${type}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${searchTearm}&page=1&include_adult=true`
 		: "";
 	const [response, isLoading, error] = useFetch(url);
 	const [searchResult, setSearchResult] = useState([]);
