@@ -17,7 +17,7 @@ function DetailsOverview({ item, openModalHandler }) {
 		: item.backdrop_path;
 
 	const favoriteAdd = () => {
-		if (!authContext.isLogin) {
+		if (authContext.isLogin === false) {
 			setLocalStorage("prevPath", location.pathname, "");
 			navigate("/Auth");
 			return;
