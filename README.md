@@ -30,6 +30,7 @@ Write about 1-2 paragraphs describing the purpose of your project.
 - Get Videos About  Movie/Tv  
 - Search for Movie/Tv 
 - Filter Category for Movies/TvSeries
+- Sorting  By popularity desc/asc
 - Authentication SignUp/LogIn
 - Add/Remove To/From Favorite list items
 - Switch Current Page for Movies/TvSeries
