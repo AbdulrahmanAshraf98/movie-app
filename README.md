@@ -1,5 +1,5 @@
 <h3 align="center">movie-app built in React Js  based on Tmdb_Api</h3>
-<h4 align="center"> Bulit With React js && ReactContextApi && React Router Dom V6 && Swiper Js && Native css && FireBase For Backend </h4>
+<h4 align="center"> Bulit With React js && ReactContextApi && React Router Dom V6 && Swiper Js && Native css && FireBase For Backend And For Responsive Web Design Mobile First Approach </h4>
 
 ## 📝 Table of Contents
 - [Features](../Features.md)
