@@ -48,7 +48,7 @@ Write about 1-2 paragraphs describing the purpose of your project.
 - [Swiper Js](https://vuejs.org/) - 
 - [Firebase](https://nodejs.org/en/) - Firebase
 - [FireStore]()       -For DataBase
-- [LocalStorage]   -To Keep Track Selected Category And Selected SortBy And Current User Id 
+- [LocalStorage]()   -To Keep Track Selected Category And Selected SortBy And Current User Id 
 
 ## 🔥 Preview  <a name = "Preview"></a>
 
