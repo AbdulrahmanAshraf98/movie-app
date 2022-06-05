@@ -67,7 +67,8 @@ function Navbar() {
 								<select
 									onChange={(e) => {
 										themeContext.changeThemeHandler(e.target.value);
-									}}>
+									}}
+									value={themeContext.Theme}>
 									<option>blue</option>
 									<option>red</option>
 								</select>

@@ -11,6 +11,7 @@ import {
 import {
 	getLocalStorage,
 	localStorageIsFound,
+	setLocalStorage,
 } from "../../utilities/Localstorage";
 import "./Authentication.css";
 
@@ -81,6 +82,8 @@ function Authentication() {
 				? getLocalStorage("prevPath", "")
 				: "/";
 			navigate(Pathname, { replace: true });
+			setLocalStorage("prevPath", "", "");
+			return;
 		} else {
 			const response = await registerWithEmailAndPassword(
 				enteredValue.enteredEmail,

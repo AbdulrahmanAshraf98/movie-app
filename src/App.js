@@ -18,14 +18,13 @@ function App() {
 	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		setTimeout(() => {
-			console.log("a");
 			setLoading(false);
-		}, 500);
+		}, 800);
 	}, [loading]);
 	return (
 		<AuthContextProvider>
 			<ModalContextProvider>
-				<Preloader className={`${loading === false ? "d-none" : ""}`} />
+				{loading && <Preloader className={``} />}
 				<div
 					className={`warper ${themeContext.Theme === "red" ? "red" : "blue"}`}>
 					<Navbar></Navbar>

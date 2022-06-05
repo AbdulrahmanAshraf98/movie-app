@@ -5,5 +5,7 @@ const FavoriteContext = createContext({
 	isAdded: false,
 	addToFavoriteHandler: () => {},
 	removeFromFavoriteHandler: () => {},
+	foundItem: () => {},
+	getFavoriteItems: () => {},
 });
 export default FavoriteContext;

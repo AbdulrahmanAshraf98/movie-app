@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { Suspense, useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Authentication from "../../pages/Authentication/Authentication";
 import MovieDetails from "../../pages/Details/MovieDetails";
@@ -8,11 +8,11 @@ import Home from "../../pages/Home/Home";
 import Movies from "../../pages/Movies/Movies";
 import Series from "../../pages/Series/Series";
 import AuthContext from "../../Store/Context/Auth/AuthContext";
+import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
 
 function Main() {
 	const authContext = useContext(AuthContext);
 	const isLogin = authContext.isLogin;
-	console.log(isLogin);
 	return (
 		<main>
 			<Routes>

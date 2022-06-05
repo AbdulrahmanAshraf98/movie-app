@@ -1,5 +1,6 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import HeroSection from "../../components/HeroSection/HeroSection";
+import Preloader from "../../components/preloader/Preloader";
 import VideoModal from "../../components/VideoModal/VideoModal";
 import ModalContext from "../../Store/Context/ModalContext/ModalContext";
 
@@ -14,6 +15,12 @@ function Home() {
 			modalContext.videoModuleOpenHandler();
 		}
 	}, [videoId, mediaType, modalContext]);
+	const [loading, setLoading] = useState(true);
+	useEffect(() => {
+		setTimeout(() => {
+			setLoading(false);
+		}, 800);
+	}, [loading]);
 
 	useEffect(() => {
 		scrollTop();
@@ -21,6 +28,7 @@ function Home() {
 
 	return (
 		<>
+			{loading && <Preloader className={``} />}
 			{videoId && modalContext.videoModuleIsOpen && (
 				<VideoModal id={+videoId} type={mediaType} />
 			)}

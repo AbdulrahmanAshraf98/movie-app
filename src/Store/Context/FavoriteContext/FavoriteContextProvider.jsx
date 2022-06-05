@@ -10,9 +10,15 @@ function FavoriteContextProvider({ children }) {
 	const authContext = useContext(AuthContext);
 	const UserId = authContext.UID;
 	const [favoriteItems, setFavoriteItems] = useState([]);
-	const [buttonTraguer, setButtonTraguer] = useState(false);
+	const [buttonTrigger, setButtonTrigger] = useState(false);
 
 	const addToFavoriteHandler = async (item) => {
+		if (favoriteItems.length === 0) {
+			setFavoriteItems([item]);
+		} else {
+			setFavoriteItems([...favoriteItems, item]);
+		}
+
 		const docRef = doc(db, "Favourite", UserId);
 		const docSnap = await getDoc(docRef);
 		if (!docSnap.exists()) {
@@ -28,7 +34,7 @@ function FavoriteContextProvider({ children }) {
 		await updateDoc(docRef, {
 			items: arrayUnion(item),
 		});
-		setButtonTraguer(true);
+		setButtonTrigger(true);
 		return;
 	};
 	const removeFromFavoriteHandler = async (id) => {
@@ -71,15 +77,15 @@ function FavoriteContextProvider({ children }) {
 		return favoriteItems;
 	};
 	useEffect(() => {
-		if (!favoriteItems || buttonTraguer) {
+		if (!favoriteItems || buttonTrigger) {
 			getFavoriteData();
 		}
 		return () => {
-			setButtonTraguer(false);
+			setButtonTrigger(false);
 		};
 
 		// console.log(favoriteItems);
-	}, [favoriteItems, buttonTraguer]);
+	}, [favoriteItems, buttonTrigger]);
 	const favoriteContext = {
 		favoriteItems,
 		addToFavoriteHandler,

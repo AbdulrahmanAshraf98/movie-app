@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import * as ReactDOM from "react-dom";
+
 import logo from "../../assets/logo-1.png";
 import logo2 from "../../assets/Logo-2.png";
 import ThemeContext from "../../Store/Context/ThemeContext/ThemeContext";
@@ -7,10 +9,11 @@ import "./preloader.css";
 function Preloader({ className }) {
 	const themeContext = useContext(ThemeContext);
 
-	return (
+	return ReactDOM.createPortal(
 		<div className={`preloader ${className}`}>
 			<Img src={themeContext.Theme === "blue" ? logo : logo2} />
-		</div>
+		</div>,
+		document.getElementById("root"),
 	);
 }
 

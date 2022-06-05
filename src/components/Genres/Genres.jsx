@@ -1,5 +1,6 @@
 import React from "react";
 import useFetch from "../../Hooks/useFetch";
+import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
 import DropDown from "../UI/SelectBox/DropDown/DropDown";
 import "./Genres.css";
 function Genres({ onClick, mediaType = "movie", className }) {
@@ -12,16 +13,18 @@ function Genres({ onClick, mediaType = "movie", className }) {
 	const [responseData, isLoading] = useFetch(url);
 	let genres = responseData.genres;
 	return (
-		genres && (
-			<div className={className}>
-				<DropDown
-					values={genres}
-					defaultValue="All"
-					onClick={onClick}
-					localStorageItemName={`${mediaType}genres`}
-				/>
-			</div>
-		)
+		<>
+			{genres && !isLoading && (
+				<div className={className}>
+					<DropDown
+						values={genres}
+						defaultValue="All"
+						onClick={onClick}
+						localStorageItemName={`${mediaType}genres`}
+					/>
+				</div>
+			)}
+		</>
 	);
 }
 

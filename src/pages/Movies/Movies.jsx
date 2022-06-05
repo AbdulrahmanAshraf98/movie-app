@@ -19,8 +19,8 @@ function Movies() {
 	let DefualtValueGenres = localStorageIsFound("moviegenres")
 		? getLocalStorage("moviegenres", "object").id
 		: "";
-	let DefualtValuesortingBy = localStorageIsFound("moviesSortBy")
-		? getLocalStorage("moviesSortBy", "object").name
+	let DefualtValuesortingBy = localStorageIsFound("movieSortBy")
+		? getLocalStorage("movieSortBy", "object").name
 		: "popularity.desc";
 
 	const [page, setPage] = useState(1);
