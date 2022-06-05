@@ -23,7 +23,7 @@
 - Add/Remove To/From Favorite list items
 - Switch Current Page for Movies/TvSeries
 - Toggle Blue/Rea Mode
-- Track Selected Category And Selected SortBy And Current User Id And Current path name using localstroage 
+- Track Selected Category And  SortBy And Current User Id And Current path name using localstroage 
 <br />
 
 ## 🌐 [LIVE DEMO](https://movie-app-six-xi.vercel.app/) <a name = "LIVE-DEMO"></a>
