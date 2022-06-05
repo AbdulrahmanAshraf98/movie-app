@@ -2,8 +2,6 @@
 <h4 align="center"> Bulit With React js && ReactContextApi && React Router Dom V6 && Swiper Js && Native css && FireBase For Backend </h4>
 
 ## 📝 Table of Contents
-
-- [About](#about)
 - [Features](../Features.md)
 - [Live Demo](#LIVE-DEMO)
 - [Built Using](#built_using)
@@ -28,7 +26,7 @@
 <br />
 
 ## 🌐 [LIVE DEMO](https://movie-app-six-xi.vercel.app/) <a name = "LIVE-DEMO"></a>
-  vercel:<a></a>(https://movie-app-six-xi.vercel.app/)
+  vercel:https://movie-app-six-xi.vercel.app/
 
 <br />
 
