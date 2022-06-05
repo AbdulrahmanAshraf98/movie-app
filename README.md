@@ -23,6 +23,7 @@
 - Add/Remove To/From Favorite list items
 - Switch Current Page for Movies/TvSeries
 - Toggle Blue/Rea Mode
+- Track Selected Category And Selected SortBy And Current User Id And Current path name using localstroage 
 <br />
 
 ## 🌐 [LIVE DEMO](https://movie-app-six-xi.vercel.app/) <a name = "LIVE-DEMO"></a>
@@ -38,7 +39,7 @@
 - [Swiper Js](https://vuejs.org/) - 
 - [Firebase](https://nodejs.org/en/) - Firebase
 - [FireStore]()       -For DataBase
-- [LocalStorage]()   -To Keep Track Selected Category And Selected SortBy And Current User Id 
+- [LocalStorage]()   -To Keep Track Selected Category And Selected SortBy And Current User Id And Current path name 
 
 ## 🔥 Preview  <a name = "Preview"></a>
 
