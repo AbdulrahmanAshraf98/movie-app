@@ -34,6 +34,7 @@ function Movies() {
 	const totalpage = responseData.total_pages;
 	const changeGenresHandler = useCallback((id) => {
 		setGenres(id);
+		setPage(1);
 	}, []);
 	const changeSortingHandler = useCallback((id) => {
 		if (id === "1") {
@@ -41,6 +42,7 @@ function Movies() {
 		} else {
 			setSortingBy("popularity.desc");
 		}
+		setPage(1);
 	}, []);
 	const changePageNumberHandler = (pageNumber) => {
 		setPage(pageNumber);

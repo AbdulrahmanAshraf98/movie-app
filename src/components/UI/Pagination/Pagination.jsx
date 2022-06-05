@@ -32,6 +32,12 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 	}, [currentPage, totalItem]);
 
 	useEffect(() => {}, [nextButton, prevButton, setButtons]);
+	useEffect(() => {
+		if (currentPage === 1) {
+			setButtons(generateButtons(0, 10));
+			setTotalItem(10);
+		}
+	}, [currentPage]);
 
 	return (
 		<>
