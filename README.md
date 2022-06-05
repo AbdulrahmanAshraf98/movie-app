@@ -1,27 +1,17 @@
 <h3 align="center">movie-app built in React Js  based on Tmdb_Api</h3>
-<h4 align="center">Bulit With React js && React Router Dom V6 && Swiper Js && Native css && FireBase For Backend </h4>
----
-
-<p align="center"> Few lines describing your project.
-    <br> 
-</p>
+<h4 align="center"> Bulit With React js && ReactContextApi && React Router Dom V6 && Swiper Js && Native css && FireBase For Backend </h4>
 
 ## 📝 Table of Contents
 
 - [About](#about)
 - [Features](../Features.md)
-- [LIVE DEMO](#LIVE-DEMO)
+- [Live Demo](#LIVE-DEMO)
 - [Built Using](#built_using)
 - [Preview](#Preview)
 - [Getting Started](#getting_started)
 - [Deployment](#deployment)
 - [Usage](#usage)
 - [Acknowledgments](#acknowledgement)
-
-## 🧐 About <a name = "about"></a>
-
-Write about 1-2 paragraphs describing the purpose of your project.
-<p></p>
 
 
 ## 📋 Features  <a name = "Features"></a>
@@ -38,6 +28,7 @@ Write about 1-2 paragraphs describing the purpose of your project.
 <br />
 
 ## 🌐 [LIVE DEMO](https://movie-app-six-xi.vercel.app/) <a name = "LIVE-DEMO"></a>
+  vercel:<a></a>(https://movie-app-six-xi.vercel.app/)
 
 <br />
 
