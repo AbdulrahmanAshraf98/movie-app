@@ -80,12 +80,18 @@ function FavoriteContextProvider({ children }) {
 		if (!favoriteItems || buttonTrigger) {
 			getFavoriteData();
 		}
+
 		return () => {
 			setButtonTrigger(false);
 		};
 
 		// console.log(favoriteItems);
 	}, [favoriteItems, buttonTrigger]);
+	useEffect(() => {
+		if (UserId !== "") {
+			getFavoriteData();
+		}
+	}, []);
 	const favoriteContext = {
 		favoriteItems,
 		addToFavoriteHandler,

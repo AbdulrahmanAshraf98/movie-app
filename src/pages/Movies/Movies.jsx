@@ -14,15 +14,15 @@ import {
 } from "../../utilities/Localstorage";
 import { scrollTop } from "../../utilities/ScrollTop";
 import "./Movies.css";
+
 function Movies() {
 	const context = useContext(ModalContext);
-	let DefualtValueGenres = localStorageIsFound("moviegenres")
+	const DefualtValueGenres = localStorageIsFound("moviegenres")
 		? getLocalStorage("moviegenres", "object").id
 		: "";
-	let DefualtValuesortingBy = localStorageIsFound("movieSortBy")
+	const DefualtValuesortingBy = localStorageIsFound("movieSortBy")
 		? getLocalStorage("movieSortBy", "object").name
 		: "popularity.desc";
-
 	const [page, setPage] = useState(1);
 	const [genres, setGenres] = useState(DefualtValueGenres);
 	const [sortingBy, setSortingBy] = useState(DefualtValuesortingBy);
@@ -50,9 +50,7 @@ function Movies() {
 			`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&sort_by=${sortingBy}&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate&with_genres=${genres}`,
 		);
 	}, [url, page, genres, sortingBy, isLoading, error]);
-	useEffect(() => {
-		scrollTop();
-	}, [isLoading]);
+	useEffect(() => {}, [isLoading]);
 	return (
 		<>
 			{context.SearchModuleIsOpen && <SearchModal type={"movie"} />}

@@ -7,7 +7,6 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 	const [buttons, setButtons] = useState(generateButtons(0, 10));
 	const [totalItem, setTotalItem] = useState(10);
 
-
 	const nextButton = useCallback(() => {
 		if (currentPage === totalItem) {
 			setTotalItem((prevstate) => {
@@ -32,9 +31,7 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 		SetPageNumber(currentPage - 1);
 	}, [currentPage, totalItem]);
 
-	useEffect(() => {
-		scrollTop();
-	}, [nextButton, prevButton, setButtons]);
+	useEffect(() => {}, [nextButton, prevButton, setButtons]);
 
 	return (
 		<>

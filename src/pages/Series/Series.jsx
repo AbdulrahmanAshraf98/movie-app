@@ -13,6 +13,8 @@ import {
 	setLocalStorage,
 } from "../../utilities/Localstorage";
 import "./Series.css";
+
+
 function Series() {
 	const context = useContext(ModalContext);
 	const DefualtValueGenres = localStorageIsFound("tvgenres")
@@ -21,7 +23,6 @@ function Series() {
 	const DefualtValuesortingBy = localStorageIsFound("tvSortBy")
 		? getLocalStorage("tvSortBy", "object").name
 		: "popularity.desc";
-	
 	const [genres, setGenres] = useState(DefualtValueGenres);
 	const [sortingBy, setSortingBy] = useState(DefualtValuesortingBy);
 	const [seriesPage, setSeriesPage] = useState(1);

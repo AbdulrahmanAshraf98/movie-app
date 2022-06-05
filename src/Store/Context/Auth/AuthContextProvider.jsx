@@ -1,11 +1,22 @@
 import React, { useState } from "react";
+import {
+	getLocalStorage,
+	localStorageIsFound,
+	removeItemFromLocalStorage,
+	setLocalStorage,
+} from "../../../utilities/Localstorage";
 import AuthContext from "./AuthContext";
 
 function AuthContextProvider({ children }) {
-	const [UID, setUID] = useState("");
-	const [isLogin, setIsLogin] = useState(false);
+	const defaultUID = localStorageIsFound("UID")
+		? getLocalStorage("UID", "")
+		: "";
+	const defaultIsLogin = defaultUID !== "" && true;
+	const [UID, setUID] = useState(defaultUID);
+	const [isLogin, setIsLogin] = useState(defaultIsLogin);
 	const SetUIDHandler = (UID) => {
 		setUID(UID);
+		setLocalStorage("UID", UID, "");
 	};
 	const SetIsLoginHandler = () => {
 		setIsLogin(true);
@@ -13,7 +24,8 @@ function AuthContextProvider({ children }) {
 
 	const logoutHandler = () => {
 		setIsLogin(false);
-        setUID("");
+		setUID("");
+		removeItemFromLocalStorage("UID");
 	};
 	const authContext = {
 		UID,

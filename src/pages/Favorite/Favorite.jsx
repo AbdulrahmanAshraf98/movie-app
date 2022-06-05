@@ -9,9 +9,7 @@ function Favorite() {
 	const favoriteRemoveItem = (id) => {
 		favoriteContext.removeFromFavoriteHandler(id);
 	};
-	useEffect(() => {
-		FavoriteItems = favoriteContext.getFavoriteItems();
-	}, [FavoriteItems]);
+	useEffect(() => {}, [FavoriteItems]);
 	return (
 		FavoriteItems && (
 			<section className="Favourite">
