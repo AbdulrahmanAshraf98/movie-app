@@ -1,5 +1,5 @@
 <h3 align="center">movie-app built in React Js  based on Tmdb_Api</h3>
-<h4 align="center">Bulit With React js && React Router Dom V6 && Swiper Js && FireBase For Backend </h4>
+<h4 align="center">Bulit With React js && React Router Dom V6 && Swiper Js && Native css && FireBase For Backend </h4>
 ---
 
 <p align="center"> Few lines describing your project.
