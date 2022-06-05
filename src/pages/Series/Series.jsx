@@ -12,8 +12,8 @@ import {
 	localStorageIsFound,
 	setLocalStorage,
 } from "../../utilities/Localstorage";
+import { scrollTop } from "../../utilities/ScrollTop";
 import "./Series.css";
-
 
 function Series() {
 	const context = useContext(ModalContext);
@@ -44,7 +44,9 @@ function Series() {
 	const changePageForSeriesNumberHandler = (pageNumber) => {
 		setSeriesPage(pageNumber);
 	};
-	useEffect(() => {}, []);
+	useEffect(() => {
+		scrollTop();
+	}, []);
 	useEffect(() => {
 		setUrl(
 			`https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_TMDB_API_KEY}&sort_by=${sortingBy}&page=${seriesPage}&with_genres=${genres}&with_keywords=anime &with_watch_monetization_types=flatrate&with_status=0&with_type=0&include_video=true`,
