@@ -48,30 +48,14 @@ Write about 1-2 paragraphs describing the purpose of your project.
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 - [React Js](https://www.mongodb.com/) -UI Libaray
+- [React Router Dom](https://www.mongodb.com/) For Routing 
 - [Css Framework](https://expressjs.com/) - Css3
 - [Swiper Js](https://vuejs.org/) - 
 - [Firebase](https://nodejs.org/en/) - Firebase
 - [FireStore]()       -For DataBase
-- [LocalStorage]   -To Keep Track Category And SortBy And Current User Id 
+- [LocalStorage]   -To Keep Track Selected Category And Selected SortBy And Current User Id 
 
 ## 🔥 Preview  <a name = "Preview"></a>
-
-<br />
-
-![Preview (1)](https://user-images.githubusercontent.com/52681435/161135685-989b232a-422e-4e9b-9dff-99fab47658bc.png)
-![Preview (2)](https://user-images.githubusercontent.com/52681435/161135945-9b5c0c65-ac83-4ada-bdfa-41778a96a94f.png)
-
-<div align="center">
-
-![Preview (3)](https://user-images.githubusercontent.com/52681435/161135760-69232f0c-1bef-44f7-a327-428087a792c6.png)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![Preview (4)](https://user-images.githubusercontent.com/52681435/161136639-5a5121f5-8a7b-4127-a7fb-b9f67231cf1e.png)
-
-</div>
-
-<div align="center">
-
-![Preview (5)](https://user-images.githubusercontent.com/52681435/161136155-fbec7df2-68fa-49e9-8801-c9599c452583.png)
 
 </div>
 
@@ -106,6 +90,17 @@ Remember to replace the config variable in your firebase.utils.js with your own 
 
 <img width="1261" alt="Screen Shot 2022-03-11 at 8 51 22 PM" src="https://user-images.githubusercontent.com/10578605/157999158-10e921cc-9ee5-46f6-a0c5-1ae5686f54f3.png">
 
+## Set your .env file 
+    create .env file with
+    REACT_APP_TMDB_API_KEY=Your_TMDB_API_KEY
+    REACT_APP_FIREBASE_API_KEY=Your_FIREBASE_API_KEY
+    REACT_APP_AUTH_DOMAIN=Your_AUTH_DOMAIN
+    REACT_APP_DATABASE_URL=Your_DATABASE_URL
+    REACT_APP_PROJECT_ID=Your_PROJECT_ID
+    REACT_APP_STORAGE_BUCKET=Your_STORAGE_BUCKET
+    REACT_APP_MESSAGING_SENDER_ID=Your_MESSAGING_SENDER_ID
+    REACT_APP_APP_ID=Your_APP_ID
+
 
 ## 🎈 Usage <a name="usage"></a>
 
@@ -117,14 +112,10 @@ Add additional notes about how to deploy this on a live system.
 
 
 
-## ✍️ Authors <a name = "authors"></a>
-
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+## ✍️ Authors <a name = "authors">Abdulrhman Ashraf</a>
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- Design Inspiration  
+  Tmdb Website <a>https://www.themoviedb.org/</a>
+  streamlab website <a>http://template.gentechtreedesign.com/html/streamlab/html/index.html</a>
