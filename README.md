@@ -7,8 +7,6 @@
 - [Built Using](#built_using)
 - [Preview](#Preview)
 - [Getting Started](#getting_started)
-- [Deployment](#deployment)
-- [Usage](#usage)
 - [Acknowledgments](#acknowledgement)
 
 
@@ -27,7 +25,9 @@
 <br />
 
 ## 🌐 [LIVE DEMO](https://movie-app-six-xi.vercel.app/) <a name = "LIVE-DEMO"></a>
-  vercel:https://movie-app-six-xi.vercel.app/
+  FirebaseHosting:https://movie-app-99180.web.app/	
+  Vercel:https://movie-app-six-xi.vercel.app/
+  
 
 <br />
 

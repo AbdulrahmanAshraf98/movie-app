@@ -4,14 +4,12 @@ import { db } from "../../../utilities/firebase/firebase";
 import AuthContext from "../Auth/AuthContext";
 import FavoriteContext from "./FavoriteContext";
 
-let initialState = [];
 
 function FavoriteContextProvider({ children }) {
 	const authContext = useContext(AuthContext);
 	const UserId = authContext.UID;
 	const [favoriteItems, setFavoriteItems] = useState([]);
 	const [buttonTrigger, setButtonTrigger] = useState(false);
-
 	const addToFavoriteHandler = async (item) => {
 		if (favoriteItems.length === 0) {
 			setFavoriteItems([item]);

@@ -56,30 +56,43 @@ function Authentication() {
 				enteredValue.enteredEmail,
 				enteredValue.enteredPassword,
 			);
-			
 			if (response.error) {
 				console.log(response.error);
 				if (response.error === "auth/user-not-found") {
-					setError({ emailError: "user-not-found", password: "", general: "" });
+					setError({
+						emailError: "user-not-found",
+						password: "",
+						general: "",
+					});
+					return;
 				} else if (response.error === "auth/invalid-email") {
-					setError({ emailError: "invalid-email", password: "", general: "" });
+					setError({
+						emailError: "invalid-email",
+						password: "",
+						general: "",
+					});
 				} else if (response.error === "auth/wrong-password") {
-					setError({ emailError: "", password: "wrong-password", general: "" });
+					setError({
+						emailError: "",
+						password: "wrong-password",
+						general: "",
+					});
 				} else {
 					setError({
 						emailError: "",
 						password: "",
 						general: `${response.error}`,
 					});
+					return;
 				}
 				return;
 			}
-			setError({
-				emailError: "",
-				password: "",
-				general: "",
-			});
-
+				setError({
+					emailError: "",
+					password: "",
+					general: "",
+				});
+						
 			authContext.SetUIDHandler(`${response.user.uid}`);
 			authContext.SetIsLoginHandler();
 			const Pathname = localStorageIsFound("prevPath")

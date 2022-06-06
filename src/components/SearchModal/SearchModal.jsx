@@ -28,7 +28,6 @@ function SearchModal({ type }) {
 			setSearchResult([]);
 		}
 	}, [searchTearm]);
-	console.log(searchResult);
 	return (
 		<Modal
 			className="searchModal"
