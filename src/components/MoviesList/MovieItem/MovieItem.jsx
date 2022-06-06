@@ -1,19 +1,24 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import Card from "../../UI/Card/Card";
 import { Link } from "react-router-dom";
 import Img from "../../UI/Img/Img";
 import "./MovieItem.css";
 import FavoriteContext from "../../../Store/Context/FavoriteContext/FavoriteContext";
 import AuthContext from "../../../Store/Context/Auth/AuthContext";
+import ModalContext from "../../../Store/Context/ModalContext/ModalContext";
 function MovieItem({ movie }) {
 	const authContext = useContext(AuthContext);
 	const favoriteContext = useContext(FavoriteContext);
+	const modalContext = useContext(ModalContext);
 	const favoriteAdd = () => {
 		favoriteContext.addToFavoriteHandler(movie);
 	};
 	const favoriteRemoveItem = () => {
 		favoriteContext.removeFromFavoriteHandler(movie.id);
 	};
+	const closeModalHandler = useCallback(() => {
+		modalContext.SearchModuleCloseHandler();
+	}, []);
 
 	const foundFavItem = favoriteContext.foundItem(movie.id);
 	return (
@@ -49,7 +54,9 @@ function MovieItem({ movie }) {
 							)}
 
 							<div className="play">
-								<Link to={`/Movies/Movie/${movie.id}`}>
+								<Link
+									to={`/Movies/Movie/${movie.id}`}
+									onClick={closeModalHandler}>
 									<i className="fa-solid fa-down-left-and-up-right-to-center"></i>
 								</Link>
 							</div>

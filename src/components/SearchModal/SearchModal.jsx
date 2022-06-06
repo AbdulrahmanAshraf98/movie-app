@@ -7,7 +7,7 @@ import Container from "../UI/Container/Container";
 import Modal from "../UI/Modal/Modal";
 import "./SearchModal.css";
 function SearchModal({ type }) {
-	const context = useContext(ModalContext);
+	const modalContext = useContext(ModalContext);
 	const [searchTearm, setSearchTearm] = useState("");
 	let url = searchTearm
 		? `https://api.themoviedb.org/3/search/${type}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${searchTearm}&page=1&include_adult=true`
@@ -19,7 +19,7 @@ function SearchModal({ type }) {
 		setSearchTearm(e.target.value);
 	}, []);
 	const closeModalHandler = useCallback(() => {
-		context.SearchModuleCloseHandler();
+		modalContext.SearchModuleCloseHandler();
 	}, []);
 
 	useEffect(() => {
@@ -33,9 +33,7 @@ function SearchModal({ type }) {
 			className="searchModal"
 			closeBtnClassName="closeSearchModal"
 			closeModalHandler={closeModalHandler}>
-			<Container
-			// className={`${searchTearm.trim().length !== 0 ? "Hauto" : ""}`}>
-			>
+			<Container>
 				<div className="searchForm">
 					<form>
 						<input

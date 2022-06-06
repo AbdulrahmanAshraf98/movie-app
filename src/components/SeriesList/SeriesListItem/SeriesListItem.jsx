@@ -1,19 +1,24 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../../Store/Context/Auth/AuthContext";
 import FavoriteContext from "../../../Store/Context/FavoriteContext/FavoriteContext";
+import ModalContext from "../../../Store/Context/ModalContext/ModalContext";
 import Card from "../../UI/Card/Card";
 import Img from "../../UI/Img/Img";
 import "./SeriesListItem.css";
 function SeriesListItem({ series }) {
 	const favoriteContext = useContext(FavoriteContext);
 	const authContext = useContext(AuthContext);
+	const modalContext = useContext(ModalContext);
 	const favoriteAdd = () => {
 		favoriteContext.addToFavoriteHandler(series);
 	};
 	const favoriteRemoveItem = () => {
 		favoriteContext.removeFromFavoriteHandler(series.id);
 	};
+	const closeModalHandler = useCallback(() => {
+		modalContext.SearchModuleCloseHandler();
+	}, []);
 	const foundFavItem = favoriteContext.foundItem(series.id);
 	return (
 		<>
@@ -50,7 +55,7 @@ function SeriesListItem({ series }) {
 									</>
 								)}
 								<div className="play">
-									<Link to={`/Tv/${series.id}`}>
+									<Link to={`/Tv/${series.id}`} onClick={closeModalHandler}>
 										<i className="fa-solid fa-down-left-and-up-right-to-center"></i>
 									</Link>
 								</div>
