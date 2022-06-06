@@ -31,7 +31,7 @@ function DetailsOverview({ item, openModalHandler }) {
 	const foundFavItem = favoriteContext.foundItem(item.id);
 	return (
 		<section
-			className="Details"
+			className="Details "
 			style={{
 				backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${item.backdrop_path})`,
 			}}>

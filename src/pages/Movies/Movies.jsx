@@ -58,7 +58,7 @@ function Movies() {
 		<>
 			{context.SearchModuleIsOpen && <SearchModal type={"movie"} />}
 			{!context.SearchModuleIsOpen && (
-				<section className="movies">
+				<section className="movies ">
 					<Container>
 						<div className="row">
 							{isLoading && !movies && <LoadingSpinner />}

@@ -134,7 +134,7 @@ function Authentication() {
 	// useEffect(() => {}, [SwitchAuth, error]);
 
 	return (
-		<section className="Authentication">
+		<section className="Authentication fadeIn">
 			<Container>
 				<div className="Auth">
 					<SectionTitle>{SwitchAuth}</SectionTitle>
