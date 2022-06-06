@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import { Autoplay, Navigation } from "swiper";
-import useFetch from "../../Hooks/useFetch";
 import Carousel from "../UI/Carousel/Carousel";
 import Container from "../UI/Container/Container";
 import SectionTitle from "../UI/sectionTitle/SectionTitle";
 import RecommendationsItem from "./RecommendationsItem/RecommendationsItem";
 import "./Recommendations.css";
-import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
 function Recommendations({ mediaType, recommendationsData }) {
 	return (
 		<>

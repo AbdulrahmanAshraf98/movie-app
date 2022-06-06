@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
 import Card from "../../UI/Card/Card";
 import { Link } from "react-router-dom";
 import Img from "../../UI/Img/Img";

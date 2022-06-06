@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AuthContext from "../../../Store/Context/Auth/AuthContext";
 import { SignOutUser } from "../../../utilities/firebase/firebase";
 import NavbarItem from "../NavbarItem/NavbarItem";

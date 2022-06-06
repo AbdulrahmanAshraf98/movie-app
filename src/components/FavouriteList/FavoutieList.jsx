@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import FavoriteContext from "../../Store/Context/FavoriteContext/FavoriteContext";
+import React from "react";
 import FavouriteItem from "./FavouriteItem/FavouriteItem";
 import "./Favoutite.css";
 function FavoutieList({ data, favoriteRemoveItem }) {

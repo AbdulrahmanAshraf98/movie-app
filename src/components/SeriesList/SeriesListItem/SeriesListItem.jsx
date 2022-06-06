@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AuthContext from "../../../Store/Context/Auth/AuthContext";
 import FavoriteContext from "../../../Store/Context/FavoriteContext/FavoriteContext";
 import Card from "../../UI/Card/Card";

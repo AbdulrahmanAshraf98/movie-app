@@ -43,15 +43,7 @@ function MovieDetails() {
 			modalContext.videoModuleOpenHandler();
 		}
 		modalContext.getSearchParamsHandler();
-	}, [
-		id,
-		videoId,
-		useParams,
-		searchParams,
-		MovieDetailsData,
-		isLoading,
-		error,
-	]);
+	}, [id, videoId, useParams, MovieDetailsData, isLoading, error]);
 
 	useEffect(() => {
 		if (id) {

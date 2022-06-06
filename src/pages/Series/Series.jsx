@@ -10,7 +10,6 @@ import ModalContext from "../../Store/Context/ModalContext/ModalContext";
 import {
 	getLocalStorage,
 	localStorageIsFound,
-	setLocalStorage,
 } from "../../utilities/Localstorage";
 import { scrollTop } from "../../utilities/ScrollTop";
 import "./Series.css";

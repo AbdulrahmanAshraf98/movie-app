@@ -1,12 +1,11 @@
 import React from "react";
 import { Autoplay, Navigation } from "swiper";
-import useFetch from "../../Hooks/useFetch";
 import Container from "../UI/Container/Container";
 import Carousel from "../UI/Carousel/Carousel";
 import CastItem from "./CastItem/CastItem";
 import "./Cast.css";
 import SectionTitle from "../UI/sectionTitle/SectionTitle";
-import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
+
 function Cast({ castData }) {
 	let topCast = castData;
 	if (topCast) {

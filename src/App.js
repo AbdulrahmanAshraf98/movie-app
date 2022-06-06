@@ -1,13 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import * as ReactDOM from "react-dom";
-
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
 import Navbar from "./components/Navbar/Navbar";
 import Preloader from "./components/preloader/Preloader";
-import LoadingSpinner from "./components/UI/LoadingSpinner/LoadingSpinner";
-import Favorite from "./pages/Favorite/Favorite";
 import AuthContextProvider from "./Store/Context/Auth/AuthContextProvider";
 import FavoriteContextProvider from "./Store/Context/FavoriteContext/FavoriteContextProvider";
 import ModalContextProvider from "./Store/Context/ModalContext/ModalContextProvider";

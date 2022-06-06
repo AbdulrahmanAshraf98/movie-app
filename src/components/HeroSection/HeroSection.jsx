@@ -7,7 +7,7 @@ import Carousel from "../UI/Carousel/Carousel";
 import Container from "../UI/Container/Container";
 import "./Herosection.css";
 import Banner from "./Banner/Banner";
-import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
+
 function HeroSection({ openModalHandler }) {
 	const [responseData, isLoading, error] =
 		useFetch(`https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_TMDB_API_KEY}&&page=1

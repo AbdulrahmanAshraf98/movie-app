@@ -1,5 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import FavoriteContext from "../../Store/Context/FavoriteContext/FavoriteContext";
+import React from "react";
 import MovieItem from "./MovieItem/MovieItem";
 
 function MoviesList({ movies }) {

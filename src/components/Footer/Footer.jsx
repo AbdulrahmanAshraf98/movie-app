@@ -29,7 +29,7 @@ function Footer() {
 								<Link to="/">
 									<Img
 										className="logo-img"
-										src={themeContext.Theme == "blue" ? logo : logoRed}
+										src={themeContext.Theme === "blue" ? logo : logoRed}
 									/>
 								</Link>
 							</div>

@@ -1,11 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import FavoriteContext from "../../../Store/Context/FavoriteContext/FavoriteContext";
-import {
-	getLocalStorage,
-	localStorageIsFound,
-	setLocalStorage,
-} from "../../../utilities/Localstorage";
 import Card from "../../UI/Card/Card";
 import Img from "../../UI/Img/Img";
 
