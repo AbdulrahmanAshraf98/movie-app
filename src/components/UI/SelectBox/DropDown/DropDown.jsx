@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {
+	getLocalStorage,
+	localStorageIsFound,
 	removeItemFromLocalStorage,
 	setLocalStorage,
 } from "../../../../utilities/Localstorage";
@@ -7,13 +9,12 @@ import "./DropDown.css";
 
 function DropDown({ values, defaultValue, localStorageItemName, onClick }) {
 	const [isActive, setIsActive] = useState(false);
-	const selectBoxValueDefualtValue = JSON.parse(
-		localStorage.getItem(localStorageItemName),
-	)
-		? JSON.parse(localStorage.getItem(localStorageItemName)).name
+
+	let selectBoxValueDefaultValue = localStorageIsFound(localStorageItemName)
+		? getLocalStorage(localStorageItemName, "object").name
 		: defaultValue;
 	const [selectBoxValue, setSelectBoxValue] = useState(
-		selectBoxValueDefualtValue,
+		selectBoxValueDefaultValue,
 	);
 
 	const DropDownToggle = (e) => {
