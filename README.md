@@ -2,7 +2,7 @@
 <h4 align="center"> Bulit With React js && ReactContextApi && React Router Dom V6 && Swiper Js && Native css && FireBase For Backend And For Responsive Web Design Mobile First Approach </h4>
 
 ## 📝 Table of Contents
-- [Features](../Features.md)
+- [Features](#Features)
 - [Live Demo](#LIVE-DEMO)
 - [Built Using](#built_using)
 - [Preview](#Preview)
