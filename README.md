@@ -25,7 +25,8 @@
 <br />
 
 ## 🌐 [LIVE DEMO](https://movie-app-six-xi.vercel.app/) <a name = "LIVE-DEMO"></a>
-  FirebaseHosting:https://movie-app-99180.web.app/	
+  FirebaseHosting:https://movie-app-99180.web.app/
+  <br />	
   Vercel:https://movie-app-six-xi.vercel.app/
   
 
@@ -98,4 +99,5 @@ Abdulrhman Ashraf
 
 - Design Inspiration  
   Tmdb Website <a>https://www.themoviedb.org/</a>
+  <br />
   streamlab website <a>http://template.gentechtreedesign.com/html/streamlab/html/index.html</a>
