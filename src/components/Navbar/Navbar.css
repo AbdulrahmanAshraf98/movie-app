@@ -1,6 +1,5 @@
     nav {
       position: relative;
-      top: -2%;
       padding: 1.5rem 1rem ;
       z-index: 9999;
       transition: all .4s linear;
