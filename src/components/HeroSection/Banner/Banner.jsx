@@ -39,7 +39,8 @@ function Banner({ item, fn, isActive }) {
 							item.backdrop_path
 								? `https://image.tmdb.org/t/p/w500/${item.poster_path}`
 								: `https://image.tmdb.org/t/p/w500/${item.backdrop_path}`
-						}>
+						}
+						alt={item.title ? item.title : item.name}>
 						<div className="overlay">
 							<a className="playTrailer" onClick={openModalHandler}>
 								<i className="fa-solid fa-play"></i>
