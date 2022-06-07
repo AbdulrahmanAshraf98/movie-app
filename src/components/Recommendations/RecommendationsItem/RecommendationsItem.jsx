@@ -12,11 +12,12 @@ function RecommendationsItem({ item, mediaType, isActive }) {
 		navigateTo(`${redirectPath}`);
 		scrollTop();
 	};
+	console.log(item);
 	return (
 		<div className="recommendation-item" onClick={onClickHandler}>
 			<Img
 				className="img-box"
-				alt={item.original_title}
+				alt={item.original_title ? item.original_title : item.name}
 				src={
 					item.poster_path
 						? `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${item.poster_path}`
@@ -27,7 +28,7 @@ function RecommendationsItem({ item, mediaType, isActive }) {
 			/>
 			<div className="recommendation-details">
 				<div className="name">
-					<p>{item.original_title}</p>
+					<p>{item.original_title ? item.original_title : item.name}</p>
 				</div>
 				<div className="vote_average">
 					<p>{item.vote_average.toFixed("1")}</p>
