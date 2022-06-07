@@ -1,0 +1,14 @@
+[debug] [2022-06-07T14:10:44.573Z] ----------------------------------------------------------------------
+[debug] [2022-06-07T14:10:44.577Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2022-06-07T14:10:44.578Z] CLI Version:   11.0.1
+[debug] [2022-06-07T14:10:44.578Z] Platform:      linux
+[debug] [2022-06-07T14:10:44.579Z] Node Version:  v16.13.2
+[debug] [2022-06-07T14:10:44.616Z] Time:          Tue Jun 07 2022 16:10:44 GMT+0200 (Eastern European Standard Time)
+[debug] [2022-06-07T14:10:44.617Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-06-07T14:10:44.778Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-06-07T14:10:44.778Z] > authorizing via signed-in user (abdulrahmanashraf2030@gmail.com)
+[debug] [2022-06-07T14:10:44.779Z] [iam] checking project movie-app-99180 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-06-07T14:10:44.780Z] > refreshing access token with scopes: []
+[debug] [2022-06-07T14:10:44.781Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
