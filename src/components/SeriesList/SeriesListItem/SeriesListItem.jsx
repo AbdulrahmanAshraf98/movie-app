@@ -29,7 +29,7 @@ function SeriesListItem({ series }) {
 							<div className="card-top-box">
 								<Img
 									className="card-image"
-									// onClick={onClick}
+									alt={series.title ? series.title : series.name}
 									src={`${
 										series.poster_path
 											? `https://image.tmdb.org/t/p/w300${series.poster_path}`

@@ -7,6 +7,7 @@ function CastItem({ item, isActive }) {
 			<div className="actor-img img-box">
 				<Img
 					className="actor-img img-box"
+					alt={item.name}
 					src={`${
 						item.profile_path
 							? `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${item.profile_path}`

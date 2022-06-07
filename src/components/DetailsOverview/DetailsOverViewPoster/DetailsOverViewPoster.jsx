@@ -4,6 +4,7 @@ import Img from "../../UI/Img/Img";
 
 function DetailsOverViewPoster({
 	src,
+	alt,
 	openModalHandler,
 	favoriteAdd,
 	favoriteRemoveItem,
@@ -16,6 +17,7 @@ function DetailsOverViewPoster({
 				<>
 					<Img
 						className="poster"
+						alt={alt}
 						src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${src}`}>
 						<div className="overlay">
 							<a className="playTrailer" onClick={openModalHandler}>

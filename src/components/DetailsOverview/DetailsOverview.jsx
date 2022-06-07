@@ -44,6 +44,7 @@ function DetailsOverview({ item, openModalHandler }) {
 							favoriteAdd={favoriteAdd}
 							favoriteRemoveItem={favoriteRemoveItem}
 							foundItemHandler={foundFavItem}
+							alt={item.title ? item.title : item.name}
 						/>
 						<DetailsInfo
 							title={item.title ? item.title : item.name}

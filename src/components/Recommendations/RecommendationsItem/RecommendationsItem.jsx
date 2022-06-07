@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { scrollTop } from "../../../utilities/ScrollTop";
 import Img from "../../UI/Img/Img";
-
+import "./RecommendationsItem.css";
 function RecommendationsItem({ item, mediaType, isActive }) {
 	const navigateTo = useNavigate();
 	const redirectPath =
@@ -13,9 +13,10 @@ function RecommendationsItem({ item, mediaType, isActive }) {
 		scrollTop();
 	};
 	return (
-		<div className="cast-item Recommendations-item" onClick={onClickHandler}>
+		<div className="recommendation-item" onClick={onClickHandler}>
 			<Img
-				className="actor-img img-box"
+				className="img-box"
+				alt={item.original_title}
 				src={
 					item.poster_path
 						? `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${item.poster_path}`
@@ -24,11 +25,11 @@ function RecommendationsItem({ item, mediaType, isActive }) {
 						: "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
 				}
 			/>
-			<div className="actor-details">
-				<div className="character-name">
+			<div className="recommendation-details">
+				<div className="name">
 					<p>{item.original_title}</p>
 				</div>
-				<div className="actor-name">
+				<div className="vote_average">
 					<p>{item.vote_average.toFixed("1")}</p>
 				</div>
 			</div>

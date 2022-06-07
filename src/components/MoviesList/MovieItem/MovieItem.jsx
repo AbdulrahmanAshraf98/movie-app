@@ -28,7 +28,7 @@ function MovieItem({ movie }) {
 					<div className="card-top-box">
 						<Img
 							className="card-image"
-							// onClick={onClick}
+							alt={movie.title ? movie.title : movie.name}
 							src={`${
 								movie.poster_path
 									? `https://image.tmdb.org/t/p/w300${movie.poster_path}`

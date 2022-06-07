@@ -1,9 +1,9 @@
 import React from "react";
 
-function Img({ className, src, children }) {
+function Img({ className, src, alt, children }) {
 	return (
 		<div className={className}>
-			<img src={src} />
+			<img src={src} alt={alt} />
 			{children}
 		</div>
 	);
