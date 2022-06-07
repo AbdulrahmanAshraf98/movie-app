@@ -12,7 +12,6 @@ function RecommendationsItem({ item, mediaType, isActive }) {
 		navigateTo(`${redirectPath}`);
 		scrollTop();
 	};
-	console.log(item);
 	return (
 		<div className="cast-item Recommendations-item" onClick={onClickHandler}>
 			<Img

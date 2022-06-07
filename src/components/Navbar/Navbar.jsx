@@ -55,7 +55,6 @@ function Navbar() {
 										onClick={(e) => {
 											e.preventDefault();
 											context.SearchModuleOpenOpenHandler();
-											console.log(context.SearchModuleIsOpen);
 										}}>
 										<i className="fa-solid fa-magnifying-glass"></i>
 									</a>
