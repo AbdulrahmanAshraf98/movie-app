@@ -165,7 +165,7 @@
             margin-bottom: 3rem;
         }
         .HeroSection .poster .img-box {
-            height: auto;
+            height: 100%;
         }
         .HeroSection .info{
             width: 100%;
