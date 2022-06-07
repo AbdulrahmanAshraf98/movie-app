@@ -11,7 +11,7 @@ function FavouriteItem({ item, favoriteRemoveItem }) {
 					<div className="card-top-box">
 						<Img
 							className="card-image"
-							// onClick={onClick}
+							alt={item.title ? item.title : item.name}
 							src={`${
 								item.poster_path
 									? `https://image.tmdb.org/t/p/w300${item.poster_path}`
