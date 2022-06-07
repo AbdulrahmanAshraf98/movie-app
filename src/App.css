@@ -1,6 +1,9 @@
 .warper{
     background: var(--dark-color);
     transition:all 0.4s ease-in-out;
+    min-height:100vh;
+    display:flex;
+    flex-direction: column;
 }
 
 .warper.red{
