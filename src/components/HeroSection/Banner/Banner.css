@@ -161,20 +161,15 @@
 
     }
         .HeroSection .poster {
-            width: 30%;
-            margin-bottom: 1rem;
-            align-self: center;
-            order: 1;
+            width: 100%;
+            margin-bottom: 3rem;
         }
         .HeroSection .poster .img-box{
-
-            height: auto;
+            height: 100%;
         }
         .HeroSection .info{
-            width: 60%;
+            width: 100%;
             margin-bottom: 1rem;
-            order: 0;
-            align-self: center;
         }
     
         .HeroSection  .forMoreDetails{
@@ -190,7 +185,18 @@
         justify-content: flex-start;
         gap: 10%;
     }
-    
+    .HeroSection .poster {
+        width: 30%;
+        margin-bottom: 1rem;
+        align-self: center;
+        order: 1;
+    }
+    .HeroSection .info{
+        width: 60%;
+        margin-bottom: 1rem;
+        order: 0;
+        align-self: center;
+    }
 
     .HeroSection .poster .img-box img{
         height:100%;
