@@ -26,6 +26,7 @@
 
 ## 🌐 [LIVE DEMO](https://movie-app-six-xi.vercel.app/) <a name = "LIVE-DEMO"></a>
   FirebaseHosting:https://movie-app-99180.web.app/
+  <hr />
   <br />	
   Vercel:https://movie-app-six-xi.vercel.app/
   
@@ -43,6 +44,8 @@
 - [LocalStorage]()   -To Keep Track Selected Category And Selected SortBy And Current User Id And Current path name 
 
 ## 🔥 Preview  <a name = "Preview"></a>
+	<p>Video Preview Link :<a>https://drive.google.com/file/d/14gLw8uL-wXQCFWqux__LmJkU7O2--G5r/view?usp=sharing</a></p>
+	<br>
 
 </div>
 
