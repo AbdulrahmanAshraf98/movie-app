@@ -3,6 +3,7 @@ import FavoutieList from "../../components/FavouriteList/FavoutieList";
 import Container from "../../components/UI/Container/Container";
 import FavoriteContext from "../../Store/Context/FavoriteContext/FavoriteContext";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
+
 function Favorite() {
 	const favoriteContext = useContext(FavoriteContext);
 	let loading = favoriteContext.isLoading;
@@ -15,10 +16,10 @@ function Favorite() {
 		<section className="Favourite">
 			<Container>
 				<div className="row">
-					{console.log(loading, FavoriteItems)}
-					{loading && !FavoriteItems && <LoadingSpinner></LoadingSpinner>}
-
-					{FavoriteItems.length === 0 && <p>Favorite Items is empty</p>}
+					{loading && <LoadingSpinner></LoadingSpinner>}
+					{FavoriteItems.length === 0 && !loading && (
+						<div className="col notDataFound">Favorite Items is empty</div>
+					)}
 					{FavoriteItems && !loading && (
 						<FavoutieList
 							data={FavoriteItems}
