@@ -10,26 +10,24 @@ function Favorite() {
 	const favoriteRemoveItem = (id) => {
 		favoriteContext.removeFromFavoriteHandler(id);
 	};
-	useEffect(() => {}, [FavoriteItems]);
+	useEffect(() => {}, [FavoriteItems, loading]);
 	return (
-		<>
-			{loading && <LoadingSpinner></LoadingSpinner>}
-			{FavoriteItems.length === 0 && !loading && <p>Favorite Items is empty</p>}
-			{FavoriteItems && !loading && (
-				<section className="Favourite">
-					<Container>
-						<div className="row">
-							{
-								<FavoutieList
-									data={FavoriteItems}
-									favoriteRemoveItem={favoriteRemoveItem}
-								/>
-							}
-						</div>
-					</Container>
-				</section>
-			)}
-		</>
+		<section className="Favourite">
+			<Container>
+				<div className="row">
+					{console.log(loading, FavoriteItems)}
+					{loading && !FavoriteItems && <LoadingSpinner></LoadingSpinner>}
+
+					{FavoriteItems.length === 0 && <p>Favorite Items is empty</p>}
+					{FavoriteItems && !loading && (
+						<FavoutieList
+							data={FavoriteItems}
+							favoriteRemoveItem={favoriteRemoveItem}
+						/>
+					)}
+				</div>
+			</Container>
+		</section>
 	);
 }
 
