@@ -71,7 +71,7 @@ function FavoriteContextProvider({ children }) {
 			setIsLoading(false);
 			return;
 		}
-
+		setIsLoading(false);
 		return;
 	};
 	const getFavoriteItems = () => {
