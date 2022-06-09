@@ -1,22 +1,21 @@
 import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 import { db } from "../../../utilities/firebase/firebase";
+import favoriteReducer from "../../Reducer/FavourtieReducer";
 import AuthContext from "../Auth/AuthContext";
 import FavoriteContext from "./FavoriteContext";
-
 
 function FavoriteContextProvider({ children }) {
 	const authContext = useContext(AuthContext);
 	const UserId = authContext.UID;
-	const [favoriteItems, setFavoriteItems] = useState([]);
-	const [buttonTrigger, setButtonTrigger] = useState(false);
+	// const [favoriteItems, setFavoriteItems] = useState([]);
+	const [favoriteItems, dispatchFavoriteItems] = useReducer(
+		favoriteReducer,
+		[],
+	);
+	const [isLoading, setIsLoading] = useState(true);
 	const addToFavoriteHandler = async (item) => {
-		if (favoriteItems.length === 0) {
-			setFavoriteItems([item]);
-		} else {
-			setFavoriteItems([...favoriteItems, item]);
-		}
-
+		dispatchFavoriteItems({ type: "ADD-ITEM", payload: item });
 		const docRef = doc(db, "Favourite", UserId);
 		const docSnap = await getDoc(docRef);
 		if (!docSnap.exists()) {
@@ -32,24 +31,26 @@ function FavoriteContextProvider({ children }) {
 		await updateDoc(docRef, {
 			items: arrayUnion(item),
 		});
-		setButtonTrigger(true);
 		return;
 	};
 	const removeFromFavoriteHandler = async (id) => {
-		const NewArray = favoriteItems.filter((element) => element.id !== id);
-		setFavoriteItems(NewArray);
+		const newArray = favoriteItems.filter((element) => element.id !== id);
+		dispatchFavoriteItems({ type: "SET-ITEMS", payload: newArray });
 		const docRef = doc(db, "Favourite", UserId);
 		const docSnap = await getDoc(docRef);
 		if (!docSnap.exists()) {
 			return;
 		}
-
 		await updateDoc(docRef, {
-			items: NewArray,
+			items: newArray,
 		});
+
 		return;
 	};
 	const foundItem = (id) => {
+		if (!favoriteItems) {
+			return;
+		}
 		const foundItem = favoriteItems.find(
 			(favoriteItem) => id === favoriteItem.id,
 		);
@@ -64,8 +65,11 @@ function FavoriteContextProvider({ children }) {
 			const docSnap = await getDoc(docRef);
 			if (docSnap.exists()) {
 				const data = docSnap.data();
-				setFavoriteItems(data.items);
+				dispatchFavoriteItems({ type: "SET-ITEMS", payload: data.items });
+				setIsLoading(false);
+				return;
 			}
+			setIsLoading(false);
 			return;
 		}
 
@@ -75,21 +79,9 @@ function FavoriteContextProvider({ children }) {
 		return favoriteItems;
 	};
 	useEffect(() => {
-		if (!favoriteItems || buttonTrigger) {
-			getFavoriteData();
-		}
-
-		return () => {
-			setButtonTrigger(false);
-		};
-
-		// console.log(favoriteItems);
-	}, [favoriteItems, buttonTrigger]);
-	useEffect(() => {
-		if (UserId !== "") {
-			getFavoriteData();
-		}
+		getFavoriteData();
 	}, []);
+
 	const favoriteContext = {
 		favoriteItems,
 		addToFavoriteHandler,
@@ -97,6 +89,7 @@ function FavoriteContextProvider({ children }) {
 		foundItem,
 		getFavoriteData,
 		getFavoriteItems,
+		isLoading,
 	};
 	return (
 		<FavoriteContext.Provider value={favoriteContext}>

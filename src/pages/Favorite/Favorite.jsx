@@ -2,29 +2,34 @@ import React, { useContext, useEffect } from "react";
 import FavoutieList from "../../components/FavouriteList/FavoutieList";
 import Container from "../../components/UI/Container/Container";
 import FavoriteContext from "../../Store/Context/FavoriteContext/FavoriteContext";
-
+import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
 function Favorite() {
 	const favoriteContext = useContext(FavoriteContext);
-	let FavoriteItems = favoriteContext.getFavoriteItems();
+	let loading = favoriteContext.isLoading;
+	let FavoriteItems = favoriteContext.getFavoriteItems() || [];
 	const favoriteRemoveItem = (id) => {
 		favoriteContext.removeFromFavoriteHandler(id);
 	};
 	useEffect(() => {}, [FavoriteItems]);
 	return (
-		FavoriteItems && (
-			<section className="Favourite">
-				<Container>
-					<div className="row">
-						{
-							<FavoutieList
-								data={FavoriteItems}
-								favoriteRemoveItem={favoriteRemoveItem}
-							/>
-						}
-					</div>
-				</Container>
-			</section>
-		)
+		<>
+			{loading && <LoadingSpinner></LoadingSpinner>}
+			{FavoriteItems.length === 0 && !loading && <p>Favorite Items is empty</p>}
+			{FavoriteItems && !loading && (
+				<section className="Favourite">
+					<Container>
+						<div className="row">
+							{
+								<FavoutieList
+									data={FavoriteItems}
+									favoriteRemoveItem={favoriteRemoveItem}
+								/>
+							}
+						</div>
+					</Container>
+				</section>
+			)}
+		</>
 	);
 }
 

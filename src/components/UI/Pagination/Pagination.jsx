@@ -25,7 +25,6 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 
 		if (currentPage - 1 === totalItem - itemsPerPage && currentPage !== 1) {
 			setTotalItem(totalItem - itemsPerPage);
-			console.log(generateButtons(currentPage - 10, totalItem - 10));
 			setButtons(generateButtons(currentPage - 11, currentPage - 1));
 		}
 		SetPageNumber(currentPage - 1);
