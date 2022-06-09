@@ -79,7 +79,7 @@ function FavoriteContextProvider({ children }) {
 	};
 	useEffect(() => {
 		getFavoriteData();
-	}, []);
+	}, [isLoading]);
 
 	const favoriteContext = {
 		favoriteItems,
