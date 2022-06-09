@@ -11,12 +11,14 @@ function Favorite() {
 	const favoriteRemoveItem = (id) => {
 		favoriteContext.removeFromFavoriteHandler(id);
 	};
-	useEffect(() => {}, [FavoriteItems, loading]);
+	useEffect(() => {
+		loading = favoriteContext.isLoading;
+	}, [FavoriteItems, loading]);
 	return (
 		<section className="Favourite">
 			<Container>
 				<div className="row">
-					{loading && !FavoriteItems && <LoadingSpinner></LoadingSpinner>}
+					{loading && <LoadingSpinner></LoadingSpinner>}
 					{FavoriteItems.length === 0 && !loading && (
 						<div className="col notDataFound">Favorite Items is empty</div>
 					)}
