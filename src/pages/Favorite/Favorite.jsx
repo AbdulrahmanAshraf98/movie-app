@@ -13,7 +13,7 @@ function Favorite() {
 	useEffect(() => {}, [FavoriteItems]);
 	return (
 		<>
-			{loading && <LoadingSpinner></LoadingSpinner>}
+			{loading && !FavoriteItems && <LoadingSpinner></LoadingSpinner>}
 			{FavoriteItems.length === 0 && !loading && <p>Favorite Items is empty</p>}
 			{FavoriteItems && !loading && (
 				<section className="Favourite">
