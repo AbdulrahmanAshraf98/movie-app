@@ -66,11 +66,11 @@ function FavoriteContextProvider({ children }) {
 			if (docSnap.exists()) {
 				const data = docSnap.data();
 				dispatchFavoriteItems({ type: "SET-ITEMS", payload: data.items });
+				setIsLoading(false);
 			}
 			setIsLoading(false);
 			return;
 		}
-
 
 		return;
 	};
@@ -79,7 +79,6 @@ function FavoriteContextProvider({ children }) {
 	};
 	useEffect(() => {
 		getFavoriteData();
-		setIsLoading(false);
 	}, []);
 
 	const favoriteContext = {
