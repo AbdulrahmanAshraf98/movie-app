@@ -66,12 +66,11 @@ function FavoriteContextProvider({ children }) {
 			if (docSnap.exists()) {
 				const data = docSnap.data();
 				dispatchFavoriteItems({ type: "SET-ITEMS", payload: data.items });
-				setIsLoading(false);
-				return;
 			}
 			setIsLoading(false);
 			return;
 		}
+
 
 		return;
 	};
