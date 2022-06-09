@@ -16,7 +16,7 @@ function Favorite() {
 		<section className="Favourite">
 			<Container>
 				<div className="row">
-					{loading && <LoadingSpinner></LoadingSpinner>}
+					{loading && !FavoriteItems && <LoadingSpinner></LoadingSpinner>}
 					{FavoriteItems.length === 0 && !loading && (
 						<div className="col notDataFound">Favorite Items is empty</div>
 					)}
