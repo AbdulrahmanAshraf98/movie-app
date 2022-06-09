@@ -12,7 +12,6 @@ function Favorite() {
 		favoriteContext.removeFromFavoriteHandler(id);
 	};
 	useEffect(() => {
-		loading = favoriteContext.isLoading;
 	}, [FavoriteItems, loading]);
 	return (
 		<section className="Favourite">
