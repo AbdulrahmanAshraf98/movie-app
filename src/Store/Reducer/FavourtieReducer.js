@@ -9,5 +9,6 @@ const favoriteReducer = (state = [], action) => {
 			return [...state, action.payload];
 		}
 	}
+	return state;
 };
 export default favoriteReducer;
