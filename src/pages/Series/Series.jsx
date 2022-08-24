@@ -59,7 +59,7 @@ function Series() {
 					<Container>
 						<div className="row">
 							{isLoading && <LoadingSpinner />}
-
+							{error && !isLoading && !series && <p>{error}</p>}
 							{series && !isLoading && (
 								<>
 									<Filter
@@ -69,13 +69,15 @@ function Series() {
 									/>
 									<SeriesList series={series} />
 									{series && series.length === 0 && <p>noDataFound</p>}
-									<Pagination
-										currentPage={seriesPage}
-										itemsPerPage={10}
-										SetPageNumber={changePageForSeriesNumberHandler}
-										totalPages={1}
-									/>
 								</>
+							)}
+							{series && (
+								<Pagination
+									currentPage={seriesPage}
+									itemsPerPage={10}
+									SetPageNumber={changePageForSeriesNumberHandler}
+									totalPages={1}
+								/>
 							)}
 						</div>
 					</Container>

@@ -6,12 +6,12 @@ import "./Pagination.css";
 function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 	const [buttons, setButtons] = useState(generateButtons(0, 10));
 	const [totalItem, setTotalItem] = useState(10);
-
 	const nextButton = useCallback(() => {
 		if (currentPage === totalItem) {
 			setTotalItem((prevstate) => {
 				return totalItem + 10;
 			});
+
 			setButtons(generateButtons(currentPage, currentPage + 10));
 		}
 		SetPageNumber(currentPage + 1);
@@ -71,4 +71,4 @@ function Pagination({ itemsPerPage, SetPageNumber, currentPage, totalPages }) {
 		</>
 	);
 }
-export default Pagination;
+export default React.memo(Pagination);

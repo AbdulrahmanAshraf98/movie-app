@@ -52,7 +52,12 @@
 } 
 .HeroSection .poster {
     width: 100%;
+    height: auto;
     margin-bottom: 1rem;
+}
+.HeroSection .poster .lazyImage{
+    width: 100%;
+    height:500px;
 }
 .HeroSection .info{
     width: 100%;
@@ -151,7 +156,7 @@
 -moz-box-shadow: 1px 4px 15px 6px rgba(0,0,0,0.47);
 }
 @media(min-width:320px){
- 
+
 }
 @media(min-width:576px){
 

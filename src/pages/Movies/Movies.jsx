@@ -61,7 +61,7 @@ function Movies() {
 				<section className="movies ">
 					<Container>
 						<div className="row">
-							{isLoading && !movies && <LoadingSpinner />}
+							{isLoading && <LoadingSpinner />}
 							{error && !isLoading && !movies && <p>{error}</p>}
 							{movies && !isLoading && (
 								<>
@@ -71,13 +71,15 @@ function Movies() {
 									/>
 									<MoviesList movies={movies} />
 									{movies && movies.length === 0 && <p>noDataFound</p>}
-									<Pagination
-										currentPage={page}
-										itemsPerPage={10}
-										SetPageNumber={changePageNumberHandler}
-										totalPages={totalpage}
-									/>
 								</>
+							)}
+							{movies && (
+								<Pagination
+									currentPage={page}
+									itemsPerPage={10}
+									SetPageNumber={changePageNumberHandler}
+									totalPages={totalpage}
+								/>
 							)}
 						</div>
 					</Container>

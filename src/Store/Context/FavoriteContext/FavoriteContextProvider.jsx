@@ -8,14 +8,13 @@ import FavoriteContext from "./FavoriteContext";
 function FavoriteContextProvider({ children }) {
 	const authContext = useContext(AuthContext);
 	const UserId = authContext.UID;
-	// const [favoriteItems, setFavoriteItems] = useState([]);
 	const [favoriteItems, dispatchFavoriteItems] = useReducer(
 		favoriteReducer,
 		[],
 	);
 	const [isLoading, setIsLoading] = useState(true);
 	const addToFavoriteHandler = async (item) => {
-		dispatchFavoriteItems({ type: "ADD-ITEM", payload: item });
+		dispatchFavoriteItems({ type: "ADD-ITEM", payload: { item: item } });
 		const docRef = doc(db, "Favourite", UserId);
 		const docSnap = await getDoc(docRef);
 		if (!docSnap.exists()) {
@@ -35,7 +34,7 @@ function FavoriteContextProvider({ children }) {
 	};
 	const removeFromFavoriteHandler = async (id) => {
 		const newArray = favoriteItems.filter((element) => element.id !== id);
-		dispatchFavoriteItems({ type: "SET-ITEMS", payload: newArray });
+		dispatchFavoriteItems({ type: "SET-ITEMS", payload: { items: newArray } });
 		const docRef = doc(db, "Favourite", UserId);
 		const docSnap = await getDoc(docRef);
 		if (!docSnap.exists()) {
@@ -65,7 +64,10 @@ function FavoriteContextProvider({ children }) {
 			const docSnap = await getDoc(docRef);
 			if (docSnap.exists()) {
 				const data = docSnap.data();
-				dispatchFavoriteItems({ type: "SET-ITEMS", payload: data.items });
+				dispatchFavoriteItems({
+					type: "SET-ITEMS",
+					payload: { items: data.items },
+				});
 				setIsLoading(false);
 			}
 			setIsLoading(false);

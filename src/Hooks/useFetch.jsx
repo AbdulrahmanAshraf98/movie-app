@@ -21,6 +21,10 @@ const useFetch = (url) => {
 	}, [url]);
 	useEffect(() => {
 		fetchData();
+		return () => {
+			setIsLoading(true);
+			setError(null);
+		};
 	}, [fetchData]);
 	return [data, isLoading, error];
 };

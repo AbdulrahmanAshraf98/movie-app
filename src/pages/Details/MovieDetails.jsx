@@ -55,7 +55,9 @@ function MovieDetails() {
 			{videoId && searchParams && modalContext.videoModuleIsOpen && (
 				<VideoModal id={+videoId} openModalHandler={openModalHandler} />
 			)}
-			{isLoading && recommendationsIsLoading && <LoadingSpinner />}
+			{isLoading && recommendationsIsLoading && costIsLoading && (
+				<LoadingSpinner />
+			)}
 			{MovieDetailsData &&
 				!isLoading &&
 				!recommendationsIsLoading &&

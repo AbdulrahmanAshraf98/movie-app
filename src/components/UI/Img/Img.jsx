@@ -1,9 +1,19 @@
-import React from "react";
-
+import React, { useState } from "react";
+import "./Img.css";
 function Img({ className, src, alt, children }) {
+	const [lazyImg, setLazyImg] = useState(true);
+	const ImgOnLoadHandler = (e) => {
+		setLazyImg(false);
+	};
 	return (
 		<div className={className}>
-			<img src={src} alt={alt} />
+			{lazyImg && <div className="lazyImage"></div>}
+			<img
+				className={`${lazyImg ? "lazy" : "img"}`}
+				src={src}
+				alt={alt}
+				onLoad={ImgOnLoadHandler}
+			/>
 			{children}
 		</div>
 	);
