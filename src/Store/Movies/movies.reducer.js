@@ -11,7 +11,6 @@ export const moviesReducer = (state = initialState, action) => {
 		case MOVIES_ACTIONS_TYPES.FETCH_MOVIES_START:
 			return { ...state, isLoading: true };
 		case MOVIES_ACTIONS_TYPES.FETCH_MOVIES_SUCCESS: {
-			console.log(state, action);
 			return {
 				...state,
 				isLoading: false,

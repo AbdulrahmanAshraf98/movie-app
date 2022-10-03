@@ -10,10 +10,8 @@ export const trendingReducer = (state = initialState, action) => {
 		case TRENDING_ACTIONS_TYPES.FETCH_TRENDING_START:
 			return { ...state, isLoading: true };
 		case TRENDING_ACTIONS_TYPES.FETCH_TRENDING_SUCCESS: {
-			console.log(state, action);
 			return { ...state, isLoading: false, trendingData: action.payload };
 		}
-
 		case TRENDING_ACTIONS_TYPES.FETCH_TRENDING_FAILED:
 			return { ...state, isLoading: false, error: action.payload };
 

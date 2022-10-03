@@ -11,7 +11,6 @@ export const seriesReducer = (state = initialState, action) => {
 		case SERIES_ACTIONS_TYPES.FETCH_SERIES_START:
 			return { ...state, isLoading: true };
 		case SERIES_ACTIONS_TYPES.FETCH_SERIES_SUCCESS: {
-			console.log(state, action);
 			return { ...state, isLoading: false, seriesData: action.payload };
 		}
 

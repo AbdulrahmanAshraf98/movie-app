@@ -13,7 +13,7 @@ import {
 } from "../../Store/Favorite/favorite.actions";
 import { selectFavoriteData } from "../../Store/Favorite/favorite.selector";
 function DetailsOverview({ item, openModalHandler }) {
-	const newItem = {
+	const newItem = item && {
 		backdrop_path: item.backdrop_path,
 		id: item.id,
 		poster_path: item.poster_path,
