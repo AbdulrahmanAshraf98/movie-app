@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/logo-1.png";
 import logoRed from "../../assets/Logo-2.png";
 import NavbarItems from "./NavbarItems/NavbarItems";
@@ -8,6 +8,8 @@ import Container from "../UI/Container/Container";
 import ModalContext from "../../Store/Context/ModalContext/ModalContext";
 import Img from "../UI/Img/Img";
 import ThemeContext from "../../Store/Context/ThemeContext/ThemeContext";
+import { setLocalStorage } from "../../utilities/Localstorage";
+
 function Navbar() {
 	let location = useLocation();
 	const context = useContext(ModalContext);
@@ -39,7 +41,7 @@ function Navbar() {
 						<NavLink to="/" className="logo">
 							<Img
 								className="logo-img"
-								src={themeContext.Theme === "blue" ? logo : logoRed}
+								src={themeContext.theme === "blue" ? logo : logoRed}
 							/>
 						</NavLink>
 					</div>
@@ -51,13 +53,9 @@ function Navbar() {
 							{location.pathname === "/Movies" ||
 							location.pathname === "/Series" ? (
 								<div className="search-box">
-									<a
-										onClick={(e) => {
-											e.preventDefault();
-											context.SearchModuleOpenOpenHandler();
-										}}>
+									<Link to={"/search"}>
 										<i className="fa-solid fa-magnifying-glass"></i>
-									</a>
+									</Link>
 								</div>
 							) : (
 								""
@@ -67,7 +65,7 @@ function Navbar() {
 									onChange={(e) => {
 										themeContext.changeThemeHandler(e.target.value);
 									}}
-									value={themeContext.Theme}>
+									value={themeContext.theme}>
 									<option>blue</option>
 									<option>red</option>
 								</select>

@@ -1,87 +1,83 @@
-import { useCallback, useContext, useEffect, useState } from "react";
-import Filter from "../../components/Filter/Filter";
-import SearchModal from "../../components/SearchModal/SearchModal";
-import SeriesList from "../../components/SeriesList/SeriesList";
+import { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import SeriesFilter from "../../components/SeriesfFilter/SeriesFilter";
+
 import Container from "../../components/UI/Container/Container";
+import List from "../../components/UI/List/List";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
 import Pagination from "../../components/UI/Pagination/Pagination";
-import useFetch from "../../Hooks/useFetch";
-import ModalContext from "../../Store/Context/ModalContext/ModalContext";
+
+import { fetchSeriesData } from "../../Store/Series/series.actions";
+import {
+	selectSeriesData,
+	selectSeriesDetailsError,
+	selectSeriesIsLoading,
+	selectSeriesTotalPages,
+} from "../../Store/Series/series.selector";
 import {
 	getLocalStorage,
 	localStorageIsFound,
 } from "../../utilities/Localstorage";
 import { scrollTop } from "../../utilities/ScrollTop";
 import "./Series.css";
-
+const DefualtValueGenres = localStorageIsFound("tvgenres")
+	? getLocalStorage("tvgenres", "object").id
+	: "";
+const DefualtValuesortingBy = localStorageIsFound("tvSortBy")
+	? getLocalStorage("tvSortBy", "object").name
+	: "popularity.desc";
 function Series() {
-	const context = useContext(ModalContext);
-	const DefualtValueGenres = localStorageIsFound("tvgenres")
-		? getLocalStorage("tvgenres", "object").id
-		: "";
-	const DefualtValuesortingBy = localStorageIsFound("tvSortBy")
-		? getLocalStorage("tvSortBy", "object").name
-		: "popularity.desc";
+	const dispatch = useDispatch();
+	const series = useSelector(selectSeriesData);
+	const isLoading = useSelector(selectSeriesIsLoading);
+	const error = useSelector(selectSeriesDetailsError);
+	const totalPages = useSelector(selectSeriesTotalPages);
+
 	const [genres, setGenres] = useState(DefualtValueGenres);
 	const [sortingBy, setSortingBy] = useState(DefualtValuesortingBy);
-	const [seriesPage, setSeriesPage] = useState(1);
-	const [url, setUrl] = useState(
-		`https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_TMDB_API_KEY}&sort_by=${sortingBy}&page=${seriesPage}&with_genres=${genres}&with_watch_monetization_types=flatrate&with_status=0&with_type=0&include_video=true`,
-	);
-	const [responseData, isLoading, error] = useFetch(url);
-	let series = responseData.results;
+	const [page, setPage] = useState(1);
 	const changeGenresHandler = useCallback((id) => {
 		setGenres(id);
 	}, []);
 	const changeSortingHandler = useCallback((id) => {
+		let sortBy = "popularity.desc";
 		if (id === "1") {
-			setSortingBy("popularity.asc");
-		} else {
-			setSortingBy("popularity.desc");
+			sortBy = "popularity.asc";
 		}
+		setSortingBy(sortBy);
 	}, []);
-	const changePageForSeriesNumberHandler = (pageNumber) => {
-		setSeriesPage(pageNumber);
+	const changePageNumberHandler = (pageNumber) => {
+		setPage(pageNumber);
 	};
 	useEffect(() => {
 		scrollTop();
 	}, []);
 	useEffect(() => {
-		setUrl(
-			`https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_TMDB_API_KEY}&sort_by=${sortingBy}&page=${seriesPage}&with_genres=${genres}&with_keywords=anime &with_watch_monetization_types=flatrate&with_status=0&with_type=0&include_video=true`,
-		);
-	}, [url, seriesPage, responseData, genres, sortingBy, isLoading, error]);
+		dispatch(fetchSeriesData(page, sortingBy, genres));
+	}, [page, genres, sortingBy]);
 	return (
-		<>
-			{context.SearchModuleIsOpen && <SearchModal type="tv" />}
-			{!context.SearchModuleIsOpen && (
-				<section className="Series">
-					<Container>
-						<div className="row">
-							{isLoading && <LoadingSpinner />}
-
-							{series && !isLoading && (
-								<>
-									<Filter
-										changeGenresHandler={changeGenresHandler}
-										changeSortingHandler={changeSortingHandler}
-										mediaType="tv"
-									/>
-									<SeriesList series={series} />
-									{series && series.length === 0 && <p>noDataFound</p>}
-									<Pagination
-										currentPage={seriesPage}
-										itemsPerPage={10}
-										SetPageNumber={changePageForSeriesNumberHandler}
-										totalPages={1}
-									/>
-								</>
-							)}
-						</div>
-					</Container>
-				</section>
-			)}
-		</>
+		<section className="Series">
+			<Container>
+				<div className="row">
+					{isLoading && <LoadingSpinner />}
+					{error && <p>{error}</p>}
+					{series.length > 0 && (
+						<SeriesFilter
+							changeGenresHandler={changeGenresHandler}
+							changeSortingHandler={changeSortingHandler}
+						/>
+					)}
+					{series && !isLoading && <List data={series} mediaType="tv" />}
+					{series.length > 0 && (
+						<Pagination
+							totalPages={totalPages}
+							changePageNumberHandler={changePageNumberHandler}
+						/>
+					)}
+				</div>
+			</Container>
+		</section>
 	);
 }
 

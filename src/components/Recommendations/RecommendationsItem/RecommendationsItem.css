@@ -10,7 +10,7 @@
 .recommendation-item .img-box{
     min-width: 138px;
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: 0 auto;
 }
 .recommendation-item .img-box img{

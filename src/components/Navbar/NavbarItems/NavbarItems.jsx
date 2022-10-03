@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import AuthContext from "../../../Store/Context/Auth/AuthContext";
+import { selectCurrentUser } from "../../../Store/Auth/user.selector";
 import { SignOutUser } from "../../../utilities/firebase/firebase";
 import NavbarItem from "../NavbarItem/NavbarItem";
 const navbarItemsData = [
@@ -9,14 +9,14 @@ const navbarItemsData = [
 	{ text: "Series", to: "/Series" },
 ];
 const NavbarItems = ({ className }) => {
-	const authContext = useContext(AuthContext);
+	const currentUser = useSelector(selectCurrentUser);
 	return (
 		<div className={className}>
 			<ul>
 				{navbarItemsData.map((element, index) => (
 					<NavbarItem key={index} to={element.to} text={element.text} />
 				))}
-				{authContext.isLogin && (
+				{currentUser && (
 					<>
 						<NavbarItem key={4} to={"/Favorite"} text={"Favorite"} />
 						<Link
@@ -24,17 +24,12 @@ const NavbarItems = ({ className }) => {
 							onClick={(e) => {
 								e.preventDefault();
 								SignOutUser();
-								authContext.logoutHandler();
 							}}>
 							logout
 						</Link>
 					</>
 				)}
-				{!authContext.isLogin && (
-					<NavbarItem key={4} to={"/Auth"} text={"LogIn"} />
-				)}
-
-				{}
+				{!currentUser && <NavbarItem key={4} to={"/Auth"} text={"LogIn"} />}
 			</ul>
 		</div>
 	);

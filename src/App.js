@@ -1,36 +1,37 @@
-import { useContext, useEffect, useState } from "react";
-import "./App.css";
-import Footer from "./components/Footer/Footer";
+import React, { Suspense, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Main from "./components/Main/Main";
+
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 import Preloader from "./components/preloader/Preloader";
-import AuthContextProvider from "./Store/Context/Auth/AuthContextProvider";
-import FavoriteContextProvider from "./Store/Context/FavoriteContext/FavoriteContextProvider";
+import { setCurrentUser } from "./Store/Auth/user.actions";
+import { selectCurrentUser } from "./Store/Auth/user.selector";
 import ModalContextProvider from "./Store/Context/ModalContext/ModalContextProvider";
-import ThemeContext from "./Store/Context/ThemeContext/ThemeContext";
+import ThemeContextProvider from "./Store/Context/ThemeContext/ThemeContextProvider";
+import { onAuthChangeListener } from "./utilities/firebase/firebase";
+import "./App.css";
 
 function App() {
-	const themeContext = useContext(ThemeContext);
-	const [loading, setLoading] = useState(true);
+	const dispatch = useDispatch();
+	const currentUser = useSelector(selectCurrentUser);
 	useEffect(() => {
-		setTimeout(() => {
-			setLoading(false);
-		}, 800);
-	}, [loading]);
+		const unsubscribe = onAuthChangeListener((user) => {
+			if (user) {
+			}
+			dispatch(setCurrentUser(user));
+		});
+		return unsubscribe;
+	});
+
 	return (
-		<AuthContextProvider>
+		<ThemeContextProvider>
 			<ModalContextProvider>
-				{loading && <Preloader className={``} />}
-				<div
-					className={`warper ${themeContext.Theme === "red" ? "red" : "blue"}`}>
-					<Navbar></Navbar>
-					<FavoriteContextProvider>
-						<Main />
-					</FavoriteContextProvider>
-					<Footer></Footer>
-				</div>
+				<Navbar />
+				<Main />
+				<Footer />
 			</ModalContextProvider>
-		</AuthContextProvider>
+		</ThemeContextProvider>
 	);
 }
 

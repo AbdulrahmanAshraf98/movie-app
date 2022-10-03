@@ -23,7 +23,25 @@ body {
   position: relative;
   overflow-x: hidden;
 }
+#root{
+  background: var(--dark-color);
+  transition:all 0.4s ease-in-out;
+  min-height:100vh;
+  display:flex;
+  flex-direction: column;
+}
 
+#root.red{
+  --primary-color: #e50916;
+  --primarydark-color: #b81d24;
+  --black-color: #221f1f;
+  --dark-color: #161616;
+  --secondary-color: #cecfd1;
+  --grey-color: #f5f5f1;
+  --background:var(--dark-color);
+  --white-color: #ffffff;
+  transition:all 0.4s ease-in-out;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -79,4 +97,12 @@ ul {
       opacity: 1;
      
   }
+}
+
+span.card-image.lazy-load-image-background.blur.lazy-load-image-loaded{
+  width: 100%;
+  overflow: hidden;
+}
+.lazy-load-image-background.blur.lazy-load-image-loaded > img{
+  transition: all .5s ease-in-out !important;
 }

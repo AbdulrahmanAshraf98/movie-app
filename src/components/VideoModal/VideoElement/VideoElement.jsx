@@ -1,9 +1,9 @@
 import React from "react";
 
+
 function VideoElement({ item, isActive }) {
 	return (
-		item &&
-		isActive && (
+		item && isActive && (
 			<iframe
 				src={`https://www.youtube.com/embed/${item.key}`}
 				title="YouTube video player"

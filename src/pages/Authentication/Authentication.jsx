@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Container from "../../components/UI/Container/Container";
 import Input from "../../components/UI/Input/Input";
 import SectionTitle from "../../components/UI/sectionTitle/SectionTitle";
-import AuthContext from "../../Store/Context/Auth/AuthContext";
 import {
 	registerWithEmailAndPassword,
 	signInWithEmail,
@@ -16,7 +15,6 @@ import {
 import "./Authentication.css";
 
 function Authentication() {
-	const authContext = useContext(AuthContext);
 	const navigate = useNavigate();
 	const emailRef = useRef();
 	const passwordRef = useRef();
@@ -87,14 +85,12 @@ function Authentication() {
 				}
 				return;
 			}
-				setError({
-					emailError: "",
-					password: "",
-					general: "",
-				});
-						
-			authContext.SetUIDHandler(`${response.user.uid}`);
-			authContext.SetIsLoginHandler();
+			setError({
+				emailError: "",
+				password: "",
+				general: "",
+			});
+
 			const Pathname = localStorageIsFound("prevPath")
 				? getLocalStorage("prevPath", "")
 				: "/";
@@ -131,7 +127,6 @@ function Authentication() {
 			SetSwitchAuth("login");
 		}
 	};
-	// useEffect(() => {}, [SwitchAuth, error]);
 
 	return (
 		<section className="Authentication fadeIn">

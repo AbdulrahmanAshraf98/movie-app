@@ -1,0 +1,25 @@
+.card__item{
+    box-shadow: 0px 0px 3px var(--primarydark-color);
+  
+}
+.card__item__image{
+    height: 190px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.card__item__image img{
+    width: 100%;
+    object-fit: cover;
+    transition: all 1s ease;
+}
+.card__item__image:hover img{
+    transform: scale(1.1);
+}
+.card__Item__content{
+    padding: 0.5rem 1rem 1rem 1rem;
+    margin: 0.5rem 0;
+}
+.card__item__title{
+
+}
