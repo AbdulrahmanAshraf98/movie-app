@@ -13,7 +13,6 @@ import {
 } from "../../Store/Favorite/favorite.actions";
 import { selectFavoriteData } from "../../Store/Favorite/favorite.selector";
 function DetailsOverview({ item, openModalHandler }) {
-	console.log(item);
 	const vote_average =
 		item.vote_average && parseFloat(item.vote_average.toFixed(1));
 
