@@ -14,7 +14,8 @@ import {
 import { selectFavoriteData } from "../../Store/Favorite/favorite.selector";
 function DetailsOverview({ item, openModalHandler }) {
 	console.log(item);
-	const vote_average = parseFloat(item.vote_average.toFixed(1));
+	const vote_average =
+		item.vote_average && parseFloat(item.vote_average.toFixed(1));
 
 	const newItem = item && {
 		backdrop_path: item.backdrop_path,
