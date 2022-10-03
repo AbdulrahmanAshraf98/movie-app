@@ -13,16 +13,20 @@ import {
 } from "../../Store/Favorite/favorite.actions";
 import { selectFavoriteData } from "../../Store/Favorite/favorite.selector";
 function DetailsOverview({ item, openModalHandler }) {
+	console.log(item);
+	const vote_average = parseFloat(item.vote_average.toFixed(1));
+
 	const newItem = item && {
 		backdrop_path: item.backdrop_path,
 		id: item.id,
 		poster_path: item.poster_path,
 		title: item.title ? item.title : item.name,
 		mediaType: item.mediaType,
-		// vote_average: +item.vote_average.toFixed(1),
+		vote_average,
 		release_date: item.release_date ? item.release_date : item.first_air_date,
 		isFavorite: true,
 	};
+	console.log(newItem);
 	const dispatch = useDispatch();
 	const currentUser = useSelector(selectCurrentUser);
 	const favoriteItems = useSelector(selectFavoriteData);
