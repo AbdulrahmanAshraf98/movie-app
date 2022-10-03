@@ -26,7 +26,6 @@ function DetailsOverview({ item, openModalHandler }) {
 		release_date: item.release_date ? item.release_date : item.first_air_date,
 		isFavorite: true,
 	};
-	console.log(newItem);
 	const dispatch = useDispatch();
 	const currentUser = useSelector(selectCurrentUser);
 	const favoriteItems = useSelector(selectFavoriteData);
@@ -55,8 +54,6 @@ function DetailsOverview({ item, openModalHandler }) {
 		return;
 	}, [currentUser]);
 	const removeFavoriteItem = useCallback(() => {
-		console.log(item);
-
 		dispatch(postRemoveFavoriteItem(currentUser.uid, newItem));
 	}, [currentUser]);
 
