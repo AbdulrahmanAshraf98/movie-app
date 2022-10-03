@@ -91,7 +91,6 @@ export const addToFavoriteDocument = async (userAuthId, favoriteItem) => {
 	return favoriteSnapShot;
 };
 export const RemoveFavoriteDocument = async (userAuthId, favoriteItem) => {
-	console.log(favoriteItem);
 	const favoriteDocRef = doc(db, "Favourite", userAuthId);
 	const favoriteSnapShot = await getDoc(favoriteDocRef);
 	if (!favoriteSnapShot.exists()) return;
