@@ -19,7 +19,7 @@ function DetailsOverview({ item, openModalHandler }) {
 		poster_path: item.poster_path,
 		title: item.title ? item.title : item.name,
 		mediaType: item.mediaType,
-		vote_average: +item.vote_average.toFixed(1),
+		// vote_average: +item.vote_average.toFixed(1),
 		release_date: item.release_date ? item.release_date : item.first_air_date,
 		isFavorite: true,
 	};
