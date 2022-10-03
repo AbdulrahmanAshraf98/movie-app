@@ -48,8 +48,8 @@ function DetailsOverview({ item, openModalHandler }) {
 		if (!currentUser) {
 			setLocalStorage("prevPath", location.pathname, "");
 			navigate("/Auth");
+			return;
 		}
-
 		dispatch(postAddFavoriteItem(currentUser.uid, newItem));
 		return;
 	}, [currentUser]);
