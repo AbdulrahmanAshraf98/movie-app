@@ -43,44 +43,43 @@ function Favorite() {
 				<div class="favorite__title">
 					<h3>Favorite List</h3>
 				</div>
-				{(favoriteItems || favoriteItems.length > 0) && (
-					<div className="favorite__buttons">
-						<div className="favorite__buttons_filter">
-							<div className="All">
-								<button
-									className="btn btn-filter"
-									value="All"
-									onClick={filterFavItemsHandler}>
-									all
-								</button>
-							</div>
-							<div className="Movies">
-								<button
-									className="btn btn-filter"
-									value="Movies"
-									onClick={filterFavItemsHandler}>
-									Movies
-								</button>
-							</div>
-							<div className="Tv">
-								<button
-									className="btn btn-filter"
-									value="tv"
-									onClick={filterFavItemsHandler}>
-									Tv
-								</button>
-							</div>
-						</div>
-						<div className="favorite__buttons__Clear__All " value="DeleteAll">
+
+				<div className="favorite__buttons">
+					<div className="favorite__buttons_filter">
+						<div className="All">
 							<button
-								className="btn btn-clear-all"
-								value="DeleteAll"
-								onClick={deleteAllFavItemsHandler}>
-								Clear ALL
+								className="btn btn-filter"
+								value="All"
+								onClick={filterFavItemsHandler}>
+								all
+							</button>
+						</div>
+						<div className="Movies">
+							<button
+								className="btn btn-filter"
+								value="Movies"
+								onClick={filterFavItemsHandler}>
+								Movies
+							</button>
+						</div>
+						<div className="Tv">
+							<button
+								className="btn btn-filter"
+								value="tv"
+								onClick={filterFavItemsHandler}>
+								Tv
 							</button>
 						</div>
 					</div>
-				)}
+					<div className="favorite__buttons__Clear__All " value="DeleteAll">
+						<button
+							className="btn btn-clear-all"
+							value="DeleteAll"
+							onClick={deleteAllFavItemsHandler}>
+							Clear ALL
+						</button>
+					</div>
+				</div>
 
 				<div className="row">
 					{isLoading && !error && <ListSkeleton cards={10} />}
