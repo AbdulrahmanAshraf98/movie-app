@@ -8,7 +8,7 @@ function ListSkeleton({ cards }) {
 		.fill(0)
 		.map((card, index) => (
 			<div className="col" key={index}>
-				<div className="card list-item">
+				<div className="card skeleton_card list-item">
 					<Card>
 						<div className="card-top">
 							<div className="skeleton_card-top-box card-top-box">
