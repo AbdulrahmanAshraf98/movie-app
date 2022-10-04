@@ -10,6 +10,7 @@ import {
 import {
 	arrayRemove,
 	arrayUnion,
+	deleteField,
 	doc,
 	getDoc,
 	getFirestore,
@@ -66,9 +67,7 @@ export const signInWithEmail = async (email, password) => {
 	}
 	return result;
 };
-export const onAuthChangeListener = (callback) => {
-	onAuthStateChanged(auth, callback);
-};
+export const onAuthChangeListener = (callback) => onAuthStateChanged(auth, callback);
 export const SignOutUser = () => signOut(auth);
 export const addToFavoriteDocument = async (userAuthId, favoriteItem) => {
 	if (!userAuthId) return;
@@ -93,7 +92,7 @@ export const addToFavoriteDocument = async (userAuthId, favoriteItem) => {
 		throw new Error(error);
 	}
 };
-export const RemoveFavoriteDocument = async (userAuthId, favoriteItem) => {
+export const removeFavoriteDocument = async (userAuthId, favoriteItem) => {
 	const favoriteDocRef = doc(db, "Favourite", userAuthId);
 	const favoriteSnapShot = await getDoc(favoriteDocRef);
 	if (!favoriteSnapShot.exists()) return;
@@ -101,6 +100,14 @@ export const RemoveFavoriteDocument = async (userAuthId, favoriteItem) => {
 		items: arrayRemove(favoriteItem),
 	});
 	return favoriteSnapShot;
+};
+export const deleteFavoriteDocument = async (userAuthId) => {
+	const favoriteDocRef = doc(db, "Favourite", userAuthId);
+
+	// Remove the 'capital' field from the document
+	await updateDoc(favoriteDocRef, {
+		items: deleteField(),
+	});
 };
 
 // export const readFavoriteDocument = async (userAuthId, callback) => {

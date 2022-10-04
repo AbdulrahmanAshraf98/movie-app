@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SearchResultListPreview from "../../components/SearchResultsListPreview/SearchResultListPreview";
 import ListSkeleton from "../../components/Skeleton/ListSkeleton/ListSkeleton";
 import Container from "../../components/UI/Container/Container";
-import List from "../../components/UI/List/List";
+import Error from "../../components/UI/Error/Error";
 
 import {
 	fetchSearchResultData,
@@ -44,12 +44,13 @@ const SearchFeed = () => {
 				</div>
 				{searchResult && (
 					<div className={`row result`}>
-						{isLoading && <ListSkeleton cards={20} />}
+						{isLoading && !error && <ListSkeleton cards={20} />}
 						{searchResult && !isLoading && (
 							<SearchResultListPreview data={searchResult} />
 						)}
 					</div>
 				)}
+				{error && <Error error={error} />}
 			</Container>
 		</section>
 	);

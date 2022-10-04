@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import HeroSection from "../../components/HeroSection/HeroSection";
 import Preloader from "../../components/preloader/Preloader";
-import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
+import Error from "../../components/UI/Error/Error";
 import VideoModal from "../../components/VideoModal/VideoModal";
 import ModalContext from "../../Store/Context/ModalContext/ModalContext";
 import { fetchTrendingData } from "../../Store/Trending/trending.actions";
@@ -36,11 +36,13 @@ function Home() {
 	return (
 		<>
 			{isLoading && <Preloader className={``} />}
-			{/* {isLoading && <LoadingSpinner />} */}
 			{videoId && modalContext.videoModuleIsOpen && (
 				<VideoModal id={+videoId} type={mediaType} />
 			)}
-			<HeroSection data={trending}></HeroSection>
+			{trending && !isLoading && !error && (
+				<HeroSection data={trending}></HeroSection>
+			)}
+			{error && <Error error={error} />}
 		</>
 	);
 }

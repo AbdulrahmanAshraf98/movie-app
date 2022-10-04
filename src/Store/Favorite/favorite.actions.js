@@ -2,8 +2,9 @@ import { toast } from "react-hot-toast";
 import { createActions } from "../../utilities/createActions";
 import {
 	addToFavoriteDocument,
+	deleteFavoriteDocument,
 	readFavoriteDocument,
-	RemoveFavoriteDocument,
+	removeFavoriteDocument,
 } from "../../utilities/firebase/firebase";
 import { FAVORITE_ACTIONS_TYPES } from "./favorite.types";
 
@@ -61,7 +62,7 @@ export const postRemoveFavoriteItem = (userID, item) => async (dispatch) => {
 	});
 	dispatch(postFavoriteDataStart());
 	try {
-		const snap = RemoveFavoriteDocument(userID, item);
+		const snap = removeFavoriteDocument(userID, item);
 		dispatch(postFavoriteDataSuccess());
 		toast.success("Item Removed  From Favorite", {
 			id: "Removed",
@@ -70,6 +71,25 @@ export const postRemoveFavoriteItem = (userID, item) => async (dispatch) => {
 		dispatch(postFavoriteDataFailed(error));
 		toast.error(error.message, {
 			id: "Remove Error",
+		});
+	}
+};
+export const postDeleteAllFavoriteItems = (userID) => async (dispatch) => {
+	toast.dismiss();
+	toast.loading("Delete All Items Start", {
+		id: "Delete Start",
+	});
+	dispatch(postFavoriteDataStart());
+	try {
+		const snap = deleteFavoriteDocument(userID);
+		dispatch(postFavoriteDataSuccess());
+		toast.success("ALl  Items Deleted", {
+			id: "Deleted",
+		});
+	} catch (error) {
+		dispatch(postFavoriteDataFailed(error));
+		toast.error(error.message, {
+			id: "Delete Error",
 		});
 	}
 };

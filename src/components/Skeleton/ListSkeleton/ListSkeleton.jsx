@@ -1,7 +1,6 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
 import Card from "../../UI/Card/Card";
-import Img from "../../UI/Img/Img";
 import "react-loading-skeleton/dist/skeleton.css";
 function ListSkeleton({ cards }) {
 	return Array(cards)

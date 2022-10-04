@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Filter from "../../components/Filter/Filter";
 import ListSkeleton from "../../components/Skeleton/ListSkeleton/ListSkeleton";
 import Container from "../../components/UI/Container/Container";
+import Error from "../../components/UI/Error/Error";
 import List from "../../components/UI/List/List";
-import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
 import Pagination from "../../components/UI/Pagination/Pagination";
 import { fetchMoviesData } from "../../Store/Movies/movies.actions";
 import {
@@ -13,7 +13,6 @@ import {
 	selectMoviesIsLoading,
 	selectTotalPages,
 } from "../../Store/Movies/movies.selector";
-import { fetchFromTmdbApi } from "../../utilities/Api/FetchApiTmdb";
 import {
 	getLocalStorage,
 	localStorageIsFound,
@@ -55,29 +54,34 @@ function Movies() {
 		dispatch(fetchMoviesData(page, sortingBy, genres));
 	}, [page, sortingBy, genres]);
 	useEffect(() => {}, [page, sortingBy, genres]);
-
+	useEffect(() => {
+		scrollTop();
+	}, []);
 	return (
 		<section className="movies ">
 			<Container>
 				<div className="row">
-					<Filter
-						changeGenresHandler={changeGenresHandler}
-						changeSortingHandler={changeSortingHandler}
-					/>
+					{!error && (
+						<Filter
+							changeGenresHandler={changeGenresHandler}
+							changeSortingHandler={changeSortingHandler}
+						/>
+					)}
 					{isLoading && <ListSkeleton cards={20} />}
-					{error && <p>{error}</p>}
-
-					{movies && !isLoading && (
+					{error && <Error error={error} />}
+					{movies && !isLoading && !error && (
 						<>
 							{<List data={movies} mediaType="Movies" />}
 							{movies && movies.length === 0 && <p>noDataFound</p>}
 						</>
 					)}
 
-					<Pagination
-						changePageNumberHandler={changePageNumberHandler}
-						totalPages={totalPages}
-					/>
+					{!error && (
+						<Pagination
+							changePageNumberHandler={changePageNumberHandler}
+							totalPages={totalPages}
+						/>
+					)}
 				</div>
 			</Container>
 		</section>

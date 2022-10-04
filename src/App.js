@@ -1,5 +1,5 @@
-import React, { Suspense, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Main from "./components/Main/Main";
 
 import Navbar from "./components/Navbar/Navbar";
@@ -31,8 +31,8 @@ function App() {
 				<ModalContextProvider>
 					<Navbar />
 					<Main />
-					<Footer />
 					<Notifications />
+					<Footer />
 				</ModalContextProvider>
 			</SkeletonTheme>
 		</ThemeContextProvider>

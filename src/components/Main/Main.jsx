@@ -1,5 +1,5 @@
 import { doc, onSnapshot } from "firebase/firestore";
-import React, { Suspense, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Authentication from "../../pages/Authentication/Authentication";
@@ -13,8 +13,6 @@ import Series from "../../pages/Series/Series";
 import { selectCurrentUser } from "../../Store/Auth/user.selector";
 import { fetchFavoriteData } from "../../Store/Favorite/favorite.actions";
 import { db } from "../../utilities/firebase/firebase";
-import Preloader from "../preloader/Preloader";
-import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
 function Main() {
 	const dispatch = useDispatch();
 	const currentUser = useSelector(selectCurrentUser);

@@ -1,6 +1,4 @@
-import { async } from "@firebase/util";
 import React, { useCallback, useEffect, useState } from "react";
-import useFetch from "../../Hooks/useFetch";
 import { fetchFromTmdbApi } from "../../utilities/Api/FetchApiTmdb";
 import DropDown from "../UI/SelectBox/DropDown/DropDown";
 import "./Genres.css";

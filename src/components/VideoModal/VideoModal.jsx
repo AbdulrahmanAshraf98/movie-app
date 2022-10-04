@@ -40,7 +40,7 @@ function VideoModal({ id, openModalHandler, type = "movie" }) {
 				</Carousel>
 			)}
 			{videosData && videosData.length === 0 && (
-				<img src={youtubeVideoNotFound} />
+				<img src={youtubeVideoNotFound} alt="video NotFound" />
 			)}
 			{error && <p>{error}</p>}
 		</Modal>

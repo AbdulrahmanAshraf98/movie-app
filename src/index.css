@@ -46,6 +46,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+::-webkit-scrollbar {
+  height: 5px;
+  width: 0;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primarydark-color);
+  border-radius: 10px;
+  height: 200px;}
 
 *{
   padding:0;

@@ -27,7 +27,11 @@
   
   }
   @media(min-width:992px){
-  
+    .movies .row .col{
+        flex: 0 0 22%;
+        max-width: 22%;
+        margin-bottom: 2rem;
+    }
   }
   @media(min-width:1024px){
     .movies .row{
@@ -35,17 +39,12 @@
 
     
     }
-    .movies .row .col{
+    /* .movies .row .col{
         flex: 0 0 30%;
         padding: 0;
-    }
+    } */
   }
   @media(min-width:1200px){
     .movies .row{
-    }
-    .movies .row .col{
-        flex: 0 0 22%;
-    
-
     }
   }

@@ -67,6 +67,7 @@ section.Details{
 .Details  .details-overview-poster .poster:hover .playTrailer{
     cursor: pointer;
     font-size: 2rem;
+
 }
 .Details  .details-info{
     width: 100%;

@@ -4,6 +4,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import Cast from "../../components/Cast/Cast";
 import DetailsOverview from "../../components/DetailsOverview/DetailsOverview";
 import Recommendations from "../../components/Recommendations/Recommendations";
+import Error from "../../components/UI/Error/Error";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
 import VideoModal from "../../components/VideoModal/VideoModal";
 import ModalContext from "../../Store/Context/ModalContext/ModalContext";
@@ -53,7 +54,7 @@ function MovieDetails() {
 				<VideoModal id={+videoId} openModalHandler={openModalHandler} />
 			)}
 			{isLoading && <LoadingSpinner />}
-			{movieDetailsData && !isLoading && (
+			{movieDetailsData && !isLoading && !error && (
 				<>
 					<DetailsOverview
 						item={{ ...movieDetails, mediaType: "Movies" }}
@@ -70,7 +71,7 @@ function MovieDetails() {
 					)}
 				</>
 			)}
-			{error && <p>{error.message}</p>}
+			{error && <Error error={error} />}
 		</>
 	);
 }

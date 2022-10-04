@@ -4,9 +4,9 @@ import { useParams, useSearchParams } from "react-router-dom";
 import Cast from "../../../components/Cast/Cast";
 import DetailsOverview from "../../../components/DetailsOverview/DetailsOverview";
 import Recommendations from "../../../components/Recommendations/Recommendations";
+import Error from "../../../components/UI/Error/Error";
 import LoadingSpinner from "../../../components/UI/LoadingSpinner/LoadingSpinner";
 import VideoModal from "../../../components/VideoModal/VideoModal";
-import useFetch from "../../../Hooks/useFetch";
 import ModalContext from "../../../Store/Context/ModalContext/ModalContext";
 import { fetchSeriesDetailsData } from "../../../Store/Details/details.actions";
 import {
@@ -56,7 +56,7 @@ function SeriesDetails() {
 				/>
 			)}
 			{isLoading && <LoadingSpinner />}
-			{seriesDetailsData && !isLoading && (
+			{seriesDetailsData && !isLoading && !error && (
 				<>
 					<DetailsOverview
 						item={{ ...seriesDetails, mediaType: "tv" }}
@@ -71,6 +71,7 @@ function SeriesDetails() {
 					)}
 				</>
 			)}
+			{error && <Error error={error} />}
 		</>
 	);
 }

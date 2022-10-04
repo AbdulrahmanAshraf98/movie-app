@@ -14,7 +14,6 @@ export const fetchMoviesData = (page, sort, category) => async (dispatch) => {
 		const responseDate = await fetchFromTmdbApi(
 			`discover/movie?language=en-US&sort_by=${sort}&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate&with_genres=${category}`,
 		);
-
 		dispatch(fetchMoviesDataSuccess(responseDate.results));
 	} catch (error) {
 		dispatch(fetchMoviesDataFailed(error));
