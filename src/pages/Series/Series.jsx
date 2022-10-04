@@ -48,8 +48,8 @@ function Series() {
 		}
 		setSortingBy(sortBy);
 	}, []);
-	const changePageNumberHandler = (pageNumber) => {
-		setPage(pageNumber);
+	const changePageNumberHandler = (clickButton) => {
+		setPage(clickButton.selected + 1);
 	};
 	useEffect(() => {
 		scrollTop();
