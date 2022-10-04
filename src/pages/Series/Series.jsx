@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import SeriesFilter from "../../components/SeriesfFilter/SeriesFilter";
+import ListSkeleton from "../../components/Skeleton/ListSkeleton/ListSkeleton";
 
 import Container from "../../components/UI/Container/Container";
 import List from "../../components/UI/List/List";
@@ -60,21 +61,18 @@ function Series() {
 		<section className="Series">
 			<Container>
 				<div className="row">
-					{isLoading && <LoadingSpinner />}
+					<SeriesFilter
+						changeGenresHandler={changeGenresHandler}
+						changeSortingHandler={changeSortingHandler}
+					/>
+					{isLoading && <ListSkeleton cards={20} />}
 					{error && <p>{error}</p>}
-					{series.length > 0 && (
-						<SeriesFilter
-							changeGenresHandler={changeGenresHandler}
-							changeSortingHandler={changeSortingHandler}
-						/>
-					)}
 					{series && !isLoading && <List data={series} mediaType="tv" />}
-					{series.length > 0 && (
-						<Pagination
-							totalPages={totalPages}
-							changePageNumberHandler={changePageNumberHandler}
-						/>
-					)}
+
+					<Pagination
+						totalPages={totalPages}
+						changePageNumberHandler={changePageNumberHandler}
+					/>
 				</div>
 			</Container>
 		</section>

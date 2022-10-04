@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback } from "react";
 import Container from "../UI/Container/Container";
 import DetailsInfo from "./DetailsInfo/DetailsInfo";
 import DetailsOverViewPoster from "./DetailsOverViewPoster/DetailsOverViewPoster";

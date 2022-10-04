@@ -6,23 +6,22 @@ import List from "../../components/UI/List/List";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	selectFavoriteData,
+	selectFavoriteDetailsError,
 	selectFavoriteIsLoading,
 } from "../../Store/Favorite/favorite.selector";
-import { fetchFavoriteData } from "../../Store/Favorite/favorite.actions";
 import { selectCurrentUser } from "../../Store/Auth/user.selector";
 
 function Favorite() {
-	const dispatch = useDispatch();
-	const currentUser = useSelector(selectCurrentUser);
 	const favoriteItems = useSelector(selectFavoriteData);
-	const loading = useSelector(selectFavoriteIsLoading);
+	const isLoading = useSelector(selectFavoriteIsLoading);
+	const error = useSelector(selectFavoriteDetailsError);
 	useEffect(() => {}, []);
 	return (
 		<section className="Favorite">
 			<Container>
 				<div className="row">
-					{loading && <LoadingSpinner />}
-					{favoriteItems && !loading && <List data={favoriteItems} />}
+					{isLoading && <LoadingSpinner />}
+					{favoriteItems && !isLoading && <List data={favoriteItems} />}
 					{favoriteItems && favoriteItems.length === 0 && <p>no data found</p>}
 				</div>
 			</Container>

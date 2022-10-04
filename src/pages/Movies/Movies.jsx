@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Filter from "../../components/Filter/Filter";
+import ListSkeleton from "../../components/Skeleton/ListSkeleton/ListSkeleton";
 import Container from "../../components/UI/Container/Container";
 import List from "../../components/UI/List/List";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
@@ -29,6 +30,7 @@ function Movies() {
 	const dispatch = useDispatch();
 	const movies = useSelector(selectMoviesData);
 	const isLoading = useSelector(selectMoviesIsLoading);
+	// const isLoading = true;
 	const error = useSelector(selectMoviesDetailsError);
 	const [page, setPage] = useState(1);
 	const [genres, setGenres] = useState(DefualtValueGenres);
@@ -58,14 +60,13 @@ function Movies() {
 		<section className="movies ">
 			<Container>
 				<div className="row">
-					{isLoading && <LoadingSpinner />}
+					<Filter
+						changeGenresHandler={changeGenresHandler}
+						changeSortingHandler={changeSortingHandler}
+					/>
+					{isLoading && <ListSkeleton cards={20} />}
 					{error && <p>{error}</p>}
-					{movies.length > 0 && (
-						<Filter
-							changeGenresHandler={changeGenresHandler}
-							changeSortingHandler={changeSortingHandler}
-						/>
-					)}
+
 					{movies && !isLoading && (
 						<>
 							{<List data={movies} mediaType="Movies" />}
@@ -73,12 +74,10 @@ function Movies() {
 						</>
 					)}
 
-					{movies.length > 0 && (
-						<Pagination
-							changePageNumberHandler={changePageNumberHandler}
-							totalPages={totalPages}
-						/>
-					)}
+					<Pagination
+						changePageNumberHandler={changePageNumberHandler}
+						totalPages={totalPages}
+					/>
 				</div>
 			</Container>
 		</section>

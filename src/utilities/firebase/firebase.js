@@ -13,7 +13,6 @@ import {
 	doc,
 	getDoc,
 	getFirestore,
-	onSnapshot,
 	setDoc,
 	updateDoc,
 } from "firebase/firestore";
@@ -73,22 +72,26 @@ export const onAuthChangeListener = (callback) => {
 export const SignOutUser = () => signOut(auth);
 export const addToFavoriteDocument = async (userAuthId, favoriteItem) => {
 	if (!userAuthId) return;
-	const favoriteDocRef = doc(db, "Favourite", userAuthId);
-	const favoriteSnapShot = await getDoc(favoriteDocRef);
-	let updatedDoc = null;
-	if (!favoriteSnapShot.exists()) {
-		updatedDoc = await setDoc(
-			doc(db, "Favourite", userAuthId),
-			{
-				items: [favoriteItem],
-			},
-			{ merge: true },
-		);
+	try {
+		const favoriteDocRef = doc(db, "Favourite", userAuthId);
+		const favoriteSnapShot = await getDoc(favoriteDocRef);
+		let updatedDoc = null;
+		if (!favoriteSnapShot.exists()) {
+			updatedDoc = await setDoc(
+				doc(db, "Favourite", userAuthId),
+				{
+					items: [favoriteItem],
+				},
+				{ merge: true },
+			);
+		}
+		updatedDoc = await updateDoc(favoriteDocRef, {
+			items: arrayUnion(favoriteItem),
+		});
+		return favoriteSnapShot;
+	} catch (error) {
+		throw new Error(error);
 	}
-	updatedDoc = await updateDoc(favoriteDocRef, {
-		items: arrayUnion(favoriteItem),
-	});
-	return favoriteSnapShot;
 };
 export const RemoveFavoriteDocument = async (userAuthId, favoriteItem) => {
 	const favoriteDocRef = doc(db, "Favourite", userAuthId);
@@ -100,22 +103,14 @@ export const RemoveFavoriteDocument = async (userAuthId, favoriteItem) => {
 	return favoriteSnapShot;
 };
 
-export const readFavoriteDocument = async (userAuthId, callback) => {
-	if (!userAuthId) return;
-	// const doc = await onSnapshot(doc(db, "Favourite", userAuthId), (doc) => {
-	// 	if (!doc.exists()) {
-	// 		return;
-	// 	}
-	// 	console.log("Current data: ", doc.data());
-	// 	data = doc.data();
-	// 	return doc;
-	// });
-	const docRef = doc(db, "Favourite", userAuthId.uid);
-	const unsubscribe = onSnapshot(docRef, (doc) => {
-		callback();
-	});
+// export const readFavoriteDocument = async (userAuthId, callback) => {
+// 	if (!userAuthId) return;
+// 	const docRef = doc(db, "Favourite", userAuthId.uid);
+// 	const unsubscribe = onSnapshot(docRef, (doc) => {
+// 		callback();
+// 	});
 
-	return unsubscribe;
-};
+// 	return unsubscribe;
+// };
 
 

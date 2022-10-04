@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast";
 import { createActions } from "../../utilities/createActions";
 import {
 	addToFavoriteDocument,
@@ -19,7 +20,6 @@ export const fetchFavoriteDataFailed = (error) =>
 export const fetchFavoriteData = (data) => async (dispatch) => {
 	dispatch(fetchFavoriteDataStart());
 	try {
-		// const data = await readFavoriteDocument(userID);
 		dispatch(fetchFavoriteDataSuccess(data));
 	} catch (error) {
 		dispatch(fetchFavoriteDataFailed(error));
@@ -36,20 +36,40 @@ export const postFavoriteDataFailed = (error) =>
 	createActions(FAVORITE_ACTIONS_TYPES.POST_FAVORITE_ITEM_FAILED, error);
 
 export const postAddFavoriteItem = (userID, item) => async (dispatch) => {
+	toast.dismiss();
+	toast.loading("Add Item Start", {
+		id: "Add Start",
+	});
 	dispatch(postFavoriteDataStart());
 	try {
 		const snap = await addToFavoriteDocument(userID, item);
 		dispatch(postFavoriteDataSuccess());
+		toast.success("Item Added  To Favorite", {
+			id: "Added",
+		});
 	} catch (error) {
 		dispatch(postFavoriteDataFailed(error));
+		toast.success(error.message, {
+			id: "Add Error",
+		});
 	}
 };
 export const postRemoveFavoriteItem = (userID, item) => async (dispatch) => {
+	toast.dismiss();
+	toast.loading("Remove Item Start", {
+		id: "Remove Start",
+	});
 	dispatch(postFavoriteDataStart());
 	try {
 		const snap = RemoveFavoriteDocument(userID, item);
 		dispatch(postFavoriteDataSuccess());
+		toast.success("Item Removed  From Favorite", {
+			id: "Removed",
+		});
 	} catch (error) {
 		dispatch(postFavoriteDataFailed(error));
+		toast.error(error.message, {
+			id: "Remove Error",
+		});
 	}
 };
