@@ -12,13 +12,15 @@ import Card from "../../Card/Card";
 import Img from "../../Img/Img";
 
 function ListItem({ className, item }) {
+	const vote_average = parseFloat(
+		item.vote_average.toString().slice(0, 3),
+	).toFixed(1);
 	const newItem = {
-		backdrop_path: item.backdrop_path,
 		id: item.id,
 		poster_path: item.poster_path,
 		title: item.title ? item.title : item.name,
 		mediaType: item.mediaType,
-		vote_average: item.vote_average,
+		vote_average: +vote_average,
 		release_date: item.release_date ? item.release_date : item.first_air_date,
 		isFavorite: true,
 	};

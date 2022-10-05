@@ -16,7 +16,6 @@ function Banner({ item, fn, isActive }) {
 		e.preventDefault();
 		const itemId = item.id;
 		const mediaType = item.media_type;
-		console.log(mediaType);
 		if (mediaType === "") {
 			navigate(`/Tv/${itemId}`);
 			return;

@@ -13,32 +13,7 @@ import {
 } from "../../Store/Favorite/favorite.actions";
 import { selectFavoriteData } from "../../Store/Favorite/favorite.selector";
 function DetailsOverview({ item, openModalHandler }) {
-	const vote_average =
-		item.vote_average && parseFloat(item.vote_average.toFixed(1));
-
-	const newItem = item && {
-		backdrop_path: item.backdrop_path,
-		id: item.id,
-		poster_path: item.poster_path,
-		title: item.title ? item.title : item.name,
-		mediaType: item.mediaType,
-		vote_average,
-		release_date: item.release_date ? item.release_date : item.first_air_date,
-		isFavorite: true,
-	};
-	const dispatch = useDispatch();
 	const currentUser = useSelector(selectCurrentUser);
-	const favoriteItems = useSelector(selectFavoriteData);
-	let updatedItem = item;
-	if (favoriteItems) {
-		favoriteItems.forEach((favoriteItem) => {
-			if (favoriteItem.id === item.id) {
-				updatedItem = { ...item, isFavorite: true };
-			} else {
-				updatedItem = { ...item, isFavorite: false };
-			}
-		});
-	}
 	let location = useLocation();
 	const navigate = useNavigate();
 	const detailsOverviewPoster = item.poster_path
@@ -50,11 +25,6 @@ function DetailsOverview({ item, openModalHandler }) {
 			navigate("/Auth");
 			return;
 		}
-		dispatch(postAddFavoriteItem(currentUser.uid, newItem));
-		return;
-	}, [currentUser]);
-	const removeFavoriteItem = useCallback(() => {
-		dispatch(postRemoveFavoriteItem(currentUser.uid, newItem));
 	}, [currentUser]);
 
 	return (
@@ -70,8 +40,6 @@ function DetailsOverview({ item, openModalHandler }) {
 							src={detailsOverviewPoster}
 							openModalHandler={openModalHandler}
 							favoriteAdd={addFavoriteItem}
-							favoriteRemoveItem={removeFavoriteItem}
-							isFavorite={updatedItem.isFavorite}
 							alt={item.title ? item.title : item.name}
 							currentUser={currentUser}
 						/>

@@ -33,7 +33,6 @@ const SignUp = ({ SwitchAuthHandler }) => {
 			enteredValue.enteredPassword,
 		);
 		if (response.error) {
-			console.log(response.error);
 			if (response.error === "auth/email-already-in-use") {
 				setError({
 					emailError: "email-already-in-use",

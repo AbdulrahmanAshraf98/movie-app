@@ -4,8 +4,6 @@ function DetailsOverViewPoster({
 	alt,
 	openModalHandler,
 	favoriteAdd,
-	favoriteRemoveItem,
-	isFavorite,
 	currentUser,
 }) {
 	return (
@@ -23,16 +21,6 @@ function DetailsOverViewPoster({
 						</div>
 						{!currentUser && (
 							<div className={`card-options add`} onClick={favoriteAdd}>
-								<i className="fa-solid fa-heart"></i>
-							</div>
-						)}
-						{!isFavorite && currentUser && (
-							<div className={`card-options add`} onClick={favoriteAdd}>
-								<i className="fa-solid fa-heart"></i>
-							</div>
-						)}
-						{currentUser && isFavorite && (
-							<div className={`card-options `} onClick={favoriteRemoveItem}>
 								<i className="fa-solid fa-heart"></i>
 							</div>
 						)}
