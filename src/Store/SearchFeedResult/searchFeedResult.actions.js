@@ -25,8 +25,6 @@ export const fetchSearchResultData = (searchTerm) => async (dispatch) => {
 		const responseDate = await fetchFromTmdbApi(
 			`search/multi?language=en-US&query=${searchTerm}&page=1&include_adult=false}`,
 		);
-
-		console.log(responseDate);
 		dispatch(fetchSearchResultDataSuccess(responseDate.results));
 	} catch (error) {
 		dispatch(fetchSearchResultDataFailed(error));

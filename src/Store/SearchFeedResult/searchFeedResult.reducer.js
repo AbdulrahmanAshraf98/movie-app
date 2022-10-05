@@ -10,7 +10,6 @@ export const searchFeedReducer = (state = initialState, action) => {
 		case SEARCH_FEED_RESULT_ACTIONS_TYPES.FETCH_SEARCH_FEED_RESULT_START:
 			return { ...state, isLoading: true };
 		case SEARCH_FEED_RESULT_ACTIONS_TYPES.FETCH_SEARCH_FEED_RESULT_SUCCESS: {
-			console.log(state, action);
 			return { ...state, isLoading: false, searchResults: action.payload };
 		}
 		case SEARCH_FEED_RESULT_ACTIONS_TYPES.RESET_SEARCH_FEED_RESULT:
