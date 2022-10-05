@@ -1,5 +1,5 @@
 <h3 align="center">movie-app built in React Js  based on Tmdb_Api</h3>
-<h4 align="center"> Bulit With React js && ReactContextApi && React Router Dom V6 && Swiper Js && Native css && FireBase For Backend And For Responsive Web Design Mobile First Approach </h4>
+<h4 align="center"> Bulit With React js && React Redux && Redux-Thunk && Reselect && ReactContextApi && React Router Dom V6 && Swiper Js && Css && FireBase For Backend And For Responsive Web Design Mobile First Approach </h4>
 
 ## 📝 Table of Contents
 - [Features](#Features)
@@ -13,38 +13,42 @@
 ## 📋 Features  <a name = "Features"></a>
 - Get Trading Movies/TvSeries And Display it 
 - Get Movie/Tv Details 
-- Get Videos About  Movie/Tv  
-- Search for Movie/Tv 
-- Filter Category for Movies/TvSeries
+- Play  Videos   Movie/Tv  
+- Search for Movie/Tv/People
+- Filter Category for Movies/TvSeries/Favorite
 - Sorting  By popularity desc/asc
 - Authentication SignUp/LogIn
 - Add/Remove To/From Favorite list items
-- Switch Current Page for Movies/TvSeries
-- Toggle Blue/Rea Mode
-- Track Selected Category And  SortBy And Current User Id And Current path name using localstroage 
+- Pagination
+- Blue/Red Mode
+- Track Selected Category And  SortBy 
+- Skeleton loading
+- Notification
 <br />
 
 ## 🌐 [LIVE DEMO](https://movie-app-six-xi.vercel.app/) <a name = "LIVE-DEMO"></a>
-  FirebaseHosting:https://movie-app-99180.web.app/
-  <br />	
   Vercel:https://movie-app-six-xi.vercel.app/
-  <hr />
+  <br />	
   
 
 <br />
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [React Js](https://www.mongodb.com/) -UI Libaray
-- [React Router Dom](https://www.mongodb.com/) For Routing 
-- [Css Framework](https://expressjs.com/) - Css3
-- [Swiper Js](https://vuejs.org/) - 
+- [React Js] -UI Libaray
+- [Redux ] -State Management
+- [Redux Thunk]
+- [React Router Dom] For Routing
 - [Firebase](https://nodejs.org/en/) - Firebase
-- [FireStore]()       -For DataBase
-- [LocalStorage]()   -To Keep Track Selected Category And Selected SortBy And Current User Id And Current path name 
+- [FireStore]      -For DataBase
+- [Swiper Js] - For Sliders 
+- [React Loading Skeleton]  For Loading Skeleton
+- [React Paginate] For Paginate
+- [LocalStorage]   -To Keep Track Selected Category And Selected SortBy  And Current path name 
+- [Css]- For Sryle
 
 ## 🔥 Preview  <a name = "Preview"></a>
-   VideoPreviewLink:<a>https://drive.google.com/file/d/14gLw8uL-wXQCFWqux__LmJkU7O2--G5r/view?usp=sharing</a>
+   VideoPreviewLink:<a href="https://www.youtube.com/watch?v=BoFvjVI9ojU&ab_channel=AbdulrahmanAshraf">https://www.youtube.com/watch?v=BoFvjVI9ojU&ab_channel=AbdulrahmanAshraf</a>
 	<br>
 
 </div>
