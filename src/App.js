@@ -29,9 +29,9 @@ function App() {
 				baseColor="var(--dark-color)"
 				highlightColor={"var(--secondary-color)"}>
 				<ModalContextProvider>
+					<Notifications />
 					<Navbar />
 					<Main />
-					<Notifications />
 					<Footer />
 				</ModalContextProvider>
 			</SkeletonTheme>

@@ -114,3 +114,13 @@ span.card-image.lazy-load-image-background.blur.lazy-load-image-loaded{
 .lazy-load-image-background.blur.lazy-load-image-loaded > img{
   transition: all .5s ease-in-out !important;
 }
+.Toastify__toast-container {
+  z-index: 99999 !important;
+}
+.Toastify__toast-theme--dark {
+  
+}
+.Toastify__toast-theme--light {
+  background-color: var(--black-color) !important;
+  color: var(--grey-color) !important;
+}
