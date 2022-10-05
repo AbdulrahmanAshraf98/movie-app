@@ -8,8 +8,10 @@ const initialState = {
 
 export const favoriteReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case FAVORITE_ACTIONS_TYPES.FETCH_FAVORITE_ITEMS_START:
+		case FAVORITE_ACTIONS_TYPES.FETCH_FAVORITE_ITEMS_START: {
 			return { ...state, isLoading: true };
+		}
+
 		case FAVORITE_ACTIONS_TYPES.FETCH_FAVORITE_ITEMS_SUCCESS: {
 			return { ...state, isLoading: false, favoriteData: action.payload };
 		}

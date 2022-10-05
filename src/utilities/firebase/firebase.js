@@ -71,8 +71,8 @@ export const onAuthChangeListener = (callback) => onAuthStateChanged(auth, callb
 export const SignOutUser = () => signOut(auth);
 export const addToFavoriteDocument = async (userAuthId, favoriteItem) => {
 	if (!userAuthId) return;
+	const favoriteDocRef = doc(db, "Favourite", userAuthId);
 	try {
-		const favoriteDocRef = doc(db, "Favourite", userAuthId);
 		const favoriteSnapShot = await getDoc(favoriteDocRef);
 		let updatedDoc = null;
 		if (!favoriteSnapShot.exists()) {
@@ -87,10 +87,10 @@ export const addToFavoriteDocument = async (userAuthId, favoriteItem) => {
 		updatedDoc = await updateDoc(favoriteDocRef, {
 			items: arrayUnion(favoriteItem),
 		});
-		return favoriteSnapShot;
 	} catch (error) {
 		throw new Error(error);
 	}
+
 };
 export const removeFavoriteDocument = async (userAuthId, favoriteItem) => {
 	const favoriteDocRef = doc(db, "Favourite", userAuthId);

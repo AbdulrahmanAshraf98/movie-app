@@ -1,4 +1,4 @@
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import { createActions } from "../../utilities/createActions";
 import {
 	addToFavoriteDocument,
@@ -38,58 +38,43 @@ export const postFavoriteDataFailed = (error) =>
 
 export const postAddFavoriteItem = (userID, item) => async (dispatch) => {
 	toast.dismiss();
-	toast.loading("Add Item Start", {
-		id: "Add Start",
-	});
 	dispatch(postFavoriteDataStart());
 	try {
-		const snap = await addToFavoriteDocument(userID, item);
-		dispatch(postFavoriteDataSuccess());
-		toast.success("Item Added  To Favorite", {
-			id: "Added",
+		toast.promise(addToFavoriteDocument(userID, item), {
+			pending: "Add Item is pending",
+			success: "item Added To Favorite 👌",
+			error: "Failed To Add Item To Favorite 🤯",
 		});
+		dispatch(postFavoriteDataSuccess());
 	} catch (error) {
 		dispatch(postFavoriteDataFailed(error));
-		toast.success(error.message, {
-			id: "Add Error",
-		});
 	}
 };
 export const postRemoveFavoriteItem = (userID, item) => async (dispatch) => {
 	toast.dismiss();
-	toast.loading("Remove Item Start", {
-		id: "Remove Start",
-	});
 	dispatch(postFavoriteDataStart());
 	try {
-		const snap = removeFavoriteDocument(userID, item);
-		dispatch(postFavoriteDataSuccess());
-		toast.success("Item Removed  From Favorite", {
-			id: "Removed",
+		toast.promise(removeFavoriteDocument(userID, item), {
+			pending: "Remove Item is pending",
+			success: "item Removed To Favorite 👌",
+			error: "Failed To Remove Item To Favorite 🤯",
 		});
+		dispatch(postFavoriteDataSuccess());
 	} catch (error) {
 		dispatch(postFavoriteDataFailed(error));
-		toast.error(error.message, {
-			id: "Remove Error",
-		});
 	}
 };
 export const postDeleteAllFavoriteItems = (userID) => async (dispatch) => {
 	toast.dismiss();
-	toast.loading("Delete All Items Start", {
-		id: "Delete Start",
-	});
 	dispatch(postFavoriteDataStart());
 	try {
-		const snap = deleteFavoriteDocument(userID);
-		dispatch(postFavoriteDataSuccess());
-		toast.success("ALl  Items Deleted", {
-			id: "Deleted",
+		toast.promise(deleteFavoriteDocument(userID), {
+			pending: "Clear All Favorite Items is pending",
+			success: "Favorite Items Deleted 👌",
+			error: "Failed To Delete Item To Favorite 🤯",
 		});
+		dispatch(postFavoriteDataSuccess());
 	} catch (error) {
 		dispatch(postFavoriteDataFailed(error));
-		toast.error(error.message, {
-			id: "Delete Error",
-		});
 	}
 };
