@@ -107,7 +107,7 @@ const SignIn = ({ SwitchAuthHandler }) => {
 					<button className="submit" type="submit">
 						Login
 					</button>
-					<button className="submit" onClick={SwitchAuthHandler}>
+					<button className="switchAuth" onClick={SwitchAuthHandler}>
 						signUp
 					</button>
 				</div>

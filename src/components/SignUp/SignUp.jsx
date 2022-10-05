@@ -80,7 +80,7 @@ const SignUp = ({ SwitchAuthHandler }) => {
 					<button className="submit" type="submit">
 						Signup
 					</button>
-					<button className="submit" onClick={SwitchAuthHandler}>
+					<button className="switchAuth" onClick={SwitchAuthHandler}>
 						SignIn
 					</button>
 				</div>

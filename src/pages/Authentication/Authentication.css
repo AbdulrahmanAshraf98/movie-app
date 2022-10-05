@@ -1,5 +1,7 @@
 .Authentication{
-    
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
 }
 .Auth{
     padding: 1rem 0;   
@@ -11,6 +13,7 @@
     flex-wrap: wrap;
     padding: 1rem;
     transition: all 0.4s ease;
+    width: 100%;
 }
 .Auth .section-title{
     margin-bottom:2rem;
@@ -63,8 +66,7 @@
     border-radius: 5px;
     padding: 0.5rem;
     box-sizing: border-box;
-
-
+    outline:none;
 }
 
 .Auth form button{
@@ -79,7 +81,7 @@
     border-radius: 5px;
 }
 .switchAuth{
-    color: var(--primary-color);
+    color: var(--white-color);
     background: transparent !important;
 }
 .Invalid-feedback{
@@ -96,10 +98,7 @@
     }
 }
 @media (min-width:520px) {
-    .Auth{
-        width: 80%;
-        margin: 0 auto;
-    }
+  
     .Auth .section-title:before{
         transform: none;
         left: 0;
@@ -114,10 +113,7 @@
     }
 }
 @media (min-width:750px) {
-    .Auth{
-        width: 70%;
-        margin: 0 auto;
-    }
+ 
     .Auth .button-group{
         display: flex;
         justify-content: space-between;
@@ -128,10 +124,7 @@
     }
 }
 @media (min-width:992px) {
-    .Auth{
-        width: 50%;
-        margin: 0 auto;
-    }
+
     .Auth .button-group{
         display: flex;
         justify-content: space-between;
