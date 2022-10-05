@@ -10,6 +10,7 @@
     align-items: center;
     flex-wrap: wrap;
     padding: 1rem;
+    transition: all 0.4s ease;
 }
 .Auth .section-title{
     margin-bottom:2rem;

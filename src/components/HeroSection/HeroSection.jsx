@@ -1,46 +1,36 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 // Import Swiper React components
 import { Autoplay, Navigation } from "swiper";
-import useFetch from "../../Hooks/useFetch";
-
 import Carousel from "../UI/Carousel/Carousel";
 import Container from "../UI/Container/Container";
 import "./Herosection.css";
 import Banner from "./Banner/Banner";
-
-function HeroSection({ openModalHandler }) {
-	const [responseData, isLoading, error] =
-		useFetch(`https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_TMDB_API_KEY}&&page=1
-	`);
-	// const trending = response[0].results;
-	let trending = responseData.results;
+function HeroSection({ openModalHandler, data }) {
 	const [background, setBackground] = useState("");
-	const setBackgroundHandler = (url) => {
+	const setBackgroundHandler = useCallback((url) => {
 		setBackground(url);
-	};
+	}, []);
 
 	return (
 		<>
-			{trending && !isLoading && (
+			{data && (
 				<div
 					className="HeroSection"
 					style={{
 						backgroundImage: `url(${background})`,
 					}}>
-					{trending && (
-						<Container>
-							<Carousel
-								data={trending}
-								slidesCount={1}
-								spaceBetween={0}
-								centeredSlides={true}
-								fn={setBackgroundHandler}
-								modules={[Autoplay, Navigation]}
-								delay={7000}>
-								<Banner />
-							</Carousel>
-						</Container>
-					)}
+					<Container>
+						<Carousel
+							data={data}
+							slidesCount={1}
+							spaceBetween={0}
+							centeredSlides={true}
+							fn={setBackgroundHandler}
+							modules={[Autoplay, Navigation]}
+							delay={5000}>
+							<Banner />
+						</Carousel>
+					</Container>
 				</div>
 			)}
 		</>

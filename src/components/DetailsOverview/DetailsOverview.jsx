@@ -1,34 +1,62 @@
-import React, { useContext } from "react";
+import React, { useCallback } from "react";
 import Container from "../UI/Container/Container";
 import DetailsInfo from "./DetailsInfo/DetailsInfo";
 import DetailsOverViewPoster from "./DetailsOverViewPoster/DetailsOverViewPoster";
 import "./DetailsOverview.css";
 import { setLocalStorage } from "../../utilities/Localstorage";
-import FavoriteContext from "../../Store/Context/FavoriteContext/FavoriteContext";
-import AuthContext from "../../Store/Context/Auth/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import { selectCurrentUser } from "../../Store/Auth/user.selector";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	postAddFavoriteItem,
+	postRemoveFavoriteItem,
+} from "../../Store/Favorite/favorite.actions";
+import { selectFavoriteData } from "../../Store/Favorite/favorite.selector";
 function DetailsOverview({ item, openModalHandler }) {
+	const vote_average =
+		item.vote_average && parseFloat(item.vote_average.toFixed(1));
+
+	const newItem = item && {
+		backdrop_path: item.backdrop_path,
+		id: item.id,
+		poster_path: item.poster_path,
+		title: item.title ? item.title : item.name,
+		mediaType: item.mediaType,
+		vote_average,
+		release_date: item.release_date ? item.release_date : item.first_air_date,
+		isFavorite: true,
+	};
+	const dispatch = useDispatch();
+	const currentUser = useSelector(selectCurrentUser);
+	const favoriteItems = useSelector(selectFavoriteData);
+	let updatedItem = item;
+	if (favoriteItems) {
+		favoriteItems.forEach((favoriteItem) => {
+			if (favoriteItem.id === item.id) {
+				updatedItem = { ...item, isFavorite: true };
+			} else {
+				updatedItem = { ...item, isFavorite: false };
+			}
+		});
+	}
 	let location = useLocation();
 	const navigate = useNavigate();
-	const authContext = useContext(AuthContext);
-	const favoriteContext = useContext(FavoriteContext);
 	const detailsOverviewPoster = item.poster_path
 		? item.poster_path
 		: item.backdrop_path;
-
-	const favoriteAdd = () => {
-		if (authContext.isLogin === false) {
+	const addFavoriteItem = useCallback(() => {
+		if (!currentUser) {
 			setLocalStorage("prevPath", location.pathname, "");
 			navigate("/Auth");
 			return;
 		}
-		favoriteContext.addToFavoriteHandler(item);
-	};
-	const favoriteRemoveItem = () => {
-		favoriteContext.removeFromFavoriteHandler(item.id);
-	};
+		dispatch(postAddFavoriteItem(currentUser.uid, newItem));
+		return;
+	}, [currentUser]);
+	const removeFavoriteItem = useCallback(() => {
+		dispatch(postRemoveFavoriteItem(currentUser.uid, newItem));
+	}, [currentUser]);
 
-	const foundFavItem = favoriteContext.foundItem(item.id);
 	return (
 		<section
 			className="Details "
@@ -41,10 +69,11 @@ function DetailsOverview({ item, openModalHandler }) {
 						<DetailsOverViewPoster
 							src={detailsOverviewPoster}
 							openModalHandler={openModalHandler}
-							favoriteAdd={favoriteAdd}
-							favoriteRemoveItem={favoriteRemoveItem}
-							foundItemHandler={foundFavItem}
+							favoriteAdd={addFavoriteItem}
+							favoriteRemoveItem={removeFavoriteItem}
+							isFavorite={updatedItem.isFavorite}
 							alt={item.title ? item.title : item.name}
+							currentUser={currentUser}
 						/>
 						<DetailsInfo
 							title={item.title ? item.title : item.name}

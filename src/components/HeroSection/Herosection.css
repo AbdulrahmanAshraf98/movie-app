@@ -6,7 +6,9 @@
     position:relative;
     overflow:hidden;
     min-height: 50vh;
+    transition:all 0.5s ease;
 }
+
 .HeroSection::before{
     content: '';
     display: block;
@@ -17,12 +19,10 @@
     height: 100%;
     background: linear-gradient(to left, #0B1017CC, #0B1017);
 }
-.HeroSection .container{
-   
 
-}
 .HeroSection .swiper-slide{
     text-align: left; 
     justify-content: flex-start;
+   
 }
 

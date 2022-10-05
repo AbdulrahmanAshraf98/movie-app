@@ -9,15 +9,16 @@
     flex: 0 0 100%;
     max-width: 100%;
     margin-bottom: 1rem;
+    position: relative;
 }
 @media(min-width:576px){
     .movies .row{
         gap: 3%;
-        justify-content: space-between;
+        justify-content: flex-start;
     }
     .movies .row .col{
-        flex: 0 0 45%;
-        max-width: 50%;
+        flex: 0 0 31%;
+        max-width: 31%;
         margin-bottom: 2rem;
     }
   }
@@ -26,7 +27,11 @@
   
   }
   @media(min-width:992px){
-  
+    .movies .row .col{
+        flex: 0 0 22%;
+        max-width: 22%;
+        margin-bottom: 2rem;
+    }
   }
   @media(min-width:1024px){
     .movies .row{
@@ -34,17 +39,12 @@
 
     
     }
-    .movies .row .col{
+    /* .movies .row .col{
         flex: 0 0 30%;
         padding: 0;
-    }
+    } */
   }
   @media(min-width:1200px){
     .movies .row{
-    }
-    .movies .row .col{
-        flex: 0 0 22%;
-    
-
     }
   }

@@ -37,7 +37,7 @@ function DropDown({ values, defaultValue, localStorageItemName, onClick }) {
 	}, []);
 	const resultHandler = useCallback((e) => {
 		setSelectBoxValue((prevState) => defaultValue);
-		onClick("");
+		onClick("%22%22");
 		setIsActive((prevState) => !prevState);
 		removeItemFromLocalStorage(localStorageItemName);
 	}, []);

@@ -11,7 +11,7 @@ function Preloader({ className }) {
 
 	return ReactDOM.createPortal(
 		<div className={`preloader ${className}`}>
-			<Img src={themeContext.Theme === "blue" ? logo : logo2} />
+			<Img src={themeContext.theme === "blue" ? logo : logo2} />
 		</div>,
 		document.getElementById("root"),
 	);

@@ -4,9 +4,13 @@ import { scrollTop } from "../../../utilities/ScrollTop";
 import Img from "../../UI/Img/Img";
 import "./RecommendationsItem.css";
 function RecommendationsItem({ item, mediaType, isActive }) {
+	const title = (item.original_title ? item.original_title : item.name).slice(
+		0,
+		10,
+	);
 	const navigateTo = useNavigate();
 	const redirectPath =
-		mediaType === "tv" ? `/Tv/${item.id}` : `/Movies/Movie/${item.id}`;
+		mediaType === "tv" ? `/Tv/${item.id}` : `/Movies/${item.id}`;
 	const onClickHandler = (e) => {
 		e.preventDefault();
 		navigateTo(`${redirectPath}`);
@@ -28,7 +32,7 @@ function RecommendationsItem({ item, mediaType, isActive }) {
 			/>
 			<div className="recommendation-details">
 				<div className="name">
-					<p>{item.original_title ? item.original_title : item.name}</p>
+					<p>{title}</p>
 				</div>
 				<div className="vote_average">
 					<p>{item.vote_average.toFixed("1")}</p>

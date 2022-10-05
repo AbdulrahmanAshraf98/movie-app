@@ -1,16 +1,13 @@
-import { useContext } from "react";
-import AuthContext from "../../../Store/Context/Auth/AuthContext";
 import Img from "../../UI/Img/Img";
-
 function DetailsOverViewPoster({
 	src,
 	alt,
 	openModalHandler,
 	favoriteAdd,
 	favoriteRemoveItem,
-	foundItemHandler,
+	isFavorite,
+	currentUser,
 }) {
-	const authContext = useContext(AuthContext);
 	return (
 		src && (
 			<div className="col details-overview-poster">
@@ -20,22 +17,25 @@ function DetailsOverViewPoster({
 						alt={alt}
 						src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${src}`}>
 						<div className="overlay">
-							<a className="playTrailer" onClick={openModalHandler}>
+							<a className="playTrailer" onClick={openModalHandler} href="">
 								<i className="fa-solid fa-play"></i>
 							</a>
 						</div>
-						<div
-							className={`card-options ${foundItemHandler ? "d-none" : "add"}`}
-							onClick={favoriteAdd}>
-							<i className="fa-solid fa-heart"></i>
-						</div>
-						<div
-							className={`card-options ${
-								foundItemHandler && authContext.isLogin ? "" : "d-none"
-							}`}
-							onClick={favoriteRemoveItem}>
-							<i className="fa-solid fa-heart"></i>
-						</div>
+						{!currentUser && (
+							<div className={`card-options add`} onClick={favoriteAdd}>
+								<i className="fa-solid fa-heart"></i>
+							</div>
+						)}
+						{!isFavorite && currentUser && (
+							<div className={`card-options add`} onClick={favoriteAdd}>
+								<i className="fa-solid fa-heart"></i>
+							</div>
+						)}
+						{currentUser && isFavorite && (
+							<div className={`card-options `} onClick={favoriteRemoveItem}>
+								<i className="fa-solid fa-heart"></i>
+							</div>
+						)}
 					</Img>
 				</>
 			</div>

@@ -1,36 +1,41 @@
-import { useContext, useEffect, useState } from "react";
-import "./App.css";
-import Footer from "./components/Footer/Footer";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Main from "./components/Main/Main";
-import Navbar from "./components/Navbar/Navbar";
-import Preloader from "./components/preloader/Preloader";
-import AuthContextProvider from "./Store/Context/Auth/AuthContextProvider";
-import FavoriteContextProvider from "./Store/Context/FavoriteContext/FavoriteContextProvider";
-import ModalContextProvider from "./Store/Context/ModalContext/ModalContextProvider";
-import ThemeContext from "./Store/Context/ThemeContext/ThemeContext";
 
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import Preloader from "./components/preloader/Preloader";
+import { setCurrentUser } from "./Store/Auth/user.actions";
+import ModalContextProvider from "./Store/Context/ModalContext/ModalContextProvider";
+import ThemeContextProvider from "./Store/Context/ThemeContext/ThemeContextProvider";
+import { onAuthChangeListener } from "./utilities/firebase/firebase";
+import "./App.css";
+import { SkeletonTheme } from "react-loading-skeleton";
+import Notifications from "./components/Notifications/Notifications";
 function App() {
-	const themeContext = useContext(ThemeContext);
-	const [loading, setLoading] = useState(true);
+	const dispatch = useDispatch();
 	useEffect(() => {
-		setTimeout(() => {
-			setLoading(false);
-		}, 800);
-	}, [loading]);
+		const unsubscribe = onAuthChangeListener((user) => {
+			if (user) {
+			}
+			dispatch(setCurrentUser(user));
+		});
+		return unsubscribe;
+	});
+
 	return (
-		<AuthContextProvider>
-			<ModalContextProvider>
-				{loading && <Preloader className={``} />}
-				<div
-					className={`warper ${themeContext.Theme === "red" ? "red" : "blue"}`}>
-					<Navbar></Navbar>
-					<FavoriteContextProvider>
-						<Main />
-					</FavoriteContextProvider>
-					<Footer></Footer>
-				</div>
-			</ModalContextProvider>
-		</AuthContextProvider>
+		<ThemeContextProvider>
+			<SkeletonTheme
+				baseColor="var(--dark-color)"
+				highlightColor={"var(--secondary-color)"}>
+				<ModalContextProvider>
+					<Navbar />
+					<Main />
+					<Notifications />
+					<Footer />
+				</ModalContextProvider>
+			</SkeletonTheme>
+		</ThemeContextProvider>
 	);
 }
 

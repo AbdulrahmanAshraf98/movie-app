@@ -1,0 +1,45 @@
+
+.col{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+}
+@media(min-width:576px){
+
+     .col{
+        flex: 0 0 45%;
+        max-width: 50%;
+        margin-bottom: 2rem;
+    }
+  }
+
+@media(min-width:768px){
+    .col{
+        flex: 0 0 30%;
+        max-width: 30%;
+        margin-bottom: 2rem;
+    }
+  }
+  @media(min-width:992px){
+    .col{
+        flex: 0 0 22%;
+        max-width: 22%;
+        margin-bottom: 2rem;
+    }
+  
+  }
+  @media(min-width:1024px){
+
+     .col{
+        flex: 0 0 30%;
+        padding: 0;
+    }
+  }
+  @media(min-width:1200px){
+
+   .col{
+        flex: 0 0 25%;
+    
+
+    }
+  }

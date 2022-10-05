@@ -13,8 +13,8 @@
      justify-content:space-between;
     }
     .Series .row .col{
-        flex: 0 0 45%;
-        max-width: 50%;
+        flex: 0 0 32%;
+        max-width: 32%;
         margin-bottom: 2rem;
     }
   }
@@ -23,7 +23,11 @@
   
   }
   @media(min-width:992px){
-  
+    .Series .row .col{
+      flex: 0 0 22%;
+      max-width: 22%;
+      margin-bottom: 2rem;
+  }
   }
   @media(min-width:1024px){
     .Series .row{

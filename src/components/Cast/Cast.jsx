@@ -8,12 +8,13 @@ import SectionTitle from "../UI/sectionTitle/SectionTitle";
 
 function Cast({ castData }) {
 	let topCast = castData;
-	if (topCast) {
-		topCast = topCast.filter((element) => element.popularity >= 2).sort();
+	if (castData.length > 5) {
+		topCast = castData.filter((element) => element.popularity >= 2);
 	}
+	topCast.sort((a, b) => b.popularity - a.popularity);
 	return (
 		<>
-			{topCast && topCast.length > 1 && (
+			{topCast && (
 				<section className="CastList">
 					<Container>
 						<SectionTitle>

@@ -6,9 +6,10 @@ import SectionTitle from "../UI/sectionTitle/SectionTitle";
 import RecommendationsItem from "./RecommendationsItem/RecommendationsItem";
 import "./Recommendations.css";
 function Recommendations({ mediaType, recommendationsData }) {
+	recommendationsData.sort((a, b) => b.vote_average - a.vote_average);
 	return (
 		<>
-			{recommendationsData && recommendationsData.length > 0 && (
+			{recommendationsData && (
 				<section className="recommendations">
 					<Container>
 						<SectionTitle>

@@ -1,37 +1,33 @@
 import React, { useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useSearchParams } from "react-router-dom";
 import Cast from "../../../components/Cast/Cast";
 import DetailsOverview from "../../../components/DetailsOverview/DetailsOverview";
 import Recommendations from "../../../components/Recommendations/Recommendations";
-import Seasons from "../../../components/Seasons/Seasons";
+import Error from "../../../components/UI/Error/Error";
 import LoadingSpinner from "../../../components/UI/LoadingSpinner/LoadingSpinner";
 import VideoModal from "../../../components/VideoModal/VideoModal";
-import useFetch from "../../../Hooks/useFetch";
 import ModalContext from "../../../Store/Context/ModalContext/ModalContext";
+import { fetchSeriesDetailsData } from "../../../Store/Details/details.actions";
+import {
+	selectDetailsError,
+	selectDetailsIsLoading,
+	selectSeriesDetailsData,
+} from "../../../Store/Details/details.selector";
 import { scrollTop } from "../../../utilities/ScrollTop";
 
 function SeriesDetails() {
+	const dispatch = useDispatch();
 	const modalContext = useContext(ModalContext);
 	const { id } = useParams();
 	const [searchParams, setSearchParams] = useSearchParams();
 	let videoId = modalContext.getSearchParamsHandler("videoId");
-	const [responseData, isLoading, error] = useFetch(
-		`https://api.themoviedb.org/3/tv/${id}?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US`,
-	);
-	const [
-		recommendationsResponse,
-		recommendationsIsLoading,
-		recommendationsError,
-	] = useFetch(
-		`https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`,
-	);
-	const [costResponse, costIsLoading, costError] = useFetch(
-		`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`,
-	);
-	let SeriesDetailsData = null;
-	SeriesDetailsData = responseData;
-	let recommendations = recommendationsResponse.results;
-	let topCast = costResponse.cast;
+	const seriesDetailsData = useSelector(selectSeriesDetailsData);
+	const isLoading = useSelector(selectDetailsIsLoading);
+	const error = useSelector(selectDetailsError);
+	const seriesDetails = seriesDetailsData.seriesInfo;
+	const recommendations = seriesDetailsData.recommendations;
+	const topCast = seriesDetailsData.cast;
 
 	const openModalHandler = (e) => {
 		e.preventDefault();
@@ -42,9 +38,10 @@ function SeriesDetails() {
 		if (videoId) {
 			modalContext.videoModuleOpenHandler();
 		}
-	}, [id, videoId, searchParams, SeriesDetailsData, isLoading, error]);
+	}, [id, searchParams]);
 	useEffect(() => {
 		if (id) {
+			dispatch(fetchSeriesDetailsData(id));
 			scrollTop();
 		}
 	}, [id]);
@@ -58,26 +55,23 @@ function SeriesDetails() {
 					type="tv"
 				/>
 			)}
-			{isLoading && recommendationsIsLoading && costIsLoading && (
-				<LoadingSpinner />
-			)}
-			{SeriesDetailsData &&
-				!isLoading &&
-				!recommendationsIsLoading &&
-				!costIsLoading && (
-					<>
-						<DetailsOverview
-							item={SeriesDetailsData}
-							openModalHandler={openModalHandler}
-						/>
-						<Cast castData={topCast} />
+			{isLoading && <LoadingSpinner />}
+			{seriesDetailsData && !isLoading && !error && (
+				<>
+					<DetailsOverview
+						item={{ ...seriesDetails, mediaType: "tv" }}
+						openModalHandler={openModalHandler}
+					/>
+					{topCast && topCast.length > 0 && <Cast castData={topCast} />}
+					{recommendations && recommendations.length > 0 && (
 						<Recommendations
 							recommendationsData={recommendations}
 							mediaType="tv"
 						/>
-					</>
-				)}
-			{/* {SeriesDetailsData.seasons && <Seasons />} */}
+					)}
+				</>
+			)}
+			{error && <Error error={error} />}
 		</>
 	);
 }

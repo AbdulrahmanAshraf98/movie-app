@@ -1,30 +1,36 @@
-import React from "react";
-import useFetch from "../../Hooks/useFetch";
-
+import React, { useCallback, useEffect, useState } from "react";
+import { fetchFromTmdbApi } from "../../utilities/Api/FetchApiTmdb";
 import DropDown from "../UI/SelectBox/DropDown/DropDown";
 import "./Genres.css";
 function Genres({ onClick, mediaType = "movie", className }) {
-	let url =
-		"https://api.themoviedb.org/3/genre/movie/list?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US";
-	if (mediaType === "tv") {
-		url =
-			"https://api.themoviedb.org/3/genre/tv/list?api_key=d948c5c0ea05d8b074392d5c6641f56c&language=en-US";
-	}
-	const [responseData, isLoading] = useFetch(url);
-	let genres = responseData.genres;
+	const [category, setCategory] = useState([]);
+
+	const getCategory = useCallback(async () => {
+		let url = "genre/movie/list?language=en-US";
+		if (mediaType === "tv") {
+			url = "genre/tv/list?&language=en-US";
+		}
+		try {
+			const responseData = await fetchFromTmdbApi(url);
+			setCategory(responseData.genres);
+		} catch (error) {}
+	}, []);
+	useEffect(() => {
+		getCategory();
+	}, []);
 	return (
 		<>
-			{genres && (
+			{category && (
 				<div className={className}>
 					<DropDown
-						values={genres}
+						values={category}
 						defaultValue="All"
 						onClick={onClick}
 						localStorageItemName={`${mediaType}genres`}
 					/>
 				</div>
 			)}
-			{!genres && (
+			{!category && (
 				<div className={className}>
 					<DropDown
 						values={[]}

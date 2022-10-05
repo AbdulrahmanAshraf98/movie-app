@@ -22,12 +22,12 @@ function FavouriteItem({ item, favoriteRemoveItem }) {
 							<div
 								className="card-options"
 								onClick={() => {
-									favoriteRemoveItem(item.id);
+									favoriteRemoveItem(item);
 								}}>
 								<i className="fa-solid fa-heart"></i>
 							</div>
 							<div className="play">
-								<Link to={`/Movies/Movie/${item.id}`}>
+								<Link to={`/Movies/${item.id}`}>
 									<i className="fa-solid fa-down-left-and-up-right-to-center"></i>
 								</Link>
 							</div>
