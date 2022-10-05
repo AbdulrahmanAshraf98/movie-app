@@ -43,7 +43,6 @@ function Favorite() {
 				<div class="favorite__title">
 					<h3>Favorite List</h3>
 				</div>
-
 				<div className="favorite__buttons">
 					<div className="favorite__buttons_filter">
 						<div className="All">
