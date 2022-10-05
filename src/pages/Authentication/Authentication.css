@@ -1,7 +1,6 @@
 .Authentication{
-    min-height: 40vh;
-    display: flex;
-    align-items: center;
+    
+    width: 100%;
 }
 .Auth{
     padding: 1rem 0;   
@@ -14,6 +13,7 @@
     padding: 1rem;
     transition: all 0.4s ease;
     width: 100%;
+    min-height: 40vh;
 }
 .Auth .section-title{
     margin-bottom:2rem;
@@ -28,11 +28,11 @@
     height: 2px;
     background: var(--primarydark-color);
     position: absolute;
-    left: 50%;
+    transform: none;
+    left: 0;
     bottom: -93%;
     margin-bottom: 1rem;
     z-index: 1;
-    transform: translate(-50%, -50%);
     
 }
 .Auth .section-title::after{
@@ -84,10 +84,10 @@
     color: var(--white-color);
     background: transparent !important;
 }
-.Invalid-feedback{
+.Auth .Invalid-feedback{
     margin-bottom: 1rem;
 }
-.Invalid-feedback p{
+.Auth .Invalid-feedback p{
     color:red;
 
 }
@@ -98,6 +98,10 @@
     }
 }
 @media (min-width:520px) {
+    .Auth{
+        width: 80%;
+        margin: 0 auto;
+    }
   
     .Auth .section-title:before{
         transform: none;
@@ -108,8 +112,7 @@
         justify-content: space-between;
     }
     .Auth form button{
-        width:30%;
-        
+        width:30%;    
     }
 }
 @media (min-width:750px) {
@@ -124,7 +127,10 @@
     }
 }
 @media (min-width:992px) {
-
+    .Auth{
+        width: 50%;
+        margin: 0 auto;
+    }
     .Auth .button-group{
         display: flex;
         justify-content: space-between;

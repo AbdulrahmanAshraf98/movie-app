@@ -29,10 +29,13 @@
     padding: 1rem 0;
     border: none;
     outline: none;
-    background: var(--black-color);
+	background: var(--black-color);
     text-align: center;
 	padding: 1rem;
 	cursor: pointer;
+}
+.favorite .btn.active{
+    background: var(--primary-color);
 }
 .favorite .favorite__buttons__Clear__All {
 	margin-left: auto;

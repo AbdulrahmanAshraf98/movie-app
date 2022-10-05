@@ -14,14 +14,16 @@ import ListSkeleton from "../../components/Skeleton/ListSkeleton/ListSkeleton";
 import { postDeleteAllFavoriteItems } from "../../Store/Favorite/favorite.actions";
 
 function Favorite() {
-	const currentUser = useSelector(selectCurrentUser);
 	const dispatch = useDispatch();
+	const currentUser = useSelector(selectCurrentUser);
 	const favoriteItems = useSelector(selectFavoriteData);
+	const [selectedCategory, setSelectedCategory] = useState("All");
 	const [filterFavoriteItems, setFilterFavoriteItems] = useState([]);
 	const isLoading = useSelector(selectFavoriteIsLoading);
 	const error = useSelector(selectFavoriteDetailsError);
 	const filterFavItemsHandler = (event) => {
 		const filterValue = event.target.value;
+		setSelectedCategory(filterValue);
 		let filterItems = favoriteItems;
 		if (!favoriteItems) return;
 		if (filterValue !== "All") {
@@ -36,6 +38,7 @@ function Favorite() {
 	};
 	useEffect(() => {
 		setFilterFavoriteItems(favoriteItems);
+		setSelectedCategory("All");
 	}, [favoriteItems]);
 	return (
 		<section className="favorite">
@@ -47,7 +50,9 @@ function Favorite() {
 					<div className="favorite__buttons_filter">
 						<div className="All">
 							<button
-								className="btn btn-filter"
+								className={`btn btn-filter ${
+									selectedCategory === "All" ? "active" : ""
+								}`}
 								value="All"
 								onClick={filterFavItemsHandler}>
 								all
@@ -55,7 +60,9 @@ function Favorite() {
 						</div>
 						<div className="Movies">
 							<button
-								className="btn btn-filter"
+								className={`btn btn-filter ${
+									selectedCategory === "Movies" ? "active" : ""
+								}`}
 								value="Movies"
 								onClick={filterFavItemsHandler}>
 								Movies
@@ -63,7 +70,9 @@ function Favorite() {
 						</div>
 						<div className="Tv">
 							<button
-								className="btn btn-filter"
+								className={`btn btn-filter ${
+									selectedCategory === "tv" ? "active" : ""
+								}`}
 								value="tv"
 								onClick={filterFavItemsHandler}>
 								Tv
