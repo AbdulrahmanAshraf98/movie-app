@@ -8,7 +8,6 @@ import Img from "../UI/Img/Img";
 import "./preloader.css";
 function Preloader({ className }) {
 	const themeContext = useContext(ThemeContext);
-
 	return ReactDOM.createPortal(
 		<div className={`preloader ${className}`}>
 			<Img src={themeContext.theme === "blue" ? logo : logo2} />

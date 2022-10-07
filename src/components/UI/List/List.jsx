@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectFavoriteData } from "../../../Store/Favorite/favorite.selector";
 import ListItem from "./ListItem/ListItem";
 
-function List({ data, mediaType }) {
+function List({ data, mediaType, options }) {
 	const favoriteItems = useSelector(selectFavoriteData);
 	let newData = data;
 	newData = data.map((item) => {
@@ -24,6 +24,7 @@ function List({ data, mediaType }) {
 				<ListItem
 					item={!!mediaType ? { ...element, mediaType } : element}
 					mediaType={mediaType}
+					options={options}
 				/>
 			</div>
 		);

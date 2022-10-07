@@ -1,0 +1,14 @@
+.row-preview{
+    display: flex;
+    gap: 2%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+.row-preview .col{
+width: 100%;
+height: auto;
+}
+.row-preview .card .card-image{
+    max-height: 300px;
+    
+}

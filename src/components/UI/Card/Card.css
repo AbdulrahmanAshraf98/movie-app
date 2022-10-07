@@ -45,7 +45,7 @@
     z-index: 99;
 
 }
-.play{
+.card .open{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -55,7 +55,7 @@
     opacity: 0;
     transition: all 0.5s ease-in-out;
 }
-.play a{
+.card .open a{
     width: 60px;
     height: 60px;
     display: flex;
@@ -64,7 +64,7 @@
     border-radius: 900px;
     background: var(--primary-color);
 }
-.card:hover .play{
+.card:hover .open{
     visibility: visible;
     opacity: 1; 
 }

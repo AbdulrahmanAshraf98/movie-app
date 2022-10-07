@@ -1,13 +1,14 @@
 .section-title{
     margin-bottom:1rem;
     text-align:center;
+    
 }
 .section-title h3{
-  
+    font-size:2rem;
     font-size: 1.5rem;
     font-weight: 600;
 }
-@media(min-width:520px){
+@media(min-width:350px){
     .section-title{
         margin-bottom:1rem;
         text-align:left;

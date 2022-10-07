@@ -74,7 +74,7 @@ function Navbar() {
 
 							<a className="navbar-Toggler" onClick={toggleNavBar}>
 								{!mobileNavShow && <i className="fa-solid fa-bars"></i>}
-								{mobileNavShow && <i class="fas fa-times"></i>}
+								{mobileNavShow && <i className="fas fa-times"></i>}
 							</a>
 						</div>
 					</div>

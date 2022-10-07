@@ -88,7 +88,7 @@ const SignIn = ({ SwitchAuthHandler }) => {
 			<form onSubmit={onSubmitHandler} noValidate className="fade">
 				<Input id="Email" label="Email" type="email" ref={emailRef} />
 				{error && error.emailError && (
-					<div class="Invalid-feedback">
+					<div className="Invalid-feedback">
 						<p>{error.emailError}</p>
 					</div>
 				)}

@@ -4,7 +4,7 @@ const Error = ({ error }) => {
 	return (
 		<div className={`${classes.error}`}>
 			<span>
-				<i class="fas fa-times"></i>
+				<i className="fas fa-times"></i>
 			</span>
 			{error.message}
 		</div>

@@ -14,7 +14,7 @@ function HeroSection({ openModalHandler, data }) {
 	return (
 		<>
 			{data && (
-				<div
+				<section
 					className="HeroSection"
 					style={{
 						backgroundImage: `url(${background})`,
@@ -31,7 +31,7 @@ function HeroSection({ openModalHandler, data }) {
 							<Banner />
 						</Carousel>
 					</Container>
-				</div>
+				</section>
 			)}
 		</>
 	);
