@@ -26,7 +26,7 @@ const SearchFeed = () => {
 		setSearchTerm(e.target.value);
 	}, []);
 	useEffect(() => {
-		if (searchTerm) dispatch(fetchSearchResultData(searchTerm));
+		if (searchTerm.length > 0) dispatch(fetchSearchResultData(searchTerm));
 		else dispatch(resetSearchResultDataFailed());
 	}, [searchTerm]);
 	return (
@@ -50,7 +50,7 @@ const SearchFeed = () => {
 						)}
 					</div>
 				)}
-				{error && <Error error={error} />}
+				{error && searchResult.length && <Error error={error} />}
 			</Container>
 		</section>
 	);
