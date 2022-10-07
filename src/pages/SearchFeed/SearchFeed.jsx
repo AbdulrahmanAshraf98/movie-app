@@ -50,7 +50,7 @@ const SearchFeed = () => {
 						)}
 					</div>
 				)}
-				{error && searchResult.length && <Error error={error} />}
+				{error && <Error error={error} />}
 			</Container>
 		</section>
 	);
