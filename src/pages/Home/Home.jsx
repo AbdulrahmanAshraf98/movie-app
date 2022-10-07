@@ -1,24 +1,34 @@
 import { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import HeroSection from "../../components/HeroSection/HeroSection";
+import HomeRowPreview from "../../components/HomeRowPreview/HomeRowPreview";
 import Preloader from "../../components/preloader/Preloader";
+import Container from "../../components/UI/Container/Container";
 import Error from "../../components/UI/Error/Error";
 import VideoModal from "../../components/VideoModal/VideoModal";
 import ModalContext from "../../Store/Context/ModalContext/ModalContext";
-import { fetchTrendingData } from "../../Store/Trending/trending.actions";
+import { fetchHomeData } from "../../Store/Home/home.actions";
 import {
-	selectTrendingData,
-	selectTrendingError,
-	selectTrendingIsLoading,
-} from "../../Store/Trending/trending.selector";
-
+	selectHomeData,
+	selectHomeError,
+	selectHomeIsLoading,
+} from "../../Store/Home/home.selector";
 import { scrollTop } from "../../utilities/ScrollTop";
 
 function Home() {
 	const dispatch = useDispatch();
-	const trending = useSelector(selectTrendingData);
-	const isLoading = useSelector(selectTrendingIsLoading);
-	const error = useSelector(selectTrendingError);
+	const homeData = useSelector(selectHomeData);
+	const {
+		trending,
+		popularMovies,
+		nowPlayingMovies,
+		topRatedMovies,
+		popularSeries,
+		seriesOnTheAir,
+		topRatedSeries,
+	} = homeData;
+	const isLoading = useSelector(selectHomeIsLoading);
+	const error = useSelector(selectHomeError);
 	const modalContext = useContext(ModalContext);
 	let mediaType = modalContext.getSearchParamsHandler("mediaType");
 	let videoId = modalContext.getSearchParamsHandler("videoId");
@@ -29,7 +39,7 @@ function Home() {
 		}
 	}, [videoId, mediaType, modalContext]);
 	useEffect(() => {
-		dispatch(fetchTrendingData());
+		dispatch(fetchHomeData());
 		scrollTop();
 	}, []);
 
@@ -39,8 +49,41 @@ function Home() {
 			{videoId && modalContext.videoModuleIsOpen && (
 				<VideoModal id={+videoId} type={mediaType} />
 			)}
-			{trending && !isLoading && !error && (
-				<HeroSection data={trending}></HeroSection>
+			{homeData && !isLoading && !error && (
+				<>
+					<HeroSection data={trending} />
+					<HomeRowPreview data={trending} title="Trending" />
+					<HomeRowPreview
+						data={popularMovies}
+						title="Popular Movies"
+						mediaType={"Movies"}
+					/>
+					<HomeRowPreview
+						data={nowPlayingMovies}
+						title="Now Playing Movies"
+						mediaType={"Movies"}
+					/>
+					<HomeRowPreview
+						data={topRatedMovies}
+						title="Top Rated Movies"
+						mediaType={"Movies"}
+					/>
+					<HomeRowPreview
+						data={popularSeries}
+						title="Popular Tv"
+						mediaType={"tv"}
+					/>
+					<HomeRowPreview
+						data={seriesOnTheAir}
+						title="Tv On Air"
+						mediaType={"tv"}
+					/>
+					<HomeRowPreview
+						data={topRatedSeries}
+						title="Top Rated Tv"
+						mediaType={"tv"}
+					/>
+				</>
 			)}
 			{error && <Error error={error} />}
 		</>

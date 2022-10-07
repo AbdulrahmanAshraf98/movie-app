@@ -19,7 +19,7 @@ function Recommendations({ mediaType, recommendationsData }) {
 							data={recommendationsData}
 							slidesCount={1}
 							breakpoints={{
-								520: {
+								350: {
 									slidesPerView: 2,
 									spaceBetween: 20,
 								},

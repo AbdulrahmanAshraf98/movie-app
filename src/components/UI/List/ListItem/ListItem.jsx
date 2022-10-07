@@ -11,7 +11,11 @@ import { selectFavoriteData } from "../../../../Store/Favorite/favorite.selector
 import Card from "../../Card/Card";
 import Img from "../../Img/Img";
 
-function ListItem({ className, item }) {
+function ListItem({
+	className,
+	item,
+	options = { withoutCardFooter: false, favoriteItemsHandler: true },
+}) {
 	const vote_average = parseFloat(
 		item.vote_average.toString().slice(0, 3),
 	).toFixed(1);
@@ -34,11 +38,9 @@ function ListItem({ className, item }) {
 	const removeFavoriteItem = useCallback(() => {
 		dispatch(postRemoveFavoriteItem(currentUser.uid, newItem));
 	}, [item]);
-	const closeModalHandler = useCallback(() => {
-		modalContext.SearchModuleCloseHandler();
-	}, []);
+
 	return (
-		<div className="card list-item">
+		<div className="list-item">
 			<Card>
 				<div className="card-top">
 					<div className="card-top-box">
@@ -53,7 +55,7 @@ function ListItem({ className, item }) {
 									: `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg`
 							}`}
 						/>
-						{currentUser && (
+						{currentUser && options?.favoriteItemsHandler && (
 							<>
 								{!item.isFavorite && (
 									<div className={`card-options add`} onClick={addFavoriteItem}>
@@ -67,42 +69,44 @@ function ListItem({ className, item }) {
 								)}
 							</>
 						)}
-						<div className="play">
-							<Link
-								to={`/${item.mediaType}/${item.id}`}
-								onClick={closeModalHandler}>
+						<div className="open">
+							<Link to={`/${item.mediaType}/${item.id}`}>
 								<i className="fa-solid fa-down-left-and-up-right-to-center"></i>
 							</Link>
 						</div>
 					</div>
 				</div>
-				<div className="card-footer">
-					<div className="card-desc">
-						<h3 className="card-title">{title}</h3>
+				{!options?.withoutCardFooter && (
+					<div className="card-footer">
+						<div className="card-desc">
+							<h3 className="card-title">{title}</h3>
 
-						<div className="card-details">
-							<ul>
-								<li
-									className="vote-average"
-									style={{
-										backgroundColor:
-											item.vote_average > 6
-												? item.vote_average < 7
-													? "green"
-													: "#2080e0"
-												: "red",
-									}}>
-									{item.vote_average && (
-										<span>{item.vote_average.toFixed(1)}</span>
-									)}
-								</li>
-								<li>
-									{item.release_date ? item.release_date : item.first_air_date}
-								</li>
-							</ul>
+							<div className="card-details">
+								<ul>
+									<li
+										className="vote-average"
+										style={{
+											backgroundColor:
+												item.vote_average > 6
+													? item.vote_average < 7
+														? "green"
+														: "#2080e0"
+													: "red",
+										}}>
+										{item.vote_average && (
+											<span>{item.vote_average.toFixed(1)}</span>
+										)}
+									</li>
+									<li>
+										{item.release_date
+											? item.release_date
+											: item.first_air_date}
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
+				)}
 			</Card>
 		</div>
 	);

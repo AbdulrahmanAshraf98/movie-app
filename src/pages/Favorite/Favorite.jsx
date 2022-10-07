@@ -43,7 +43,7 @@ function Favorite() {
 	return (
 		<section className="favorite">
 			<Container>
-				<div class="favorite__title">
+				<div className="favorite__title">
 					<h3>Favorite List</h3>
 				</div>
 				<div className="favorite__buttons">

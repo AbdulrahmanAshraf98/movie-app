@@ -24,7 +24,7 @@ function Cast({ castData }) {
 							data={topCast}
 							slidesCount={1}
 							breakpoints={{
-								520: {
+								350: {
 									slidesPerView: 2,
 									spaceBetween: 20,
 								},
