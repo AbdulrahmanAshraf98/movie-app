@@ -1,80 +1,73 @@
-
-.searchFeed{
-    padding: 2rem 0 ;
+.searchFeed {
+	padding: 2rem 0;
 }
 
-.searchForm{
-    width: 100%;
-    padding-top: 1rem;
-    margin-bottom: 2rem;
-    text-align: center;
+.searchForm {
+	width: 100%;
+	padding-top: 1rem;
+	margin-bottom: 2rem;
+	text-align: center;
 }
-.searchFeed .col{
-    flex: 0 0 100%;
-    max-width: 100%;
-    margin-bottom: 1rem;
+.searchFeed .col {
+	flex: 0 0 100%;
+	max-width: 100%;
+	margin-bottom: 1rem;
 }
-.searchInput{
-    width: 100%;
-    padding: 1rem;
-    box-sizing: border-box;
-    background: var(--black-color);
-    color: var(--white-color);
-    border: none;
-    outline: none;
-    box-shadow: 0 2px 8px rgb(57 157 242 / 18%);
+.searchInput {
+	width: 100%;
+	padding: 1rem;
+	box-sizing: border-box;
+	background: var(--black-color);
+	color: var(--white-color);
+	border: none;
+	outline: none;
+	box-shadow: 0 2px 8px rgb(57 157 242 / 18%);
 }
-.result{
-    width: 100%;
+.result {
+	width: 100%;
 }
 
-@media(min-width:576px){
-    .searchFeed .row{
-        gap: 3%;
-        justify-content:space-between;
-    }
-    .searchFeed .col{
-        flex: 0 0 45%;
-        max-width: 50%;
-        margin-bottom: 2rem;
-    }
-
-  }
-
-@media(min-width:768px){
- 
-    .searchFeed .row{
-        gap: 4%;
-        justify-content: flex-start;
-    }
-    .searchFeed .col{
-        flex: 0 0 30%;
-        max-width: 30%;
-        margin-bottom: 2rem;
-    }
-
-  }
-  @media(min-width:992px){
-    .searchFeed  .col{
-        flex: 0 0 22%;
-        max-width: 22%;
-        margin-bottom: 2rem;
-    }
-  
-  }
-  @media(min-width:1024px){
-    .searchFeed .row {
-        justify-content: flex-start;  
-    }
-    .searchFeed  .col{
-        flex: 0 0 30%;
-        padding: 0;
-    }
-
-  }
-  @media(min-width:1200px){
-
-   .col{
-    flex: 0 0 25%;
+@media (min-width: 576px) {
+	.searchFeed .row {
+		gap: 3%;
+		justify-content: space-between;
+	}
+	.searchFeed .col {
+		flex: 0 0 45%;
+		max-width: 50%;
+		margin-bottom: 2rem;
+	}
 }
-  }
+
+@media (min-width: 768px) {
+	.searchFeed .row {
+		gap: 4%;
+		justify-content: flex-start;
+	}
+	.searchFeed .col {
+		flex: 0 0 30%;
+		max-width: 30%;
+		margin-bottom: 2rem;
+	}
+}
+@media (min-width: 992px) {
+	.searchFeed .col {
+		flex: 0 0 22%;
+		max-width: 22%;
+		margin-bottom: 2rem;
+	}
+}
+@media (min-width: 1024px) {
+	.searchFeed .row {
+		justify-content: flex-start;
+	}
+	.searchFeed .col {
+		flex: 0 0 30%;
+		padding: 0;
+	}
+}
+@media (min-width: 1200px) {
+	.searchFeed .col {
+		flex: 0 0 25%;
+	}
+}
