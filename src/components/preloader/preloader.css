@@ -9,7 +9,7 @@
     justify-content:center;
     align-items: center;
     background: var(--dark-color);
-    z-index:99999;
+    z-index:9999;
     text-align: center;
     transition: all 0.4s ease;
 }
